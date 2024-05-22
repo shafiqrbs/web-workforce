@@ -1,0 +1,7 @@
+<li class="nav-item  {{ Request::is('admin/list-archives')?'open':''}}{{ Request::is('admin/create-archive')?'open':''}}{{ Request::is('admin/sort-archive')?'open':''}}{{ Request::is('admin/edit-archive/*')?'open':''}}"> <a href="javascript:;" class="nav-link nav-toggle"> <i class="fas fa-calendar-check"></i> <span class="title">{{__('messages.Archives')}}</span> <span class="arrow {{ Request::is('admin/list-archives')?'open':''}}{{ Request::is('admin/create-archive')?'open':''}}{{ Request::is('admin/sort-archive')?'open':''}}{{ Request::is('admin/edit-archive/*')?'open':''}}"></span> </a>
+    <ul class="sub-menu" style="{{ Request::is('admin/list-archives')?'display: block':''}}{{ Request::is('admin/create-archive')?'display: block':''}}{{ Request::is('admin/sort-archive')?'display: block':''}}{{ Request::is('admin/edit-archive/*')?'display: block':''}}">
+        <li class="nav-item {{ Request::is('admin/list-archives')?'active':''}}"> <a href="{{ route('list.archives') }}" class="nav-link "> <span class="title">{{__('messages.List_Archives')}}</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/create-archive')?'active':''}}"> <a href="{{ route('create.archive') }}" class="nav-link "> <span class="title">{{__('messages.Add_New_Archive')}}</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/sort-archive')?'active':''}}"> <a href="{{ route('sort.archives') }}" class="nav-link "> <span class="title">{{__('messages.Sort_Archives')}}</span> </a> </li>
+    </ul>
+</li>

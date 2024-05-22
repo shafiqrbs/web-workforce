@@ -1,0 +1,7 @@
+<li class="nav-item  {{ Request::is('admin/list-faqs')?'open':''}}{{ Request::is('admin/create-faq')?'open':''}}{{ Request::is('admin/sort-faq')?'open':''}}{{ Request::is('admin/edit-faq/*')?'open':''}}"> <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-question-circle" aria-hidden="true"></i> <span class="title">FAQs</span> <span class="arrow {{ Request::is('admin/list-faqs')?'open':''}}{{ Request::is('admin/create-faq')?'open':''}}{{ Request::is('admin/sort-faq')?'open':''}}{{ Request::is('admin/edit-faq/*')?'open':''}}"></span> </a>
+    <ul class="sub-menu" style="{{ Request::is('admin/list-faqs')?'display: block':''}}{{ Request::is('admin/create-faq')?'display: block':''}}{{ Request::is('admin/sort-faq')?'display: block':''}}{{ Request::is('admin/edit-faq/*')?'display: block':''}}">
+        <li class="nav-item {{ Request::is('admin/list-faqs')?'active':''}}"> <a href="{{ route('list.faqs') }}" class="nav-link "> <span class="title">List FAQs</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/create-faq')?'active':''}}"> <a href="{{ route('create.faq') }}" class="nav-link "> <span class="title">Add new FAQ</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/sort-faq')?'active':''}}"> <a href="{{ route('sort.faqs') }}" class="nav-link "> <span class="title">Sort FAQs</span> </a> </li>
+    </ul>
+</li>

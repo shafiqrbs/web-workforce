@@ -1,0 +1,7 @@
+<li class="nav-item {{ Request::is('admin/list-cities')?'open':''}}{{ Request::is('admin/create-city')?'open':''}}{{ Request::is('admin/edit-city/*')?'open':''}}"> <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-globe" aria-hidden="true"></i> <span class="title">Cities</span> <span class="arrow {{ Request::is('admin/list-cities')?'open':''}}{{ Request::is('admin/create-city')?'open':''}}{{ Request::is('admin/edit-city/*')?'open':''}}"></span> </a>
+    <ul class="sub-menu" style="{{ Request::is('admin/list-cities')?'display: block':''}}{{ Request::is('admin/create-city')?'display: block':''}}{{ Request::is('admin/edit-city/*')?'display: block':''}}">
+        <li class="nav-item {{ Request::is('admin/list-cities')?'active':''}}"> <a href="{{ route('list.cities') }}" class="nav-link "> <span class="title">List Cities</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/create-city')?'active':''}}"> <a href="{{ route('create.city') }}" class="nav-link "> <span class="title">Add new City</span> </a> </li>
+        {{--<li class="nav-item  "> <a href="{{ route('sort.cities') }}" class="nav-link "> <span class="title">Sort Cities</span> </a> </li>--}}
+    </ul>
+</li>

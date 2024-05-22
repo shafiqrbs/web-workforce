@@ -1,0 +1,7 @@
+<li class="nav-item {{ Request::is('admin/list-hear-us')?'open':''}}{{ Request::is('admin/create-hear-us')?'open':''}}{{ Request::is('admin/sort-hear-us')?'open':''}}{{ Request::is('admin/edit-hear-us/*')?'open':''}}"> <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-venus-double" aria-hidden="true"></i> <span class="title">Hear About Us</span> <span class="arrow {{ Request::is('admin/list-hear-us')?'open':''}}{{ Request::is('admin/create-hear-us')?'open':''}}{{ Request::is('admin/sort-hear-us')?'open':''}}{{ Request::is('admin/edit-hear-us/*')?'open':''}}"></span> </a>
+    <ul class="sub-menu" style="{{ Request::is('admin/list-hear-us')?'display: block':''}}{{ Request::is('admin/create-hear-us')?'display: block':''}}{{ Request::is('admin/sort-hear-us')?'display: block':''}}{{ Request::is('admin/edit-hear-us/*')?'display: block':''}}">
+        <li class="nav-item {{ Request::is('admin/list-hear-us')?'active':''}}"> <a href="{{ route('list.hearUs') }}" class="nav-link "> <span class="title">List Hear About Us</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/create-hear-us')?'active':''}}"> <a href="{{ route('create.hearUs') }}" class="nav-link "> <span class="title">Add Hear About Us</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/sort-hear-us')?'active':''}}"> <a href="{{ route('sort.hearUs') }}" class="nav-link "> <span class="title">Sort Hear About Us</span> </a> </li>
+    </ul>
+</li>

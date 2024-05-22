@@ -1,0 +1,155 @@
+@charset "utf-8";
+/* CSS Document */
+
+.plus { background: url('images/details_open.png') no-repeat center center !important; cursor: pointer;}
+.minus { background: url('images/details_close.png') no-repeat center center !important; cursor: pointer;}
+#sortable { list-style-type: none; margin: 0; padding: 0; width: 100%; }
+#sortable li { margin:15px; padding:2px; font-size: 16px; background: #cedc98; border: 1px solid #DDDDDD; color: #333333; cursor:pointer;}
+
+
+.usercoverimg{position: relative; min-height: 240px; background: #333;}
+.usercoverName{position: relative; min-height: 100px; background: #333;}
+.usercoverimg:after{background: rgb(0,0,0);
+    background: -moz-linear-gradient(0deg, rgba(0,0,0,0.9026961126247374) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(0,0,0,0.9026961126247374) 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,0.9026961126247374) 0%, rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1); position: absolute; bottom: 0; left: 0; width: 100%; height:100px; content:'';}
+
+.userMaininfo{position: absolute; left: 0; bottom:-50px; width: 100%; z-index: 1;}
+.userMaininfo .userPic{width:150px; height:150px; overflow: hidden; border:5px solid #fff; position: relative; z-index: 15; margin-left: 40px; float: left; margin-right: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.3); background: #eee;}
+.userMaininfo .userPic img{display: block;max-width: 100%;}
+
+.userMaininfo h3{color: #fff; padding-top:35px; margin-bottom: 5px; margin-top: 0; text-shadow: 4px 4px 4px rgba(0,0,0,0.3);}
+.userMaininfo h3 span{font-size: 14px; color: #00ff53}
+.userMaininfo .desi{font-size: 14px; color: #fff;}
+
+.membersinc{float: right; color: #fff; font-size: 14px; margin: -20px 20px 10px 0;}
+.userlinkstp {
+    padding: 20px 25px;
+    background: #fff;
+    margin-bottom:30px;
+    text-align: right;
+    border-radius: 0 0 5px 5px;
+    min-height: 82px;
+}
+.userlinkstp.applybox{text-align: center; border-top: none; background: #fff; border-radius: 5px; margin-bottom: 30px;}
+.userlinkstp a {
+    margin-left: 10px;
+    color: #17d27c;
+    font-weight: 600;
+    padding: 10px 30px;
+    font-size: 14px;border-radius: 40px;
+    border: 1px solid #17d27c;
+    position: relative;
+    z-index: 2
+}
+
+/*Job Info*/
+.jobdetail .table-bordered {
+    border: none;
+    margin-bottom: 0;
+}
+.jobdetail .table-bordered td {
+    border: none;
+    border-top: 1px solid #ddd;
+}
+.jobdetail {
+    padding: 20px;
+}
+.jobdetail iframe {
+    width: 100%;
+    height: 250px;
+    border: none
+}
+.jobdetail h3 {
+    font-size: 18px;
+    color: #ffcb32;
+    font-weight: 700;
+}
+.jbdetail {
+    margin-top: 20px;
+    list-style: none;
+    padding-left: 0px;
+}
+.jbdetail li {
+    margin-bottom: 20px;
+    color: #908f8f;
+}
+.jbdetail li a {
+    display: block;
+    color: #ffcb32;
+    font-weight: 600;
+}
+.jbdetail li span {
+    display: block;
+    color: #000;
+    font-weight: 600;
+}
+.jbdetail li span.permanent {
+    color: #17d27c;
+}
+.jbdetail li span.contract {
+    color: #ffcb32;
+}
+.jbdetail li span.freelance {
+    color: #F07200;
+    background: none;
+    padding: 0;
+}
+
+
+.job-header .contentbox {
+    padding: 35px;
+}
+.job-header .contentbox h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffcb32;
+    margin-bottom: 10px;
+}
+.job-header .contentbox h3 i, .jobdetail h3 i, .companyinfo h3 i{color: #ccc; margin-right: 5px; font-size: 20px;}
+.job-header .contentbox p {
+    line-height: 24px;
+    color: #555;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+.job-header .contentbox p strong{font-weight: 700;}
+.job-header .contentbox p em{font-style: italic;}
+.job-header .contentbox p u{text-decoration: underline;}
+
+.jobButtons a.apply.applied{background: #ccc; border-color: #ccc; cursor: not-allowed}
+.job-header .contentbox iframe{width: 100%; height: 350px;}
+
+
+.job-header .contentbox ul {
+    margin-bottom: 30px;
+}
+.job-header .contentbox ul li {
+    padding: 5px 0 5px 25px;
+    position: relative;
+    line-height: 24px;
+}
+.job-header .contentbox ul li:before {
+    content: '\f00c';
+    font-family: 'FontAwesome';
+    color: #17d27c;
+    position: absolute;
+    left: 0;
+}
+
+.job-header .contentbox ul.userPortfolio{margin-bottom: 0;}
+
+.table-scrollable .dataTable td .btn-group, .table-scrollable .dataTable th .btn-group {
+    position: absolute;
+    margin-top: -2px;
+    right: 0;
+}
+
+.red{
+    color: red;!important;
+}
+
+.page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .menu-toggler.sidebar-toggler {
+    margin-top: 0px;
+}

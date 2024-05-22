@@ -1,0 +1,7 @@
+<li class="nav-item {{ Request::is('admin/list-degree-levels')?'open':''}}{{ Request::is('admin/create-degree-level')?'open':''}}{{ Request::is('admin/sort-degree-levels')?'open':''}}{{ Request::is('admin/edit-degree-level/*')?'open':''}}"> <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-level-up" aria-hidden="true"></i> <span class="title">Degree Levels</span> <span class="arrow {{ Request::is('admin/list-degree-levels')?'open':''}}{{ Request::is('admin/create-degree-level')?'open':''}}{{ Request::is('admin/sort-degree-levels')?'open':''}}{{ Request::is('admin/edit-degree-level/*')?'open':''}}"></span> </a>
+    <ul class="sub-menu" style="{{ Request::is('admin/list-degree-levels')?'display: block':''}}{{ Request::is('admin/create-degree-level')?'display: block':''}}{{ Request::is('admin/sort-degree-levels')?'display: block':''}}{{ Request::is('admin/edit-degree-level/*')?'display: block':''}}">
+        <li class="nav-item {{ Request::is('admin/list-degree-levels')?'active':''}}"> <a href="{{ route('list.degree.levels') }}" class="nav-link ">  <span class="title">List Degree Levels</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/create-degree-level')?'active':''}}"> <a href="{{ route('create.degree.level') }}" class="nav-link ">  <span class="title">Add new Degree Level</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/sort-degree-levels')?'active':''}}"> <a href="{{ route('sort.degree.levels') }}" class="nav-link "> <span class="title">Sort Degree Levels</span> </a> </li>
+    </ul>
+</li>

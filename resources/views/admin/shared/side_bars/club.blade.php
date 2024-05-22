@@ -1,0 +1,7 @@
+<li class="nav-item  {{ Request::is('admin/list-clubs')?'open':''}}{{ Request::is('admin/create-club')?'open':''}}{{ Request::is('admin/sort-club')?'open':''}}{{ Request::is('admin/edit-club/*')?'open':''}}"> <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-club" aria-hidden="true"></i> <span class="title">{{__('messages.Clubs')}}</span> <span class="arrow {{ Request::is('admin/list-clubs')?'open':''}}{{ Request::is('admin/create-club')?'open':''}}{{ Request::is('admin/sort-club')?'open':''}}{{ Request::is('admin/edit-club/*')?'open':''}}"></span> </a>
+    <ul class="sub-menu" style="{{ Request::is('admin/list-clubs')?'display: block':''}}{{ Request::is('admin/create-club')?'display: block':''}}{{ Request::is('admin/sort-club')?'display: block':''}}{{ Request::is('admin/edit-club/*')?'display: block':''}}">
+        <li class="nav-item {{ Request::is('admin/list-clubs')?'active':''}}"> <a href="{{ route('list.clubs') }}" class="nav-link "> <span class="title">{{__('messages.List_Clubs')}}</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/create-club')?'active':''}}"> <a href="{{ route('create.club') }}" class="nav-link "> <span class="title">{{__('messages.Add_New_Club')}}</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/sort-club')?'active':''}}"> <a href="{{ route('sort.clubs') }}" class="nav-link "> <span class="title">{{(__('messages.Sort_Clubs'))}}</span> </a> </li>
+    </ul>
+</li>

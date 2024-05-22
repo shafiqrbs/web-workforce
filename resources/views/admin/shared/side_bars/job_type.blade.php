@@ -1,0 +1,7 @@
+<li class="nav-item {{ Request::is('admin/list-job-types')?'open':''}}{{ Request::is('admin/create-job-type')?'open':''}}{{ Request::is('admin/sort-job-types')?'open':''}}{{ Request::is('admin/edit-job-type/*')?'open':''}}"> <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-briefcase" aria-hidden="true"></i> <span class="title">Job Types</span> <span class="arrow {{ Request::is('admin/list-job-types')?'open':''}}{{ Request::is('admin/create-job-type')?'open':''}}{{ Request::is('admin/sort-job-types')?'open':''}}{{ Request::is('admin/edit-job-type/*')?'open':''}}"></span> </a>
+    <ul class="sub-menu" style="{{ Request::is('admin/list-job-types')?'display: block':''}}{{ Request::is('admin/create-job-type')?'display: block':''}}{{ Request::is('admin/sort-job-types')?'display: block':''}}{{ Request::is('admin/edit-job-type/*')?'display: block':''}}">
+        <li class="nav-item {{ Request::is('admin/list-job-types')?'active':''}}"> <a href="{{ route('list.job.types') }}" class="nav-link"> <span class="title">List Job Types</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/create-job-type')?'active':''}}"> <a href="{{ route('create.job.type') }}" class="nav-link"> <span class="title">Add new Job Type</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/sort-job-types')?'active':''}}"> <a href="{{ route('sort.job.types') }}" class="nav-link"> <span class="title">Sort Job Types</span> </a> </li>
+    </ul>
+</li>

@@ -1,0 +1,7 @@
+<li class="nav-item  {{ Request::is('admin/list-events')?'open':''}}{{ Request::is('admin/create-event')?'open':''}}{{ Request::is('admin/sort-event')?'open':''}}{{ Request::is('admin/edit-event/*')?'open':''}}"> <a href="javascript:;" class="nav-link nav-toggle"> <i class="fas fa-calendar-check"></i> <span class="title">{{__('messages.Events')}}</span> <span class="arrow {{ Request::is('admin/list-events')?'open':''}}{{ Request::is('admin/create-event')?'open':''}}{{ Request::is('admin/sort-event')?'open':''}}{{ Request::is('admin/edit-event/*')?'open':''}}"></span> </a>
+    <ul class="sub-menu" style="{{ Request::is('admin/list-events')?'display: block':''}}{{ Request::is('admin/create-event')?'display: block':''}}{{ Request::is('admin/sort-event')?'display: block':''}}{{ Request::is('admin/edit-event/*')?'display: block':''}}">
+        <li class="nav-item {{ Request::is('admin/list-events')?'active':''}}"> <a href="{{ route('list.events') }}" class="nav-link "> <span class="title">{{__('messages.List_Events')}}</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/create-event')?'active':''}}"> <a href="{{ route('create.event') }}" class="nav-link "> <span class="title">{{__('messages.Add_New_Event')}}</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/sort-event')?'active':''}}"> <a href="{{ route('sort.events') }}" class="nav-link "> <span class="title">{{__('messages.Sort_Events')}}</span> </a> </li>
+    </ul>
+</li>

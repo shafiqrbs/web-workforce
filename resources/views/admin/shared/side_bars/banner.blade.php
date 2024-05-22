@@ -1,0 +1,6 @@
+<li class="nav-item  {{ Request::is('admin/list-banners')?'open':''}}{{ Request::is('admin/create-banner')?'open':''}}{{ Request::is('admin/edit-banner/*')?'open':''}}"> <a href="javascript:;" class="nav-link nav-toggle"> <i class="fas fa-image"></i> <span class="title">Banners</span> <span class="arrow {{ Request::is('admin/list-banners')?'open':''}}{{ Request::is('admin/create-banner')?'open':''}}{{ Request::is('admin/edit-banner/*')?'open':''}}"></span> </a>
+    <ul class="sub-menu" style="{{ Request::is('admin/list-banners')?'display: block':''}}{{ Request::is('admin/create-banner')?'display: block':''}}{{ Request::is('admin/edit-banner/*')?'display: block':''}}">
+        <li class="nav-item {{ Request::is('admin/list-banners')?'active':''}}"> <a href="{{ route('list.banners') }}" class="nav-link "> <span class="title">List Banners</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/create-banner')?'active':''}}"> <a href="{{ route('create.banner') }}" class="nav-link "> <span class="title">Add New Banners</span> </a> </li>
+    </ul>
+</li>

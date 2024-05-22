@@ -1,0 +1,9 @@
+
+<li class="nav-item {{ Request::is('admin/list-cms')?'open':''}}{{ Request::is('admin/create-cms')?'open':''}}{{ Request::is('admin/edit-cms/*')?'open':''}}{{ Request::is('admin/list-cmsContent')?'open':''}}{{ Request::is('admin/create-cmsContent')?'open':''}}{{ Request::is('admin/edit-cmsContent/*')?'open':''}}"> <a href="javascript:;" class="nav-link nav-toggle"> <i class="fab fa-page4"></i> <span class="title">All Pages</span> <span class="arrow {{ Request::is('admin/list-cms')?'open':''}}{{ Request::is('admin/create-cms')?'open':''}}{{ Request::is('admin/edit-cms/*')?'open':''}}{{ Request::is('admin/list-cmsContent')?'open':''}}{{ Request::is('admin/create-cmsContent')?'open':''}}{{ Request::is('admin/edit-cmsContent/*')?'open':''}}"></span> </a>
+    <ul class="sub-menu" style="{{ Request::is('admin/list-cms')?'display: block':''}}{{ Request::is('admin/create-cms')?'display: block':''}}{{ Request::is('admin/edit-cms/*')?'display: block':''}}{{ Request::is('admin/list-cmsContent')?'display: block':''}}{{ Request::is('admin/create-cmsContent')?'display: block':''}}{{ Request::is('admin/edit-cmsContent/*')?'display: block':''}}">
+        {{--<li class="nav-item {{ Request::is('admin/list-cms')?'active':''}}"> <a href="{{ route('list.cms') }}" class="nav-link "> <span class="title">List C.M.S Pages</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/create-cms')?'active':''}}"> <a href="{{ route('create.cms') }}" class="nav-link "> <span class="title">Add new C.M.S Page</span> </a> </li>--}}
+        <li class="nav-item {{ Request::is('admin/list-cmsContent')?'active':''}}"> <a href="{{ route('list.cmsContent') }}" class="nav-link "> <span class="title">List Pages</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/create-cmsContent')?'active':''}}"> <a href="{{ route('create.cmsContent') }}" class="nav-link "> <span class="title">Add new page</span> </a> </li>
+    </ul>
+</li>

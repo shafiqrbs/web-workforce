@@ -1,0 +1,7 @@
+<li class="nav-item {{ Request::is('admin/list-languages')?'open':''}}{{ Request::is('admin/create-language')?'open':''}}{{ Request::is('admin/sort-language')?'open':''}}{{ Request::is('admin/edit-language/*')?'open':''}}"> <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-language" aria-hidden="true"></i> <span class="title">Languages</span> <span class="arrow {{ Request::is('admin/list-languages')?'open':''}}{{ Request::is('admin/create-language')?'open':''}}{{ Request::is('admin/sort-language')?'open':''}}{{ Request::is('admin/edit-language/*')?'open':''}}"></span> </a>
+    <ul class="sub-menu" style="{{ Request::is('admin/list-languages')?'display: block':''}}{{ Request::is('admin/create-language')?'display: block':''}}{{ Request::is('admin/sort-language')?'display: block':''}}{{ Request::is('admin/edit-language/*')?'display: block':''}}">
+        <li class="nav-item {{ Request::is('admin/list-languages')?'active':''}}"> <a href="{{ route('list.languages') }}" class="nav-link "> <span class="title">List Languages</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/create-language')?'active':''}}"> <a href="{{ route('create.language') }}" class="nav-link "> <span class="title">Add new Language</span> </a> </li>
+        <li class="nav-item {{ Request::is('admin/sort-language')?'active':''}}"> <a href="{{ route('sort.language') }}" class="nav-link "> <span class="title">Sort Languages</span> </a> </li>
+    </ul>
+</li>
