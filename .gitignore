@@ -42,6 +42,7 @@ public/google36bd339dbec64959.html
 public/voucher/
 /public/.htaccess
 public/.htaccess
+/composer.lock
 /db
 storage/app/*
 storage/framework/*
