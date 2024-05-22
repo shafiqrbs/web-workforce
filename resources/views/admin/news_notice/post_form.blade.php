@@ -36,9 +36,9 @@
 
                 <ul class="page-breadcrumb">
 
-                    <li><a href="{{route('list.news.notice')}}">News And Notice List</a> <i class="fa fa-circle"></i></li>
+                    <li><a href="{{route('list.news.notice')}}">Posts</a> <i class="fa fa-circle"></i></li>
 
-                    <li><span>News And Notice</span></li>
+                    <li><span>New</span></li>
 
                 </ul>
 

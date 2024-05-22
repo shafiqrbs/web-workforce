@@ -14,12 +14,12 @@
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li> <a href="{{ route('admin.home') }}">Home</a> <i class="fa fa-circle"></i> </li>
-                    <li> <span>News & Notices</span> </li>
+                    <li> <span>Posts</span> </li>
                 </ul>
             </div>
             <!-- END PAGE BAR -->
             <!-- BEGIN PAGE TITLE-->
-            <h3 class="page-title">Manage News & Notices <small></small> </h3>
+            <h3 class="page-title">Manage Posts <small></small> </h3>
             <!-- END PAGE TITLE-->
             <!-- END PAGE HEADER-->
             <div class="row">
@@ -27,9 +27,9 @@
                     <!-- Begin: life time stats -->
                     <div class="portlet light portlet-fit portlet-datatable bordered">
                         <div class="portlet-title">
-                            <div class="caption"> <i class="icon-settings font-dark"></i> <span class="caption-subject font-dark sbold uppercase">News & Notices</span> </div>
+                            <div class="caption"> <i class="icon-settings font-dark"></i> <span class="caption-subject font-dark sbold uppercase">Post</span> </div>
                             <div class="actions">
-                                <a href="{{ route('create.news.notice') }}" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> Add New New & Notice</a>
+                                <a href="{{ route('create.news.notice') }}" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> Add Post</a>
                             </div>
                         </div>
                         <div class="portlet-body">

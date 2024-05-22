@@ -1,7 +1,7 @@
 {!! APFrmErrHelp::showErrorsNotice($errors) !!}
 @include('flash::message')
 <div class="form-body">
-    <h3>Drag and Drop to Sort the News & Notices</h3>
+    <h3>Drag and Drop to Sort the Posts</h3>
     <div id="archive_sort_data_div">
     </div>
 </div>

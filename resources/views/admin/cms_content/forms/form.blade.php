@@ -8,29 +8,7 @@ $queryString = MiscHelper::getLangQueryStr();
 ?>
 {!! APFrmErrHelp::showErrorsNotice($errors) !!}
 <div class="form-body">
-    {{--<div class="form-group {!! APFrmErrHelp::hasError($errors, 'page_slug') !!}">
-        {!! Form::label('page_slug', 'Page Slug', ['class' => 'bold']) !!}
-        {!! Form::text('page_slug', null, array('class'=>'form-control', 'id'=>'page_slug', 'placeholder'=>'Page Slug')) !!}
-        {!! APFrmErrHelp::showErrors($errors, 'page_slug') !!}
-    </div>--}}
 
-    {{--<div class="form-group {!! APFrmErrHelp::hasError($errors, 'parent_id') !!}">
-        {!! Form::label('parent_id', 'Parent', ['class' => 'bold']) !!}
-        {!! Form::select('parent_id', $parentCms,isset($cms)&&$cms->parent_id?$cms->parent_id:null, array('class'=>'form-control', 'id'=>'parent_id', 'placeholder'=>'Select Parent')) !!}
-        {!! APFrmErrHelp::showErrors($errors, 'parent_id') !!}
-    </div>--}}
-
-
-    {{--<div class="form-group {!! APFrmErrHelp::hasError($errors, 'lang') !!}">
-        {!! Form::label('lang', 'Language', ['class' => 'bold']) !!}
-        {!! Form::select('lang', ['' => 'Select Language']+$languages, $lang, array('class'=>'form-control', 'id'=>'lang', 'onchange'=>'setLang(this.value)')) !!}
-        {!! APFrmErrHelp::showErrors($errors, 'lang') !!}
-    </div>--}}
-    {{--<div class="form-group {!! APFrmErrHelp::hasError($errors, 'page_id') !!}">
-        {!! Form::label('page_id', 'CMS Page', ['class' => 'bold']) !!}
-        {!! Form::select('page_id', ['' => 'Select page']+$cmsPages, null, array('class'=>'form-control', 'id'=>'page_id')) !!}
-        {!! APFrmErrHelp::showErrors($errors, 'page_id') !!}
-    </div>  --}}
     <div class="form-group {!! APFrmErrHelp::hasError($errors, 'page_title') !!}">
         {!! Form::label('page_title', 'Page Title', ['class' => 'bold']) !!}
         {!! Form::text('page_title', null, array('class'=>'form-control', 'id'=>'page_title', 'placeholder'=>'Page Title', 'dir'=>$direction)) !!}
@@ -40,6 +18,23 @@ $queryString = MiscHelper::getLangQueryStr();
         {!! Form::label('page_content', 'Page Content', ['class' => 'bold']) !!}
         {!! Form::textarea('page_content', null, array('class'=>'form-control', 'id'=>'page_content', 'placeholder'=>'Page Content')) !!}
         {!! APFrmErrHelp::showErrors($errors, 'page_content') !!}
+    </div>
+
+    <div class="form-group {!! APFrmErrHelp::hasError($errors, 'profile_image') !!}">
+        @if(isset($cms))
+            <input type="hidden" name="form_type" value="update">
+            {!! Form::label('image', 'Image', ['class' => 'bold']) !!} <span style="font-size: 10px">( Greater than or equal to width 270px & height 270px. )</span>
+            {!! Form::File('image', array('class'=>'form-control', 'id'=>'image')) !!}
+            {!! APFrmErrHelp::showErrors($errors, 'image') !!}
+            @if($cmsContent->image)
+                <img src="{{asset('page_image/mid/'.$cmsContent->image)}}" alt="" class="img-fluid">
+            @endif
+        @else
+            <input type="hidden" name="form_type" value="insert">
+            {!! Form::label('image', 'Image', ['class' => 'bold']) !!} <span style="font-size: 10px">( Greater than or equal to width 270px & height 270px. )</span>
+            {!! Form::File('image', array('class'=>'form-control', 'id'=>'image')) !!}
+            {!! APFrmErrHelp::showErrors($errors, 'image') !!}
+        @endif
     </div>
 
     <div class="form-group {!! APFrmErrHelp::hasError($errors, 'show_in_top_menu') !!}">
@@ -82,7 +77,7 @@ $queryString = MiscHelper::getLangQueryStr();
         </div>
         {!! APFrmErrHelp::showErrors($errors, 'show_in_footer_menu') !!}
     </div>
-    <input type="file" name="image" id="image" style="display:none;" accept="image/*"/>
+{{--    <input type="file" name="image" id="image" style="display:none;" accept="image/*"/>--}}
 </div>
 @push('scripts')
 <script type="text/javascript">

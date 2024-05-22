@@ -8,8 +8,8 @@
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li> <a href="{{ route('admin.home') }}">Home</a> <i class="fa fa-circle"></i> </li>
-                <li> <a href="{{ route('list.news.notice') }}">News & Notices</a> <i class="fa fa-circle"></i> </li>
-                <li> <span>Sort News & Notices</span> </li>
+                <li> <a href="{{ route('list.news.notice') }}">Posts</a> <i class="fa fa-circle"></i> </li>
+                <li> <span>Sort Posts</span> </li>
             </ul>
         </div>
         <!-- END PAGE BAR --> 
@@ -23,11 +23,11 @@
             <div class="col-md-12">
                 <div class="portlet light bordered">
                     <div class="portlet-title">
-                        <div class="caption font-red-sunglo"> <i class="icon-settings font-red-sunglo"></i> <span class="caption-subject bold uppercase">Sort News & Notices</span> </div>
+                        <div class="caption font-red-sunglo"> <i class="icon-settings font-red-sunglo"></i> <span class="caption-subject bold uppercase">Sort Posts</span> </div>
                     </div>
                     <div class="portlet-body form">          
                         <ul class="nav nav-tabs">              
-                            <li class="active"> <a href="#Details" data-toggle="tab" aria-expanded="false"> Sort News & Notices </a> </li>
+                            <li class="active"> <a href="#Details" data-toggle="tab" aria-expanded="false"> Sort Posts </a> </li>
                         </ul>
                         <div class="tab-content">              
                             <div class="tab-pane fade active in" id="Details"> @include('admin.news_notice.forms.sort') </div>

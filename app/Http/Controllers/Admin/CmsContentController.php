@@ -21,6 +21,8 @@ use App\Http\Requests\CmsContentFormRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use ImgUploader;
+
 
 class CmsContentController extends Controller
 {
@@ -136,9 +138,15 @@ class CmsContentController extends Controller
             $cms->seo_other = $request->input('page_title');
             $cms->show_in_top_menu = $request->input('show_in_top_menu');
             $cms->show_in_footer_menu = $request->input('show_in_footer_menu');
+
             $cms->save();
 
             $cmsContent = new CmsContent();
+            if ($request->hasFile('image')) {
+                $image_name = $request->input('page_title');
+                $fileName = ImgUploader::UploadImage('page_image', $request->file('image'), $image_name, 270, 270);
+                $cmsContent->image = $fileName;
+            }
             $cmsContent->page_id = $cms->id;
             $cmsContent->page_title = $request->input('page_title');
             $cmsContent->page_content = $request->input('page_content');
@@ -175,6 +183,14 @@ class CmsContentController extends Controller
         $cms->update();
 
         $cmsContent = CmsContent::where('page_id',$id)->first();
+        if ($request->hasFile('image')) {
+            \Illuminate\Support\Facades\File::delete(public_path().'/page_image/'.$cmsContent->image);
+            \Illuminate\Support\Facades\File::delete(public_path().'/page_image/thumb/'.$cmsContent->image);
+            \Illuminate\Support\Facades\File::delete(public_path().'/page_image/mid/'.$cmsContent->image);
+            $image_name = $request->input('page_title');
+            $fileName = ImgUploader::UploadImage('page_image', $request->file('image'), $image_name, 270, 270);
+            $cmsContent->image = $fileName;
+        }
         $cmsContent->page_title = $request->input('page_title');
         $cmsContent->page_content = $request->input('page_content');
         $cmsContent->update();
