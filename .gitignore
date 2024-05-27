@@ -23,8 +23,8 @@
 /public/jury
 /public/arms
 /public/favicon.ico
-/storage/app
-/storage/logs
+/storage/app/*
+/storage/logs/*
 .idea/php.xml
 /vendor
 .env
@@ -39,7 +39,7 @@ yarn-error.log
 /.fleet
 /.idea/*
 .idea/*
-/.vscode
+/.vscode6
 .fleet
 .idea
 .vscode
