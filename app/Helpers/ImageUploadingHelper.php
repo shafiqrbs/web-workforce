@@ -3,6 +3,8 @@
 namespace App\Helpers;
 
 use App\Library\ImageUpload\Image;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +28,15 @@ class ImageUploadingHelper
 
     public static function UploadImage($destinationPath, $field, $newName = '', $width = 0, $height = 0, $makeOtherSizesImages = true)
     {
+
+
+        echo $assets_dir = public_path($destinationPath);;
+       // $midImagePath = $destinationPath . self::$midFolder;
+        mkdir($assets_dir.'/mid', 0777, true);
+        mkdir($assets_dir.'/large', 0777, true);
+        mkdir($assets_dir.'/thumb', 0777, true);
+
+        exit;
         if ($width > 0 && $height > 0) {
             self::$mainImgWidth = $width;
             self::$mainImgHeight = $height;
@@ -34,6 +45,24 @@ class ImageUploadingHelper
         $midImagePath = $destinationPath . self::$midFolder;
         $thumbImagePath = $destinationPath . self::$thumbFolder;
         $largeImagePath = $destinationPath . self::$largeFolder;
+
+
+
+        if (!Storage::disk('public')->exists($midImagePath)) {
+            $midImagePath = public_path($midImagePath);
+            File::makeDirectory($midImagePath, 0777, true, true);
+        }
+
+        if (!Storage::disk('public')->exists($thumbImagePath)) {
+            $thumbImagePath = public_path($thumbImagePath);
+            File::makeDirectory($thumbImagePath, 0777, true, true);
+        }
+
+        if (!Storage::disk('public')->exists($largeImagePath)) {
+            $largeImagePath = public_path($largeImagePath);
+            File::makeDirectory($largeImagePath, 0777, true, true);
+        }
+
         $extension = $field->getClientOriginalExtension();
         $fileName = Str::slug($newName, '-') . '-' . time() . '-' . rand(1, 999) . '.' . $extension;
         $field->move($destinationPath, $fileName);
