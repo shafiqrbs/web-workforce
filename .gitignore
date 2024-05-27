@@ -25,6 +25,7 @@
 /public/favicon.ico
 /storage/app/*
 /storage/logs/*
+/storage/framework/*
 .idea/php.xml
 /vendor
 .env
