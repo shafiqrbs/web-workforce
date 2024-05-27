@@ -16,7 +16,6 @@ class NewsAndNotice extends Model
     use IsDefault;
     use Active;
     use Sorted;
-    use Sluggable;
     use SoftDeletes;
 
     protected $table = 'news_and_notices';
@@ -36,6 +35,11 @@ class NewsAndNotice extends Model
 
     public function onBehalfBy(){
         return $this->belongsTo('App\Models\CommitteeMember','member_id');
+    }
+
+    public static function getPostByType($type,$limit = 3){
+        $data = self::where('is_active',1)->where('post_type',$type)->orderby('sort_order','asc')->paginate($limit);
+        return $data;
     }
 
     public static function getAllNewsByType($type){
@@ -76,12 +80,5 @@ class NewsAndNotice extends Model
         return $data;
     }
 
-    public function sluggable()
-    {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ]
-        ];
-    }
+
 }

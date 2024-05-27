@@ -139,6 +139,7 @@
                                                                 <select class="form-control" name="post_type" id="post_type">
                                                                     <option value="NEWS" {{ $newsAndNotice->post_type=='NEWS'?'selected="selected"':''}}>News</option>
                                                                     <option value="NOTICE" {{ $newsAndNotice->post_type=='NOTICE'?'selected="selected"':''}}>Notice</option>
+                                                                    <option value="ABOUT" {{ $newsAndNotice->post_type=='ABOUT'?'selected="selected"':''}}>About</option>
                                                                 </select>
 
                                                             </div>

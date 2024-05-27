@@ -1,10 +1,10 @@
 {!! APFrmErrHelp::showErrorsNotice($errors) !!}
-<div class="form-body">	
+<div class="form-body">
     <div class="form-group {!! APFrmErrHelp::hasError($errors, 'page_slug') !!}">
-        {!! Form::label('page_slug', 'Page Slug', ['class' => 'bold']) !!}                    
+        {!! Form::label('page_slug', 'Page Slug', ['class' => 'bold']) !!}
         {!! Form::text('page_slug', null, array('class'=>'form-control', 'id'=>'page_slug', 'placeholder'=>'Page Slug')) !!}
-        {!! APFrmErrHelp::showErrors($errors, 'page_slug') !!}                                       
-    </div>    
+        {!! APFrmErrHelp::showErrors($errors, 'page_slug') !!}
+    </div>
     <div class="form-group {!! APFrmErrHelp::hasError($errors, 'show_in_top_menu') !!}">
         {!! Form::label('show_in_top_menu', 'Show in top Menu', ['class' => 'bold']) !!}
         <div class="radio-list">

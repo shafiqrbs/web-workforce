@@ -160,7 +160,7 @@ if (!isset($seo)) {
     <link href="{{asset('assets/css/jquery-ui.css')}}" rel="stylesheet">
     {{--    <link href="{{asset('assets/css/timePicker.css')}}" rel="stylesheet">--}}
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
+   {{-- <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">--}}
 
     <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet">
 
@@ -226,8 +226,6 @@ if (!isset($seo)) {
         </div>
     </div>
     <!-- search-popup end -->
-
-
     <!-- sidebar cart item -->
     <div class="xs-sidebar-group info-group info-sidebar">
         <div class="xs-overlay xs-bg-black"></div>
@@ -284,8 +282,6 @@ if (!isset($seo)) {
         </div>
     </div>
     <!-- END sidebar widget item -->
-
-
     <!-- main header -->
     <header class="main-header {{(Request::is('/'))?'style-two':'style-one'}}">
         <!-- header-top -->
@@ -592,7 +588,6 @@ if (!isset($seo)) {
         </div>
     </header>
     <!-- main-header end -->
-
     <!-- Mobile Menu  -->
     <div class="mobile-menu">
         <div class="menu-backdrop"></div>
@@ -623,12 +618,7 @@ if (!isset($seo)) {
             </div>
         </nav>
     </div><!-- End Mobile Menu -->
-
-
-
-@yield('content')
-
-
+    @yield('content')
 <!-- main-footer -->
     <footer class="main-footer">
         <div class="footer-top-two footer-custom-padding">
@@ -766,9 +756,6 @@ if (!isset($seo)) {
         </div>
     </footer>
     <!-- main-footer end -->
-
-
-
     <!--Scroll to top-->
     <button class="scroll-top scroll-to-target" data-target="html">
         <span class="fas fa-angle-up"></span>

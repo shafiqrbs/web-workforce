@@ -32,7 +32,7 @@
                         </ul>
                         {!! Form::model($cms, array('method' => 'put', 'route' => array('update.cms', $cms->id), 'class' => 'form', 'files'=>true)) !!}
                         {!! Form::hidden('id', $cms->id) !!}            
-                        <div class="tab-content">              
+                        <div class="tab-content">
                             <div class="tab-pane fade active in" id="Details"> @include('admin.cms.forms.form') </div>
                             <div class="tab-pane fade" id="seo"> @include('admin.cms.forms.seo_form') </div>
                         </div>

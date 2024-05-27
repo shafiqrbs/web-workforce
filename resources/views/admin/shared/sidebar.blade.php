@@ -28,76 +28,15 @@
         <li class="heading">
             <h3 class="uppercase">Modules</h3>
         </li>
-
-        @include('admin/shared/side_bars/archive')
-
-        @include('admin/shared/side_bars/site_user')
-        @include('admin/shared/side_bars/club')
-        @include('admin/shared/side_bars/event')
-        @include('admin/shared/side_bars/financial_partner')
-        @include('admin/shared/side_bars/Judges_Jury')
-        @include('admin/shared/side_bars/arms')
         @include('admin/shared/side_bars/news_and_notice')
-        @include('admin/shared/side_bars/members')
-{{--        @include('admin/shared/side_bars/committee_executive_members')--}}
-{{--        @include('admin/shared/side_bars/committee_camp_commandant_members')--}}
-        @include('admin/shared/side_bars/committee_office_administration_members')
-{{--        @include('admin/shared/side_bars/committee_sub_committee_members')--}}
-
         @if(Module::has('PhotoGallery'))
         @include('photogallery::layouts.nav')
         @endif
-{{--        @include('admin/shared/side_bars/industry')--}}
-
-
-       
-
-
-		@if(APAuthHelp::check(['SUP_ADM']))
-            @include('admin/shared/side_bars/cms')
-            @include('admin/shared/side_bars/banner')
-            {{--        @include('admin/shared/side_bars/testimonial')--}}
-            {{--        @include('admin/shared/side_bars/hear_about_us')--}}
-            @include('admin/shared/side_bars/faq')
-            {{--        @include('admin/shared/side_bars/package')--}}
-            {{--        @include('admin/shared/side_bars/payment_history')--}}
-            @include('admin/shared/side_bars/slider')
-        {{--<li class="heading">
-            <h3 class="uppercase">Translation</h3>
-        </li>--}}
-{{--        @include('admin/shared/side_bars/language')--}}
- -->
-
-
-
-        {{--<li class="heading">
-            <h3 class="uppercase">Manage Location</h3>
-        </li>--}}
-{{--        @include('admin/shared/side_bars/country')--}}
-{{--        @include('admin/shared/side_bars/country_detail')--}}
-{{--        @include('admin/shared/side_bars/state')--}}
-{{--        @include('admin/shared/side_bars/city')--}}
-
-
-       
-
-
-
-        <li class="heading">
-            <h3 class="uppercase">Attributes</h3>
-        </li>
-            @include('admin/shared/side_bars/profession')
-            @include('admin/shared/side_bars/event_type')
-            @include('admin/shared/side_bars/career_level')
-{{--        @include('admin/shared/side_bars/language')--}}
-        @include('admin/shared/side_bars/gender')
-{{--        @include('admin/shared/side_bars/industry')--}}
-{{--        @include('admin/shared/side_bars/job_experience')--}}
-        {{--@include('admin/shared/side_bars/job_title')
-        @include('admin/shared/side_bars/job_type')
-        @include('admin/shared/side_bars/degree_level')
-        @include('admin/shared/side_bars/salary_period')--}}
-
+        @if(APAuthHelp::check(['SUP_ADM']))
+        @include('admin/shared/side_bars/cms')
+        @include('admin/shared/side_bars/banner')
+        @include('admin/shared/side_bars/faq')
+        @include('admin/shared/side_bars/slider')
         @include('admin/shared/side_bars/site_setting')
 		@endif
 

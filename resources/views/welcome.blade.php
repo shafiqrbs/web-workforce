@@ -1,41 +1,54 @@
 @extends('layouts.app')
 @section('content')
+        <!-- banner-section -->
+        @include('includes/slider')
+        <!-- banner-section end -->
+        <!-- banner-section -->
+        <section class="about-section sec-pad bg-color-1">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-lg-6 col-md-12 col-sm-12 content-column">
+                        <div class="content_block_1">
+                            <div class="content-box">
+                                <div class="sec-title">
+                                    <h6><i class="flaticon-star"></i><span>WHY IT MATTERS</span></h6>
+                                    <h2>{{$aboutContent->page_title}}</h2>
+                                    <div class="title-shape"></div>
+                                </div>
+                                <div class="text">  <?php echo $aboutContent->page_content ; ?>  </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 image-column">
+                        <div class="image_block_1">
+                            <div class="image-box">
+                                <figure class="image"><img style="width: 510px; height: 605px" src="{{asset('page_image/'.$aboutContent->image)}}" alt=""></figure>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- banner-section -->
-    @include('includes/slider')
-    <!-- banner-section end -->
-
-    <!-- Events start -->
-    @include('includes/events')
-    <!-- Events end -->
-
-    <!-- news-style-two -->
-{{--    @include('includes/event-calender')--}}
-{{--    @include('includes/event-calender-list')--}}
-    <!-- news-style-two end -->
-
-
-    <!-- news-style-two -->
-    @include('includes/news-notices')
-    <!-- news-style-two end -->
-
-
-
-    <!-- Present Athlete start -->
-    @include('athlete/present-athlete')
-    <!-- Present Athlete end -->
-
-
-    <!-- Former Athlete start -->
-    @include('athlete/former-athlete')
-    <!-- Former Athlete end -->
-
-
-    <!-- Financial Partner Section -->
-    @include('includes/finacial-partner')
-    <!-- team-section end -->
-
-
+                </div>
+            </div>
+        </section>
+        <!-- banner-section end -->
+        <!-- banner-section -->
+        @include('includes.page.aboutus')
+        <!-- banner-section end -->
+        <!-- banner-section -->
+        @include('includes.page.event')
+        <!-- banner-section end -->
+        <!-- banner-section -->
+        @include('includes.page.target')
+        <!-- banner-section end -->
+        <!-- banner-section -->
+        @include('includes.page.news')
+        <!-- banner-section end -->
+        <!-- banner-section -->
+        @include('includes.page.members')
+        <!-- banner-section end -->
+        <!-- banner-section -->
+        @include('includes.page.achivement')
+        <!-- banner-section end -->
 @endsection
 
 @push('styles')

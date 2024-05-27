@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App;
+use App\Cms;
+use App\CmsContent;
 use App\Models\NewsAndNotice;
 use App\Models\Athlete;
 use App\Models\AthleteCompetition;
@@ -65,6 +67,8 @@ class IndexController extends Controller
             Session::put('construction', true);
         }*/
 
+
+
         Session::put('construction', false);
 
 		$sliders = Slider::langSliders();
@@ -75,10 +79,22 @@ class IndexController extends Controller
         $presentAthletesData = Athlete::getAllPresentAthlets();
         $formerAthletesData = Athlete::getAllFormerAthlets();
         $newsAndNotices = NewsAndNotice::getLatestNews(3);
+        $abouts = NewsAndNotice::getPostByType('NEWS',3);
         $events = App\Models\Event::getLatestEvent(3);
 
+        $aboutContent = CmsContent::where('page_id',14)->first();
+
         return view('welcome',[
-            'sliders'=>$sliders,'stickyNewsAndNotice'=>$stickyNewsAndNotice,'seo'=>$seo,'financialPartner'=>$financialPartner,'presentAthletesData'=>$presentAthletesData,'formerAthletesData'=>$formerAthletesData,'newsAndNotices'=>$newsAndNotices,'events'=>$events
+            'sliders'=> $sliders,
+            'aboutContent'=> $aboutContent,
+            'abouts'=> $abouts,
+            'stickyNewsAndNotice'=> $stickyNewsAndNotice,
+            'seo'=>$seo,
+            'financialPartner'=>$financialPartner,
+            'presentAthletesData'=>$presentAthletesData,
+            'formerAthletesData'=>$formerAthletesData,
+            'newsAndNotices'=>$newsAndNotices,
+            'events'=>$events
         ]);
     }
 

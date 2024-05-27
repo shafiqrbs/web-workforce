@@ -141,6 +141,7 @@
                                                                     <select class="form-control" name="post_type" id="post_type">
                                                                         <option value="NEWS">News</option>
                                                                         <option value="NOTICE">Notice</option>
+                                                                        <option value="ABOUT">About</option>
                                                                     </select>
                                                                 </div>
 
