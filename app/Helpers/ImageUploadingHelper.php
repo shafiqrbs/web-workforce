@@ -3,12 +3,12 @@
 namespace App\Helpers;
 
 use App\Library\ImageUpload\Image;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-use Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 class ImageUploadingHelper
 {
 
@@ -26,47 +26,33 @@ class ImageUploadingHelper
     private static $largeFolder = '/large';
     private static $thumbFolder = '/thumb';
 
-    public static function UploadImage($destinationPath, $field, $newName = '', $width = 0, $height = 0, $makeOtherSizesImages = true)
+    public static function UploadImage($destPath, $field, $newName = '', $width = 0, $height = 0, $makeOtherSizesImages = true)
     {
-
-
-        echo $assets_dir = public_path($destinationPath);;
-       // $midImagePath = $destinationPath . self::$midFolder;
-        mkdir($assets_dir.'/mid', 0777, true);
-        mkdir($assets_dir.'/large', 0777, true);
-        mkdir($assets_dir.'/thumb', 0777, true);
-
-        exit;
         if ($width > 0 && $height > 0) {
             self::$mainImgWidth = $width;
             self::$mainImgHeight = $height;
         }
-        $destinationPath = ImageUploadingHelper::real_public_path() . $destinationPath;
+        $destinationPath = ImageUploadingHelper::real_public_path() . $destPath;
         $midImagePath = $destinationPath . self::$midFolder;
         $thumbImagePath = $destinationPath . self::$thumbFolder;
         $largeImagePath = $destinationPath . self::$largeFolder;
 
-
-
-        if (!Storage::disk('public')->exists($midImagePath)) {
-            $midImagePath = public_path($midImagePath);
-            File::makeDirectory($midImagePath, 0777, true, true);
+        if (!Storage::disk('public')->exists($destPath.self::$midFolder)) {
+            File::makeDirectory(public_path($destPath.self::$midFolder), 0777, true, true);
         }
 
-        if (!Storage::disk('public')->exists($thumbImagePath)) {
-            $thumbImagePath = public_path($thumbImagePath);
-            File::makeDirectory($thumbImagePath, 0777, true, true);
+        if (!Storage::disk('public')->exists($destPath.self::$thumbFolder)) {
+            File::makeDirectory(public_path($destPath.self::$thumbFolder), 0777, true, true);
         }
 
-        if (!Storage::disk('public')->exists($largeImagePath)) {
-            $largeImagePath = public_path($largeImagePath);
-            File::makeDirectory($largeImagePath, 0777, true, true);
+        if (!Storage::disk('public')->exists($destPath.self::$largeFolder   )) {
+            File::makeDirectory(public_path($destPath.self::$largeFolder), 0777, true, true);
         }
 
         $extension = $field->getClientOriginalExtension();
         $fileName = Str::slug($newName, '-') . '-' . time() . '-' . rand(1, 999) . '.' . $extension;
         $field->move($destinationPath, $fileName);
-        /*         * **** Resizing Images ******** */
+
         $imageToResize = new Image($destinationPath . '/' . $fileName);
 
         $imageToResize->save($destinationPath . '/' . $fileName);
@@ -84,7 +70,6 @@ class ImageUploadingHelper
             $imageToResize = new Image($destinationPath . '/' . $fileName);
             $imageToResize->resize(self::$thumbImgWidth, self::$thumbImgHeight);
             $imageToResize->save($thumbImagePath . '/' . $fileName);
-            /*             * **** End Resizing Images ******** */
         }
         return $fileName;
     }
@@ -169,7 +154,7 @@ class ImageUploadingHelper
 
     public static function get_image($image_path, $width = 0, $height = 0, $default_image = '/admin_assets/no-image.png', $alt_title_txt = '')
     {
-		$dimensions = '';
+        $dimensions = '';
         if ($width > 0 && $height > 0) {
             $dimensions = 'style="max-width=' . $width . 'px; max-height:' . $height . 'px;"';
         } elseif ($width > 0 && $height == 0) {
@@ -177,11 +162,11 @@ class ImageUploadingHelper
         } elseif ($width == 0 && $height > 0) {
             $dimensions = 'style="max-height:' . $height . 'px;"';
         }
-		$image_src = self::print_image_src($image_path, $width, $height, $default_image, $alt_title_txt);
+        $image_src = self::print_image_src($image_path, $width, $height, $default_image, $alt_title_txt);
         return '<img src="' . $image_src . '" ' . $dimensions . ' alt="' . $alt_title_txt . '" title="' . $alt_title_txt . '">';
     }
 
-	public static function print_image_src($image_path, $width = 0, $height = 0, $default_image = '/admin_assets/no-image.png', $alt_title_txt = '')
+    public static function print_image_src($image_path, $width = 0, $height = 0, $default_image = '/admin_assets/no-image.png', $alt_title_txt = '')
     {
 
         if (!empty($image_path) && file_exists(ImageUploadingHelper::real_public_path() . $image_path)) {
