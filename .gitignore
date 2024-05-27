@@ -1,6 +1,5 @@
 /node_modules
 /public/hot
-/public/storage
 /public/files
 /public/uploads
 /public/cvs
@@ -24,10 +23,10 @@
 /public/jury
 /public/arms
 /public/favicon.ico
-/bootstrap/cache/*
 /storage/app/file
 /storage/*.key
-/storage/framework
+/storage/app
+/storage/logs
 /vendor
 vendor
 /.idea
@@ -41,8 +40,6 @@ yarn-error.log
 public/google36bd339dbec64959.html
 /public/google36bd339dbec64959.html
 public/voucher/
-/public/.htaccess
-public/.htaccess
 /composer.lock
 /db
 storage/app/*
