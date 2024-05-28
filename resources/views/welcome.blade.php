@@ -49,6 +49,9 @@
         <!-- banner-section -->
         @include('includes.page.achivement')
         <!-- banner-section end -->
+        <!-- banner-section -->
+        @include('includes.page.map')
+        <!-- banner-section end -->
 @endsection
 
 @push('styles')

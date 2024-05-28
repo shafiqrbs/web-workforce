@@ -1,5 +1,5 @@
 <!-- service-style-two -->
-<section class="schedules-section sec-pad bg-color-1">
+<section class="schedules-section sec-pad bg-color-1" id="event">
     <div class="bg-layer" style="background-image: url(https://website.workforcenutritionbd.org/assets/frontend/images/background/schedule-bg.jpg);"></div>
     <div class="auto-container">
         <div class="title-inner">

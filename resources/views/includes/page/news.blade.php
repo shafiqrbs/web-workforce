@@ -1,5 +1,5 @@
 
-<section class="news-section bg-color-1">
+<section class="news-section bg-color-1" id="news">
     <div class="auto-container">
         <div class="sec-title centred">
             <h6><i class="flaticon-star"></i><span>News &amp; Blog</span><i class="flaticon-star"></i></h6>

@@ -1,5 +1,5 @@
 
-<section class="team-section sec-pad bg-color-1">
+<section class="team-section sec-pad bg-color-1" id="member">
     <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-5.png);"></div>
     <div class="auto-container">
         <div class="sec-title">

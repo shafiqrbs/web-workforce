@@ -1,4 +1,4 @@
-<section class="funfact-section">
+<section class="funfact-section" id="achievement">
     <div class="pattern-layer" style="background-image: url('assets/images/shape/shape-7.png');"></div>
     <div class="auto-container">
         <div class="funfact-content">

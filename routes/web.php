@@ -252,7 +252,7 @@ Route::get('reviews/{status}', 'Custom\CustomController@review')->name('review')
  * Admin
  */
 
-Route::get('admin/profile-video/approve/{id}', 'Custom\CustomController@approveProfileVideo')->name('approve.vid');
+//Route::get('admin/profile-video/approve/{id}', 'Custom\CustomController@approveProfileVideo')->name('approve.vid');
 Route::get('admin/profile-video/decline/{id}', 'Custom\CustomController@declineProfileVideo')->name('approve.vid');
 Route::get('admin/profile-video/delete/{id}', 'Custom\CustomController@deleteProfileVideo')->name('delete.profile.vid');
 Route::get('fetch-user-videos', 'Admin\UserVideoController@fetchUserVideosData')->name('fetch.user.videos');
@@ -310,3 +310,11 @@ Route::get('ajax/job/title/search', 'Custom\AjaxController@renderJobTitles')->na
 
 Route::post('/checkemail','Employer\SubAccountRegisterController@checkEmail');
 Route::post('/activeUser','Employer\SubAccountRegisterController@activeUser');
+
+Route::get('about_us', [FrontendController::class, 'aboutus'])->name('about_us');
+Route::get('case_story', [FrontendController::class, 'caseStory'])->name('case_story');
+Route::get('news', [FrontendController::class, 'news'])->name('news');
+Route::get('events', [FrontendController::class, 'event'])->name('event');
+Route::get('resource', [FrontendController::class, 'resource'])->name('resource');
+Route::get('achievement', [FrontendController::class, 'achievement'])->name('achievement');
+Route::get('contact', [FrontendController::class, 'contact'])->name('contact');

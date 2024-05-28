@@ -29,13 +29,12 @@
             <h3 class="uppercase">Modules</h3>
         </li>
         @include('admin/shared/side_bars/archive')
-
-        @include('admin/shared/side_bars/site_user')
-        @include('admin/shared/side_bars/club')
+       {{-- @include('admin/shared/side_bars/site_user')--}}
+       {{-- @include('admin/shared/side_bars/club')--}}
         @include('admin/shared/side_bars/event')
         @include('admin/shared/side_bars/financial_partner')
-        @include('admin/shared/side_bars/Judges_Jury')
-        @include('admin/shared/side_bars/arms')
+ {{--       @include('admin/shared/side_bars/Judges_Jury')--}}
+      {{--  @include('admin/shared/side_bars/arms')--}}
         @include('admin/shared/side_bars/news_and_notice')
         @include('admin/shared/side_bars/members')
         @if(Module::has('PhotoGallery'))
