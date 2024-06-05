@@ -11392,8 +11392,8 @@ div#mCSB_1_container{
   left: 0px;
   top: 0px;
   width: 330px;
-  background: #ffffff;
   border-radius: 5px;
+  text-align: center;
 }
 
 .schedule-block-three .inner-box .schedule-date h2{

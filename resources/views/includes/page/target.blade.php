@@ -1,4 +1,4 @@
-<section class="solutions-section">
+<section class="solutions-section sec-pad bg-color-1">
     <div class="pattern-box">
         <div class="pattern-1" style="background-image: url(assets/images/shape/shape-2.png);"></div>
         <div class="pattern-2" style="background-image: url(assets/images/shape/shape-3.png);"></div>

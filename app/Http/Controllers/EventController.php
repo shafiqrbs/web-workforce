@@ -32,6 +32,8 @@ class EventController extends Controller
         $popularNotices = NewsAndNotice::getPopularNews($id,'NOTICE');
         $archives = Archive::getRamdomArchive();
 
+//        dd($popularNews,$popularNotices,$archives);
+
         return view('event.details', compact(['pageTitle','eventDetails','relatedEvents','popularNews','archives','popularNotices','eventType']));
     }
 

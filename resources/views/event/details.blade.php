@@ -23,57 +23,7 @@
     <!-- event-details -->
     <section class="event-details">
         <div class="auto-container">
-            <div class="event-info">
-                <div class="row clearfix">
-                    @if( isset($eventDetails->number_of_club) && $eventDetails->number_of_club>0)
-                    <div class="col-lg-4 col-md-6 col-sm-12 single-column">
-                        <div class="single-item">
-                            <div class="icon-box"><i class="flaticon-gps"></i></div>
-                            <h4 class="event-details-title">{{$eventDetails->number_of_club}}</h4>
-                            <ul class="list clearfix">
-                                <li style="text-align: center"><i class="flaticon-gps"></i>Total clubs</li>
-                            </ul>
-                        </div>
-                    </div>
-                    @endif
 
-                        @if( isset($eventDetails->number_of_athlete) && $eventDetails->number_of_athlete>0)
-                    <div class="col-lg-4 col-md-6 col-sm-12 single-column">
-                        <div class="single-item">
-                            <div class="icon-box"><i class="fas fa-user-hard-hat"></i></div>
-                            <h4 class="event-details-title">{{$eventDetails->number_of_athlete}}</h4>
-                            <ul class="list clearfix">
-                                <li style="text-align: center"><i class="fas fa-user-hard-hat"></i>Total Athletes</li>
-                            </ul>
-                        </div>
-                    </div>
-                        @endif
-
-                        @if( isset($eventDetails->number_of_official) && $eventDetails->number_of_official>0)
-                        <div class="col-lg-4 col-md-6 col-sm-12 single-column">
-                        <div class="single-item">
-                            <div class="icon-box"><i class="fas fa-user-circle"></i></div>
-                            <h4 class="event-details-title">{{$eventDetails->number_of_official}}</h4>
-                            <ul class="list clearfix">
-                                <li style="text-align: center"><i class="fas fa-user-circle"></i>Total Officials</li>
-                            </ul>
-                        </div>
-                    </div>
-                        @endif
-
-                        @if( isset($eventDetails->participant) && $eventDetails->participant>0)
-                        <div class="col-lg-4 col-md-6 col-sm-12 single-column">
-                        <div class="single-item">
-                            <div class="icon-box"><i class="fas fa-user-circle"></i></div>
-                            <h4 class="event-details-title">{{$eventDetails->participant}}</h4>
-                            <ul class="list clearfix">
-                                <li style="text-align: center"><i class="fas fa-user-circle"></i>Total Participant</li>
-                            </ul>
-                        </div>
-                    </div>
-                        @endif
-                </div>
-            </div>
             <div class="overview-box" style="padding-bottom: 0px !important;">
                 <div class="row clearfix">
 
@@ -86,24 +36,6 @@
                             <p style="text-align: justify"><b>Event Details :</b> {{$eventDetails->event_message}}</p>
                             <p style="text-align: justify"><b>Schedule :</b> {{$eventDetails->match_schedule_message}}</p>
 
-                            <div class="group-title">
-                                {{--<h3>Event Overview</h3>
-                                <div class="title-shape"></div>--}}
-                                <table class="table table-bordered text-center">
-                                    <tr>
-                                        @if( isset($eventDetails->number_of_club) && $eventDetails->number_of_club>0)<th>Number Of Clubs</th>@endif
-                                        @if( isset($eventDetails->number_of_athlete) && $eventDetails->number_of_athlete>0)<th>Number Of Athletes</th>@endif
-                                        @if( isset($eventDetails->number_of_official) && $eventDetails->number_of_official>0)<th>Number Of Officials</th>@endif
-                                        @if( isset($eventDetails->participant) && $eventDetails->participant>0)<th>Number Of Participant</th>@endif
-                                    </tr>
-                                    <tr>
-                                        @if( isset($eventDetails->number_of_club) && $eventDetails->number_of_club>0)<td>{{$eventDetails->number_of_club}}</td>@endif
-                                        @if( isset($eventDetails->number_of_athlete) && $eventDetails->number_of_athlete>0)<td>{{$eventDetails->number_of_athlete}}</td>@endif
-                                        @if( isset($eventDetails->number_of_official) && $eventDetails->number_of_official>0)<td>{{$eventDetails->number_of_official}}</td>@endif
-                                        @if( isset($eventDetails->participant) && $eventDetails->participant>0)<td>{{$eventDetails->participant}}</td>@endif
-                                    </tr>
-                                </table>
-                            </div>
 
                             <a href="{{ route('match_schedule_download_front',$eventDetails->id) }}" class="theme-btn">{{'Download General Information'}}
                                 <span style="color: red">
@@ -165,22 +97,7 @@
                     <div class="inner-box">
                         <div class="inner">
                             <div class="schedule-date">
-                                @if(isset($relatedEvent->number_of_club) && $relatedEvent->number_of_club>0)
-                                <h2>{{$relatedEvent->number_of_club}} <span class="year">Clubs</span><span class="symple"></span></h2>
-                                @elseif(isset($relatedEvent->participant) && $relatedEvent->participant>0)
-                                <h2>{{$relatedEvent->participant}} <span class="year">Participants</span><span class="symple"></span></h2>
-                                @endif
-
-                                @if(isset($relatedEvent->number_of_club) && $relatedEvent->number_of_club>0)
-                            <ul class="list clearfix">
-                                <li><i class="fas fa-user-hard-hat"></i>Total Athletes {{$relatedEvent->number_of_athlete}}</li>
-                                <li><i class="fas fa-user-circle"></i>Total Officials {{$relatedEvent->number_of_official}}</li>
-                            </ul>
-                                @elseif(isset($relatedEvent->participant) && $relatedEvent->participant>0)
-                                    <ul class="list clearfix">
-                                        <li><i class="fas fa-user-hard-hat"></i>Total participant {{$relatedEvent->participant}}</li>
-                                    </ul>
-                                @endif
+                                <img src="{{asset('event/thumb/'.$relatedEvent->event_image)}}" alt="">
                             </div>
                             <div class="text">
                                 @php

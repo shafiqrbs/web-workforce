@@ -21,9 +21,6 @@
                         <div class="post-date"><h3>{{$news->created_at->format('d')}}<span>{{$news->created_at->format("M'Y")}}</span></h3></div>
                         <ul class="post-info clearfix">
                             <li><i class="far fa-user"></i><a href="#">{{$news->createdBy->name}}</a></li>
-                            @if(isset($news->onBehalfBy))
-                            <li><i class="far fa-user"></i><a href="#">{{$news->onBehalfBy->name}}</a></li>
-                            @endif
                         </ul>
                     </div>
                     <div class="right-column">
@@ -109,7 +106,7 @@
                             </div>
                         @endif
 
-                        @if($archives)
+                        {{--@if($archives)
                             <div class="sidebar-widget tags-widget">
                                 <div class="widget-title">
                                     <h3>Archives</h3>
@@ -128,7 +125,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        @endif
+                        @endif--}}
 
                     </div>
                 </div>
