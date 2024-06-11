@@ -28,17 +28,6 @@
       0 => 'Cviebrock\\EloquentSluggable\\ServiceProvider',
     ),
   ),
-  'dawson/youtube' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Dawson\\Youtube\\YoutubeServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Youtube' => 'Dawson\\Youtube\\Facades\\Youtube',
-    ),
-  ),
   'facade/ignition' => 
   array (
     'providers' => 
