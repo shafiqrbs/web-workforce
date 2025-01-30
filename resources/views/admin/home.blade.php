@@ -26,23 +26,17 @@
                         <div class="visual"> <i class="fa fa-user"></i> </div>
                         <div class="details">
                             <div class="number"> <span data-counter="counterup" data-value="1349">{{ $systemUser }}</span> </div>
-                            <div class="desc"> Syatem Users </div>
+                            <div class="desc"> System Users </div>
                         </div>
                     </a> </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"> <a class="dashboard-stat dashboard-stat-v2 red" href="{{route('list.users')}}">
                         <div class="visual"> <i class="fa fa-user"></i> </div>
                         <div class="details">
                             <div class="number"> <span data-counter="counterup" data-value="1349">{{ $athleteUser }}</span> </div>
-                            <div class="desc">  Total Athlete </div>
+                            <div class="desc">  Total Posts </div>
                         </div>
                     </a> </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"> <a class="dashboard-stat dashboard-stat-v2 blue" href="{{route('list.clubs')}}">
-                        <div class="visual"> <i class="fa fa-user"></i> </div>
-                        <div class="details">
-                            <div class="number"> <span data-counter="counterup" data-value="1349">{{ $totalClub }}</span> </div>
-                            <div class="desc"> Total Clubs </div>
-                        </div>
-                    </a> </div>
+
             </div>
             <div class="col-md-6 col-sm-6">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"> <a class="dashboard-stat dashboard-stat-v2 red" href="{{route('financial_partner_list')}}">
@@ -51,28 +45,24 @@
                             <div class="number"> <span data-counter="counterup" data-value="1349">{{ $totalPartner }}</span> </div>
                             <div class="desc"> Total Partners </div>
                         </div>
-                    </a> </div>
+                    </a>
+                </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"> <a class="dashboard-stat dashboard-stat-v2 blue" href="{{route('list.events')}}">
                         <div class="visual"> <i class="fa fa-list"></i> </div>
                         <div class="details">
                             <div class="number"> <span data-counter="counterup" data-value="1349">{{ $totalEvent }}</span> </div>
                             <div class="desc"> Total Events </div>
                         </div>
-                    </a> </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"> <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
-                        <div class="visual"> <i class="fa fa-list"></i> </div>
-                        <div class="details">
-                            <div class="number"> <span data-counter="counterup" data-value="1349">{{ $totalMember }}</span> </div>
-                            <div class="desc"> Committee Members </div>
-                        </div>
-                    </a> </div>
+                    </a>
+                </div>
+
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-6">
                 <div class="portlet light bordered">
                     <div class="portlet-title">
-                        <div class="caption"> <i class="icon-share font-dark hide"></i> <span class="caption-subject font-dark bold uppercase">Recent Registered Athletes</span> </div>
+                        <div class="caption"> <i class="icon-share font-dark hide"></i> <span class="caption-subject font-dark bold uppercase">Recent Posts</span> </div>
                     </div>
                     <div class="portlet-body">
                         <div class="slimScrol">
@@ -94,7 +84,7 @@
                             </ul>
                         </div>
                         <div class="scroller-footer">
-                            <div class="btn-arrow-link pull-right"> <a href="{{ route('list.users') }}">See All Athletes</a> <i class="icon-arrow-right"></i> </div>
+                            {{--<div class="btn-arrow-link pull-right"> <a href="{{ route('list.users') }}">See All Athletes</a> <i class="icon-arrow-right"></i> </div>--}}
                         </div>
                     </div>
                 </div>
