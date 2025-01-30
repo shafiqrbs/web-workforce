@@ -32,7 +32,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"> <a class="dashboard-stat dashboard-stat-v2 red" href="{{route('list.users')}}">
                         <div class="visual"> <i class="fa fa-user"></i> </div>
                         <div class="details">
-                            <div class="number"> <span data-counter="counterup" data-value="1349">{{ $athleteUser }}</span> </div>
+                            <div class="number"> <span data-counter="counterup" data-value="1349">0</span> </div>
                             <div class="desc">  Total Posts </div>
                         </div>
                     </a> </div>
@@ -67,24 +67,11 @@
                     <div class="portlet-body">
                         <div class="slimScrol">
                             <ul class="feeds">
-                                @foreach($recentAthletes as $athlete)
-                                <li>
-                                    <div class="col1">
-                                        <div class="cont">
-                                            <div class="cont-col1">
-                                                <div class="label label-sm label-info"> <i class="fa fa-check"></i> </div>
-                                            </div>
-                                            <div class="cont-col2">
-                                                <div class="desc"><a href="{{ route('admin.view.athlete.profile', $athlete->id) }}"> {{ $athlete->athlete_name .' - '.$athlete->mobile }} ({{ $athlete->athlete_type }}) </a> <i class="fa fa-home" aria-hidden="true"></i> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                @endforeach
+
                             </ul>
                         </div>
                         <div class="scroller-footer">
-                            {{--<div class="btn-arrow-link pull-right"> <a href="{{ route('list.users') }}">See All Athletes</a> <i class="icon-arrow-right"></i> </div>--}}
+
                         </div>
                     </div>
                 </div>

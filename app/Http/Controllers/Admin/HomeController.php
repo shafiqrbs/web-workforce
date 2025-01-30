@@ -36,16 +36,11 @@ class HomeController extends Controller
     {
         $today = Carbon::now();
         $systemUser = Admin::count();
-        $athleteUser = Athlete::where('is_active',1)->count();
-        $totalClub = ShootingSportClub::where('is_active',1)->count();
         $totalPartner = FinancialPartner::where('is_active',1)->count();
         $totalEvent = Event::where('is_active',1)->count();
-        $totalMember = CommitteeMember::where('is_active',1)->count();
-
-        $recentAthletes = Athlete::orderBy('id', 'DESC')->where('is_active',1)->take(25)->get();
         $recentEvents = Event::orderBy('id', 'DESC')->where('is_active',1)->take(25)->get();
 
-        return view('admin.home',compact('systemUser','athleteUser','totalClub','totalPartner','totalEvent','totalMember','recentAthletes','recentEvents'));
+        return view('admin.home',compact('systemUser','totalPartner','totalEvent','recentEvents'));
     }
 
 }
