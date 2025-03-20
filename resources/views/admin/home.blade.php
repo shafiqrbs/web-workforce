@@ -66,9 +66,7 @@
                     </div>
                     <div class="portlet-body">
                         <div class="slimScrol">
-                            <ul class="feeds">
-
-                            </ul>
+                            <ul class="feeds"></ul>
                         </div>
                         <div class="scroller-footer">
 

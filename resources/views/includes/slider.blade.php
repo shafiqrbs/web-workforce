@@ -16,9 +16,45 @@
                         </div>
                     </div>
                 </div>
-
             @endforeach
         @endif
 
     </div>
 </section>
+
+<!-- activities-section -->
+<section class="activities-section centred bg-color-1">
+    <div class="auto-container">
+        <div class="inner-container">
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-6 col-sm-12 single-column">
+                    <div class="single-item">
+                        <div class="icon-box"><i class="flaticon-global-warming"></i></div>
+                        <h4>Sustainability</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 single-column">
+                    <div class="single-item">
+                        <div class="icon-box"><i class="flaticon-diagram"></i></div>
+                        <h4>Accessibility</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 single-column">
+                    <div class="single-item">
+                        <div class="icon-box"><i class="flaticon-teamwork"></i></div>
+                        <h4>Innovation</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 single-column">
+                    <div class="single-item">
+                        <div class="icon-box"><i class="flaticon-analytics"></i></div>
+                        <h4>Impact</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- activities-section end -->
+
+
