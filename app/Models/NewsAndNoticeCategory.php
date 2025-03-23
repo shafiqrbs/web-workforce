@@ -28,7 +28,7 @@ class NewsAndNoticeCategory extends Model
         return $this->belongsToMany(NewsAndNotice::class, 'news_notice_category_join', 'news_notice_id', 'category_id');
     }
 
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [
@@ -36,4 +36,6 @@ class NewsAndNoticeCategory extends Model
             ]
         ];
     }
+
+
 }

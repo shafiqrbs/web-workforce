@@ -39,15 +39,16 @@
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="{{ route('admin.login') }}">
-                <img src="{{asset('sitesetting_images/thumb/'.$siteSetting->site_logo)}}"  alt="{{ $siteSetting->site_name }}" /> </a>
+                <img style="height:120px" src="{{asset('sitesetting_images/'.$siteSetting->site_logo)}}"  alt="{{ $siteSetting->site_name }}" />
+            </a>
         </div>
         <!-- END LOGO -->
         @yield('content')
-{{--        <div class="copyright"> {{ date('Y')}} © {{ $siteSetting->site_name }}. Admin Panel. </div>--}}
-        <!--[if lt IE 9]>
-<script src="{{ asset('/') }}admin_assets/global/plugins/respond.min.js"></script>
-<script src="{{ asset('/') }}admin_assets/global/plugins/excanvas.min.js"></script> 
-<![endif]-->
+        {{--        <div class="copyright"> {{ date('Y')}} © {{ $siteSetting->site_name }}. Admin Panel. </div>--}}
+                <!--[if lt IE 9]>
+        <script src="{{ asset('/') }}admin_assets/global/plugins/respond.min.js"></script>
+        <script src="{{ asset('/') }}admin_assets/global/plugins/excanvas.min.js"></script>
+        <![endif]-->
         <!-- BEGIN CORE PLUGINS -->
         <script src="{{ asset('/') }}admin_assets/global/plugins/jquery.min.js" type="text/javascript"></script>
         <script src="{{ asset('/') }}admin_assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

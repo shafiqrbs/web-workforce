@@ -50,46 +50,12 @@ $queryString = MiscHelper::getLangQueryStr();
             <div class="form-group {!! APFrmErrHelp::hasError($errors, 'event_type') !!}">
                 {!! Form::label('Event Type', __('messages.Enter_type'), ['class' => 'bold']) !!} <span class="red">*</span>
                 {!! Form::select('event_type_id', ['' =>'Choose event type']+$eventType,null, array('class'=>'form-control event_type', 'id'=>'event_type','required'=>'required')) !!}
-
                 {!! APFrmErrHelp::showErrors($errors, 'event_type_id') !!}
             </div>
         </div>
-
-        <div class="col-md-6">
-            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'number_of_club') !!}">
-                {!! Form::label('Number Of Clubs', __('messages.Number_Of_Clubs'), ['class' => 'bold']) !!} </span>
-                {!! Form::text('number_of_club', null, array('class'=>'form-control', 'id'=>'number_of_club', 'placeholder'=>__('messages.Number_Of_Clubs'), 'autocomplete'=>'off')) !!}
-                {!! APFrmErrHelp::showErrors($errors, 'number_of_club') !!}
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'number_of_athlete') !!}">
-                {!! Form::label('Number Of Athletes', __('messages.Number_Of_Athletes'), ['class' => 'bold']) !!}
-                {!! Form::text('number_of_athlete', null, array('class'=>'form-control', 'id'=>'number_of_athlete', 'placeholder'=> __('messages.Number_Of_Athletes'), 'autocomplete'=>'off' )) !!}
-                {!! APFrmErrHelp::showErrors($errors, 'number_of_athlete') !!}
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'number_of_official') !!}">
-                {!! Form::label('Number Of Officials', __('messages.Number_Of_Officials'), ['class' => 'bold']) !!}
-                {!! Form::text('number_of_official', null, array('class'=>'form-control', 'id'=>'number_of_official', 'placeholder'=> __('messages.Number_Of_Officials'), 'autocomplete'=>'off')) !!}
-                {!! APFrmErrHelp::showErrors($errors, 'number_of_official') !!}
-            </div>
-        </div>
     </div>
 
-
     <div class="row">
-        <div class="col-md-6">
-            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'participant') !!}">
-                {!! Form::label('Number Of Participant', 'Number Of Participant', ['class' => 'bold']) !!}
-                {!! Form::text('participant', null, array('class'=>'form-control', 'id'=>'participant', 'placeholder'=> 'Number Of Participant', 'autocomplete'=>'off' )) !!}
-                {!! APFrmErrHelp::showErrors($errors, 'participant') !!}
-            </div>
-        </div>
 
         <div class="col-md-6">
             <div class="form-group {!! APFrmErrHelp::hasError($errors, 'location') !!}">

@@ -11,14 +11,19 @@
                 </div>
                 {!! APFrmErrHelp::showErrors($errors, 'image') !!} </div>
         </div>
+        <style>
+            .thumb-box img{
+                height: 200px;
+                width: 200px;
+            }
+        </style>
         @if(isset($siteSetting))
-        <div class="col-md-6">
-            {{ ImgUploader::print_image("sitesetting_images/thumb/$siteSetting->site_logo") }}        
+        <div class="col-md-6 thumb-box" style="width: 200px; height: 150px;">
+            {{ ImgUploader::print_image("sitesetting_images/$siteSetting->site_logo") }}
         </div>    
         @endif  
     </div>
-    
-    
+
     <div class="row">
         <div class="col-md-6">
             <div class="form-group {!! APFrmErrHelp::hasError($errors, 'favicon') !!}">

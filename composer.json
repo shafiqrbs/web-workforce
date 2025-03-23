@@ -36,6 +36,7 @@
         "yajra/laravel-datatables": "^1.5"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.7",
         "facade/ignition": "^2.5",
         "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.4.4",

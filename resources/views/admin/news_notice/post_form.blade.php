@@ -108,24 +108,41 @@
 
                                                             <div class="col-lg-9">
 
-
+                                                                <div class="form-group">
+                                                                    <label class="control-label" for="post_type">Post Type</label>
+                                                                    <select class="" name="post_type" id="post_type">
+                                                                        <option value="Achievement">Achievement</option>
+                                                                        <option value="Notice">Notice</option>
+                                                                        <option value="Resource">Resource</option>
+                                                                        <option value="Case-Study">Case Story</option>
+                                                                    </select>
+                                                                </div>
                                                                 <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
 
                                                                     <label class="control-label" for="title">Title</label>
-
-
                                                                     <input type="text" class="form-control" name="title" id="title" autofocus value="{{ old('title') }}">
-
                                                                     <span class="text-danger">{{ $errors->first('title') }}</span>
 
 
+                                                                </div>
+                                                                <div class="form-group {{ $errors->has('short_description') ? 'has-error' : '' }}">
+
+                                                                    <label class="control-label"
+                                                                           for="content">Short Description</label>
+
+                                                                    <textarea class="form-control" name="content"
+
+                                                                              id="short_description" cols="20" rows="5"
+
+                                                                              autofocus>{{ old('short_description') }}</textarea>
+
+                                                                    <span class="text-danger">{{ $errors->first('short_description') }}</span>
                                                                 </div>
                                                                 <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
 
                                                                     <label class="control-label"
 
                                                                            for="content">Content</label>
-
 
                                                                     <textarea class="form-control" name="content"
 
@@ -136,21 +153,26 @@
                                                                     <span class="text-danger">{{ $errors->first('content') }}</span>
                                                                 </div>
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label" for="post_type">Post Type</label>
-                                                                    <select class="form-control" name="post_type" id="post_type">
-                                                                        <option value="NEWS">News</option>
-                                                                        <option value="NOTICE">Notice</option>
-                                                                        <option value="ABOUT">About</option>
-                                                                    </select>
+                                                                <div class="clearfix"></div>
+                                                                <div class="blogboxint">
+
+                                                                    <div class="form-group">
+
+                                                                        <label class="control-label"
+
+                                                                               for="Upload Image">Document Attachments</label> <span style="font-size: 10px">(PDF/Any Type document file upload)</span>
+
+
+                                                                        <input type="file" class="form-control"
+                                                                               name="image"
+
+                                                                               id="image" autofocus>
+
+                                                                        <span class="text-danger">{{ $errors->first('image') }}</span>
+
+                                                                    </div>
+
                                                                 </div>
-
-
-
-                                                                <div class="form-group">
-                                                                    <input type="checkbox" name="is_sticky" id="is_sticky" value="1"> Is Sticky News For Front Page
-                                                                </div>
-
                                                                 <div class="clearfix"></div>
 
 
@@ -205,11 +227,6 @@
 
                                                                     @endif
 
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label" for="post_type">On Behalf of</label>
-                                                                    {!! Form::select('member_id', ['' => 'Choose Executive Committee']+$executiveCommittee,'', array('class'=>'form-control', 'id'=>'member_id')) !!}
                                                                 </div>
 
 
