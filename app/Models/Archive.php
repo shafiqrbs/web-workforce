@@ -19,17 +19,18 @@ class Archive extends Model
     protected $dates = ['created_at', 'updated_at','deleted_at'];
 
     protected $fillable = [
-        'archive_name_en','archive_name_bn', 'sub_title_en','sub_title_bn', 'archive_pdf', 'is_default', 'is_active', 'sort_order'
+        'archive_name_en','archive_name_bn', 'sub_title_en','sub_title_bn', 'archive_pdf', 'is_default', 'is_active', 'sort_order','feature_image','type','short_description'
     ];
 
     public static function getIdWiseData($id){
         if (app()->getLocale() == 'bn'){
             $data = self::select([
-                'id', 'archive_name_bn as archive_name', 'sub_title_bn as sub_title', 'archive_pdf', 'is_default', 'is_active', 'sort_order'
+                'id', 'archive_name_bn as archive_name', 'sub_title_bn as sub_title', 'archive_pdf', 'is_default', 'is_active', 'sort_order','feature_image','type','short_description'
             ]);
         }else{
             $data = self::select([
                 'id', 'archive_name_en as archive_name', 'sub_title_en as sub_title', 'archive_pdf', 'is_default', 'is_active', 'sort_order'
+                ,'feature_image','type','short_description'
             ]);
         }
         $data = $data->where('id',$id)->where('is_active',1)->where('deleted_at',null)->first();

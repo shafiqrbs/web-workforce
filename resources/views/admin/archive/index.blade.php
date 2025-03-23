@@ -14,12 +14,12 @@
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li> <a href="{{ route('admin.home') }}">{{__('messages.Home')}}</a> <i class="fa fa-circle"></i> </li>
-                <li> <span>{{__('messages.Archives')}}</span> </li>
+                <li> <span>{{__('messages.Posts')}}</span> </li>
             </ul>
         </div>
         <!-- END PAGE BAR -->
         <!-- BEGIN PAGE TITLE-->
-        <h3 class="page-title">{{__('messages.Manage_Archives')}} <small></small> </h3>
+        <h3 class="page-title">{{__('messages.Manage_Post')}} <small></small> </h3>
         <!-- END PAGE TITLE-->
         <!-- END PAGE HEADER-->
         <div class="row">
@@ -27,9 +27,9 @@
                 <!-- Begin: life time stats -->
                 <div class="portlet light portlet-fit portlet-datatable bordered">
                     <div class="portlet-title">
-                        <div class="caption"> <i class="icon-settings font-dark"></i> <span class="caption-subject font-dark sbold uppercase">{{__('messages.Archives')}}</span> </div>
+                        <div class="caption"> <i class="icon-settings font-dark"></i> <span class="caption-subject font-dark sbold uppercase">{{__('messages.Posts')}}</span> </div>
                         <div class="actions">
-                            <a href="{{ route('create.archive') }}" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i>{{__('messages.Add_New_Archive')}} </a>
+                            <a href="{{ route('create.archive') }}" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i>{{__('messages.add_new_Posts')}} </a>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -38,14 +38,15 @@
                                 <table class="table table-striped table-bordered table-hover"  id="faq_datatable_ajax" >
                                     <thead>
                                         <tr role="row" class="filter">
-                                            <td colspan="2"><input type="text" class="form-control" name="name" id="name" autocomplete="off" placeholder="{{__('messages.Enter_Archive_Name')}}"></td>
-                                            <td colspan="2"><input type="text" class="form-control" name="sub_title" id="sub_title" autocomplete="off" placeholder="{{__('messages.Enter_Sub_Title')}}"></td>
+                                            <td colspan="2"><input type="text" class="form-control" name="name" id="name" autocomplete="off" placeholder="{{__('messages.Posts')}}"></td>
+                                            <td colspan="2"><input type="text" class="form-control" name="type" id="type" autocomplete="off" placeholder="Enter type"></td>
                                             <td></td>
                                         </tr>
                                         <tr role="row" class="heading">
                                             <th>{{__('messages.SL')}}</th>
-                                            <th>{{__('messages.Archive_Name')}}</th>
-                                            <th>{{__('messages.Sub_Title')}}</th>
+                                            <th>{{__('messages.Posts')}}</th>
+                                            <th>Type</th>
+                                            <th>Image</th>
                                             <th>{{__('messages.PDF')}}</th>
                                             <th>{{__('messages.Status')}}</th>
                                             <th>{{__('messages.Actions')}}</th>
@@ -77,12 +78,23 @@
                 url: '{!! route('list.archives') !!}',
                 data: function (d) {
                     d.name = $('input[name=name]').val();
-                    d.sub_title = $('input[name=sub_title]').val();
+                    d.type = $('input[name=type]').val();
                 }
             }, columns: [
                 {data: 'rownum', name: 'rownum',orderable: false},
                 {data: 'archive_name', name: 'archive_name',orderable: false},
-                {data: 'sub_title', name: 'sub_title',orderable: false},
+                // {data: 'sub_title', name: 'sub_title',orderable: false},
+                {data: 'type', name: 'type',orderable: false},
+                // {data: 'feature_image', name: 'feature_image',orderable: false},
+                {
+                    data: 'feature_image',
+                    name: 'feature_image',
+                    orderable: false,
+                    searchable: false,
+                    render: function(data) {
+                        return data; // Ensures correctly formatted HTML inside the table
+                    }
+                },
                 {data: 'pdf', name: 'pdf',orderable: false},
                 {data: 'status', name: 'status',orderable: false},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
@@ -97,7 +109,7 @@
             oTable.draw();
             e.preventDefault();
         });
-        $('#sub_title').on('keyup', function (e) {
+        $('#type').on('keyup', function (e) {
             oTable.draw();
             e.preventDefault();
         });

@@ -9,6 +9,7 @@ use App\Models\Event;
 use Auth;
 use DB;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Input;
@@ -25,7 +26,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 use ImgUploader;
-use File;
 
 class ArchiveController extends Controller
 {
@@ -51,12 +51,12 @@ class ArchiveController extends Controller
             if (app()->getLocale() == 'bn'){
                 $data = Archive::select([
                     DB::raw('@rownum  := @rownum  + 1 AS rownum'),
-                    'archive_name_bn as archive_name','sub_title_bn as sub_title','archive_pdf','id','is_active'
+                    'archive_name_bn as archive_name','sub_title_bn as sub_title','archive_pdf','id','is_active','type','feature_image'
                 ])->orderby('sort_order','desc');
             }else{
                 $data = Archive::select([
                     DB::raw('@rownum  := @rownum  + 1 AS rownum'),
-                    'archive_name_en as archive_name','sub_title_en as sub_title','archive_pdf','id','is_active'
+                    'archive_name_en as archive_name','sub_title_en as sub_title','archive_pdf','id','is_active','type','feature_image'
                 ])->orderby('sort_order','desc');
             }
 
@@ -71,6 +71,9 @@ class ArchiveController extends Controller
                         if ($request->has('sub_title') && !empty($request->sub_title)) {
                             $query->where('sub_title_bn', 'like', "%{$request->get('sub_title')}%");
                         }
+                        if ($request->has('type') && !empty($request->type)) {
+                            $query->where('type', 'like', "%{$request->get('type')}%");
+                        }
                     }else{
                         if ($request->has('name') && !empty($request->name)) {
                             $query->where(function ($q) use ($request) {
@@ -79,6 +82,9 @@ class ArchiveController extends Controller
                         }
                         if ($request->has('sub_title') && !empty($request->sub_title)) {
                             $query->where('sub_title_en', 'like', "%{$request->get('sub_title')}%");
+                        }
+                        if ($request->has('type') && !empty($request->type)) {
+                            $query->where('type', 'like', "%{$request->get('type')}%");
                         }
                     }
                 })
@@ -89,6 +95,14 @@ class ArchiveController extends Controller
                         $status = __('messages.Inactive');
                     }
                     return $status;
+                })
+
+                ->addColumn('feature_image', function($row){
+                    $banner_image='';
+                    if($row->feature_image){
+                        $banner_image.='<img src="'.asset("archive/mid/{$row->feature_image}").'" alt="" width="200px" height="100px">';
+                    }
+                    return $banner_image;
                 })
 
                 ->addColumn('pdf', function($row){
@@ -134,7 +148,7 @@ class ArchiveController extends Controller
 					</ul>
 				</div>';
                 })
-                ->rawColumns(['action','status','pdf'])
+                ->rawColumns(['action','status','pdf','feature_image'])
                 ->setRowId(function($data) {
                     return 'dt_row_' . $data->id;
                 })
@@ -170,6 +184,12 @@ class ArchiveController extends Controller
             $target_file =  $path.basename($file_title);
             $file_path = $_FILES['archive_pdf']['tmp_name'];
             move_uploaded_file($file_path,$target_file);
+        }
+
+        if ($request->hasFile('feature_image')) {
+            $image_name = $request->input('archive_name');
+            $fileName = ImgUploader::UploadImage('archive/', $request->file('feature_image'), $image_name, 200, 150,true);
+            $input['feature_image'] = $fileName;
         }
         if (app()->getLocale() == 'bn'){
             $input['archive_name_bn'] = $input['archive_name'];
@@ -268,6 +288,16 @@ class ArchiveController extends Controller
             $target_file =  $path.basename($file_title);
             $file_path = $_FILES['archive_pdf']['tmp_name'];
             move_uploaded_file($file_path,$target_file);
+        }
+
+        if ($request->hasFile('feature_image')) {
+            \Illuminate\Support\Facades\File::delete(public_path().'/archive/'.$archive->feature_image);
+            \Illuminate\Support\Facades\File::delete(public_path().'/archive/mid/'.$archive->feature_image);
+            \Illuminate\Support\Facades\File::delete(public_path().'/archive/thumb/'.$archive->feature_image);
+            \Illuminate\Support\Facades\File::delete(public_path().'/archive/large/'.$archive->feature_image);
+            $image_name = $request->input('archive_name');
+            $fileName = ImgUploader::UploadImage('archive/', $request->file('feature_image'), $image_name, 200, 150);
+            $input['feature_image'] = $fileName;
         }
 
         if (app()->getLocale() == 'bn'){

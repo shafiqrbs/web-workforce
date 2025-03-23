@@ -12,10 +12,17 @@ $queryString = MiscHelper::getLangQueryStr();
 
     <div class="row">
         <div class="col-md-12">
+            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'type') !!}">
+                {!! Form::label('Event Type', 'Choose Type', ['class' => 'bold']) !!} <span class="red">*</span>
+                {!! Form::select('type', ['' =>'Choose type']+['achievement'=>'Achievement','notice'=>'Notice','resource'=>'Resource','case-story'=>'Case Story'],null, array('class'=>'form-control type', 'id'=>'type','required'=>'required')) !!}
+                {!! APFrmErrHelp::showErrors($errors, 'type') !!}
+            </div>
+        </div>
+        <div class="col-md-12">
             {!! Form::hidden('id', null) !!}
             <div class="form-group {!! APFrmErrHelp::hasError($errors, 'archive_name') !!}">
-                {!! Form::label('Archive name',__('messages.Archive_Name'), ['class' => 'bold']) !!} <span class="red">*</span>
-                {!! Form::text('archive_name', null, array('class'=>'form-control', 'id'=>'archive_name', 'placeholder'=>__('messages.Archive_Name'), 'autocomplete'=>'off', 'required'=>'required' )) !!}
+                {!! Form::label('Archive name',__('messages.post_Name'), ['class' => 'bold']) !!} <span class="red">*</span>
+                {!! Form::text('archive_name', null, array('class'=>'form-control', 'id'=>'archive_name', 'placeholder'=>__('messages.post_Name'), 'autocomplete'=>'off', 'required'=>'required' )) !!}
                 {!! APFrmErrHelp::showErrors($errors, 'archive_name') !!}
             </div>
         </div>
@@ -29,9 +36,42 @@ $queryString = MiscHelper::getLangQueryStr();
         </div>
 
         <div class="col-md-12">
+            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'sub_title') !!}">
+                {!! Form::label('Sub Title', __('messages.short_description'), ['class' => 'bold']) !!} {{--<span class="red">*</span>--}}
+                {!! Form::textarea('short_description', null, array('class'=>'form-control', 'placeholder'=> __('messages.short_description'), 'autocomplete'=>'off','autofocus'=>'on' )) !!}
+                {!! APFrmErrHelp::showErrors($errors, 'short_description') !!}
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            @if(isset($archive))
+                <div class="form-group {!! APFrmErrHelp::hasError($errors, 'feature_image') !!}">
+                    {!! Form::label('Feature Image',  __('messages.Feature_Image'), ['class' => 'bold']) !!}
+                    {!! Form::file('feature_image', array('class'=>'form-control', 'id'=>'feature_image', 'autocomplete'=>'off','accept'=>"application/image")) !!}
+                    {!! APFrmErrHelp::showErrors($errors, 'feature_image') !!}
+                </div>
+                <input type="hidden" name="form_type" value="update">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ ImgUploader::print_image("archive/mid/$archive->feature_image") }}
+                        </div>
+                    </div>
+                </div>
+            @else
+                <div class="form-group {!! APFrmErrHelp::hasError($errors, 'feature_image') !!}">
+                    {!! Form::label('Archive PDF',__('messages.Feature_Image'), ['class' => 'bold']) !!} {{--<span class="red">*</span>--}}
+                    {!! Form::file('feature_image', array('class'=>'form-control', 'id'=>'feature_image', 'autocomplete'=>'off','accept'=>"application/image")) !!}
+                    <input type="hidden" name="form_type" value="insert">
+                    {!! APFrmErrHelp::showErrors($errors, 'feature_image') !!}
+                </div>
+            @endif
+        </div>
+
+        <div class="col-md-12">
             @if(isset($archive))
                 <div class="form-group {!! APFrmErrHelp::hasError($errors, 'archive_pdf') !!}">
-                    {!! Form::label('Archive PDF',  __('messages.Archive_PDF'), ['class' => 'bold']) !!}
+                    {!! Form::label('Post PDF',  __('messages.Archive_PDF'), ['class' => 'bold']) !!}
                     {!! Form::file('archive_pdf', array('class'=>'form-control', 'id'=>'archive_pdf', 'autocomplete'=>'off','accept'=>"application/pdf")) !!}
                     {!! APFrmErrHelp::showErrors($errors, 'archive_pdf') !!}
                 </div>
@@ -41,7 +81,7 @@ $queryString = MiscHelper::getLangQueryStr();
                 </a>
             @else
                 <div class="form-group {!! APFrmErrHelp::hasError($errors, 'archive_pdf') !!}">
-                    {!! Form::label('Archive PDF',__('messages.Archive_PDF'), ['class' => 'bold']) !!} {{--<span class="red">*</span>--}}
+                    {!! Form::label('Archive PDF',__('messages.post_PDF'), ['class' => 'bold']) !!} {{--<span class="red">*</span>--}}
                     {!! Form::file('archive_pdf', array('class'=>'form-control', 'id'=>'archive_pdf', 'autocomplete'=>'off','accept'=>"application/pdf")) !!}
                     <input type="hidden" name="form_type" value="insert">
                     {!! APFrmErrHelp::showErrors($errors, 'archive_pdf') !!}

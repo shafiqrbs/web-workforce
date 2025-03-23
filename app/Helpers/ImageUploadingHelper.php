@@ -2,13 +2,15 @@
 
 namespace App\Helpers;
 
-use App\Library\ImageUpload\Image;
+//use App\Library\ImageUpload\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
 class ImageUploadingHelper
 {
 
@@ -26,7 +28,82 @@ class ImageUploadingHelper
     private static $largeFolder = '/large';
     private static $thumbFolder = '/thumb';
 
+
+
     public static function UploadImage($destPath, $field, $newName = '', $width = 0, $height = 0, $makeOtherSizesImages = true)
+    {
+        try {
+            // Set main image dimensions if provided
+            if ($width > 0 && $height > 0) {
+                self::$mainImgWidth = $width;
+                self::$mainImgHeight = $height;
+            }
+
+            // Define Folder Paths
+            $destinationPath = public_path($destPath);
+            $midImagePath = public_path($destPath . self::$midFolder);
+            $thumbImagePath = public_path($destPath . self::$thumbFolder);
+            $largeImagePath = public_path($destPath . self::$largeFolder);
+
+            // Ensure Directories Exist
+            if (!File::exists($destinationPath)) {
+                File::makeDirectory($destinationPath, 0777, true, true);
+            }
+            if (!File::exists($midImagePath)) {
+                File::makeDirectory($midImagePath, 0777, true, true);
+            }
+            if (!File::exists($thumbImagePath)) {
+                File::makeDirectory($thumbImagePath, 0777, true, true);
+            }
+            if (!File::exists($largeImagePath)) {
+                File::makeDirectory($largeImagePath, 0777, true, true);
+            }
+
+            // Get file extension
+            $extension = $field->getClientOriginalExtension();
+
+            // Create a unique file name
+            $fileName = Str::slug($newName, '-') . '-' . time() . '-' . rand(1, 999) . '.' . $extension;
+
+            // Move the original file to the destination folder
+            $field->move($destinationPath, $fileName);
+
+            // Verify the file has been moved
+            if (!file_exists($destinationPath . '/' . $fileName)) {
+                \Log::error("UploadImage: File move failed for $fileName.");
+                return false;
+            }
+
+            // Log success
+            \Log::info("UploadImage: File uploaded successfully to $destinationPath/$fileName");
+
+            // Create and save images using Intervention Image
+            $imageToResize = Image::make($destinationPath . '/' . $fileName);
+            $imageToResize->save($destinationPath . '/' . $fileName);
+
+            if ($makeOtherSizesImages) {
+                // Large image
+                $imageToResize->resize(self::$largeImgWidth, self::$largeImgHeight)->save($largeImagePath . '/' . $fileName);
+                \Log::info("UploadImage: Large image created at $largeImagePath/$fileName");
+
+                // Mid image
+                $imageToResize->resize(self::$midImgWidth, self::$midImgHeight)->save($midImagePath . '/' . $fileName);
+                \Log::info("UploadImage: Mid image created at $midImagePath/$fileName");
+
+                // Thumbnail image
+                $imageToResize->resize(self::$thumbImgWidth, self::$thumbImgHeight)->save($thumbImagePath . '/' . $fileName);
+                \Log::info("UploadImage: Thumbnail image created at $thumbImagePath/$fileName");
+            }
+
+            return $fileName;
+
+        } catch (\Exception $e) {
+            \Log::error("UploadImage Error: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public static function UploadImagebk($destPath, $field, $newName = '', $width = 0, $height = 0, $makeOtherSizesImages = true)
     {
         if ($width > 0 && $height > 0) {
             self::$mainImgWidth = $width;
