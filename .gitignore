@@ -26,6 +26,7 @@
 /storage/app/*
 /storage/logs/*
 /storage/framework/*
+/storage/debugbar/*
 .idea/php.xml
 /vendor
 .env

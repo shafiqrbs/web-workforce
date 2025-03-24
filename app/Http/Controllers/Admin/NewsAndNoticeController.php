@@ -120,7 +120,6 @@ class NewsAndNoticeController extends Controller
     public function create()
     {
         $categories = NewsAndNoticeCategory::get();
-      //  $executiveCommittee = CommitteeMember::getExecutiveCommitteeDropdown();
         return view('admin/news_notice/post_form',[
             'categories'=>$categories
         ]);
@@ -196,11 +195,9 @@ class NewsAndNoticeController extends Controller
         if ($id != '') {
             $newsAndNotice = NewsAndNotice::findOrFail($id);
             $categories = NewsAndNoticeCategory::get();
-            $executiveCommittee = CommitteeMember::getExecutiveCommitteeDropdown();
             return view('admin/news_notice/update_form', [
                 'categories'=> $categories,
                 'newsAndNotice'=> $newsAndNotice,
-                'executiveCommittee'=>$executiveCommittee
                 ]);
         }
     }

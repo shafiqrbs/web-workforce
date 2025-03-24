@@ -47,10 +47,6 @@
                                             <th>{{__('messages.SL')}}</th>
                                             <th>{{__('messages.Event_Name')}}</th>
                                             <th>{{__('messages.Event_Type')}}</th>
-                                            <th>{{__('messages.Clubs')}}</th>
-                                            <th>{{__('messages.Athletes')}}</th>
-                                            <th>{{__('messages.Officials')}}</th>
-                                            <th>Participant</th>
                                             <th>{{__('messages.Status')}}</th>
                                             <th>{{__('messages.Actions')}}</th>
                                         </tr>
@@ -92,10 +88,6 @@
                 {data: 'rownum', name: 'rownum'},
                 {data: 'event_name', name: 'event_name'},
                 {data: 'event_type', name: 'event_type'},
-                {data: 'number_of_club', name: 'number_of_club'},
-                {data: 'number_of_athlete', name: 'number_of_athlete'},
-                {data: 'number_of_official', name: 'number_of_official'},
-                {data: 'participant', name: 'participant'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
             ]

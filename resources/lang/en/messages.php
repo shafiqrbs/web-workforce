@@ -217,7 +217,7 @@ return [
     'Enter_Sub_Title' => 'Enter Sub Title',
     'Archive_Name' => 'Archive Name',
     'post_Name' => 'Post Name',
-    'Sub_Title' => 'Sub Title',
+    'Sub_Title' => 'Description',
     'short_description' => 'Short Description',
     'PDF' => 'PDF',
     'Add_Archive' => 'Add Archive',

@@ -26,15 +26,6 @@ $queryString = MiscHelper::getLangQueryStr();
                 {!! APFrmErrHelp::showErrors($errors, 'archive_name') !!}
             </div>
         </div>
-
-        <div class="col-md-12">
-            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'sub_title') !!}">
-                {!! Form::label('Sub Title', __('messages.Sub_Title'), ['class' => 'bold']) !!} <span class="red">*</span>
-                {!! Form::textarea('sub_title', null, array('class'=>'form-control', 'id'=>'description', 'placeholder'=> __('messages.Sub_Title'), 'autocomplete'=>'off','autofocus'=>'on' )) !!}
-                {!! APFrmErrHelp::showErrors($errors, 'sub_title') !!}
-            </div>
-        </div>
-
         <div class="col-md-12">
             <div class="form-group {!! APFrmErrHelp::hasError($errors, 'sub_title') !!}">
                 {!! Form::label('Sub Title', __('messages.short_description'), ['class' => 'bold']) !!} {{--<span class="red">*</span>--}}
@@ -42,6 +33,15 @@ $queryString = MiscHelper::getLangQueryStr();
                 {!! APFrmErrHelp::showErrors($errors, 'short_description') !!}
             </div>
         </div>
+        <div class="col-md-12">
+            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'sub_title') !!}">
+                {!! Form::label('Description', __('messages.Sub_Title'), ['class' => 'bold']) !!} <span class="red">*</span>
+                {!! Form::textarea('sub_title', null, array('class'=>'form-control', 'id'=>'description', 'placeholder'=> __('messages.Sub_Title'), 'autocomplete'=>'off','autofocus'=>'on' )) !!}
+                {!! APFrmErrHelp::showErrors($errors, 'sub_title') !!}
+            </div>
+        </div>
+
+
 
         <div class="col-md-12">
             @if(isset($archive))

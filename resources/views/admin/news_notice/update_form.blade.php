@@ -124,7 +124,19 @@
 
                                                                 <span class="text-danger">{{ $errors->first('title_update') }}</span>
                                                             </div>
+                                                            <div class="form-group {{ $errors->has('short_description') ? 'has-error' : '' }}">
 
+                                                                <label class="control-label"
+                                                                       for="content">Short Description</label>
+
+                                                                <textarea class="form-control" name="content"
+
+                                                                          id="short_description" cols="20" rows="5"
+
+                                                                          autofocus>{{ $newsAndNotice->short_description }}</textarea>
+
+                                                                <span class="text-danger">{{ $errors->first('short_description') }}</span>
+                                                            </div>
                                                             <div class="form-group {{ $errors->has('content_update') ? 'has-error' : '' }}">
 
                                                                 <label class="control-label" for="content">Content</label>
@@ -199,14 +211,6 @@
                                                                 @endif
 
                                                             </div>
-
-
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="post_type">On Behalf of</label>
-                                                                {!! Form::select('member_id', ['' => 'Choose Executive Committee']+$executiveCommittee,$newsAndNotice->member_id, array('class'=>'form-control', 'id'=>'member_id')) !!}
-                                                            </div>
-
-
 
                                                             <div class="blogboxint">
                                                                 <div class="form-group">

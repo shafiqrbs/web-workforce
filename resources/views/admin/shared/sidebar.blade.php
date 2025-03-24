@@ -33,7 +33,7 @@
         @include('admin/shared/side_bars/archive')
         @include('admin/shared/side_bars/event')
         @include('admin/shared/side_bars/financial_partner')
-{{--        @include('admin/shared/side_bars/news_and_notice')--}}
+        @include('admin/shared/side_bars/news_and_notice')
         @if(Module::has('PhotoGallery'))
         @include('photogallery::layouts.nav')
         @endif
