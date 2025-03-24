@@ -93,7 +93,7 @@
                                         <li><a href="#case-story">Case Story</a></li>
                                     </ul>
                                 </li>
-                                <li class=""><a href="#event">Events</a></li>
+                                <li class=""><a href="{{route('cms.events')}}">Events</a></li>
                                 <li class=""><a href="#news">News & Blog</a></li>
                                 <li class=""><a href="#resource">Resources</a></li>
                                 <li><a href="#contact">Contact</a></li>

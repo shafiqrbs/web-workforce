@@ -38,7 +38,14 @@ class Event extends Model
     }
 
     public static function getAllEventExceptTop($topID){
-        $data = self::where('is_active',1)->orderby('sort_order','asc')->get()->except($topID);
+        $data = self::where('events.is_active',1)
+            ->select([
+                'events.*','event_type.event_type'
+            ])
+            ->leftjoin('event_type','event_type.id','=','events.event_type_id')
+            ->orderby('events.sort_order','asc')
+            ->get()
+            ->except($topID);
 //        $data = self::where('is_active',1)->whereNotIn('id',[$topID])->orderby('sort_order','asc')->skip(0)->take(4)->get();
         return $data;
     }
