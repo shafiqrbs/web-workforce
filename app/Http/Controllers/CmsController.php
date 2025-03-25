@@ -81,6 +81,84 @@ class CmsController extends Controller
         return view('cms.event.details', compact(['pageTitle','eventDetails','relatedEvents','popularNews','archives','popularNotices','eventType']));
     }
 
+    public function cmsAchievement(){
+        $pageTitle = ' Events';
+        $getTopEvent = Event::getTopEvent();
+        $getAllEvent = Event::getAllEventExceptTop('');
+        //$getAllEvent = Event::getAllEventExceptTop($getTopEvent->id);
+        $bannerData = Banner::getPageWiseBannerInfo('event');
+//        dump($getAllEvent->toArray());
+        return view('cms.event.index', compact(['pageTitle','getTopEvent','getAllEvent','bannerData']));
+    }
+
+    public function cmsAchievementDetails($id){
+        $pageTitle = ' Events';
+        $eventDetails = Event::find($id);
+        if (isset($eventDetails->event_type_id)){
+            $eventType = EventType::find($eventDetails->event_type_id);
+        }
+        $relatedEvents = Event::getRelatedEventExceptTop($id);
+        $popularNews = NewsAndNotice::getPopularNews($id,'NEWS');
+        $popularNotices = NewsAndNotice::getPopularNews($id,'NOTICE');
+        $archives = Archive::getRamdomArchive();
+
+//        dd($popularNews,$popularNotices,$archives);
+
+        return view('cms.event.details', compact(['pageTitle','eventDetails','relatedEvents','popularNews','archives','popularNotices','eventType']));
+    }
+
+    public function cmsCaseStory(){
+        $pageTitle = ' Events';
+        $getTopEvent = Event::getTopEvent();
+        $getAllEvent = Event::getAllEventExceptTop('');
+        //$getAllEvent = Event::getAllEventExceptTop($getTopEvent->id);
+        $bannerData = Banner::getPageWiseBannerInfo('event');
+//        dump($getAllEvent->toArray());
+        return view('cms.event.index', compact(['pageTitle','getTopEvent','getAllEvent','bannerData']));
+    }
+
+    public function cmsCaseStoryDetails($id){
+        $pageTitle = ' Events';
+        $eventDetails = Event::find($id);
+        if (isset($eventDetails->event_type_id)){
+            $eventType = EventType::find($eventDetails->event_type_id);
+        }
+        $relatedEvents = Event::getRelatedEventExceptTop($id);
+        $popularNews = NewsAndNotice::getPopularNews($id,'NEWS');
+        $popularNotices = NewsAndNotice::getPopularNews($id,'NOTICE');
+        $archives = Archive::getRamdomArchive();
+
+//        dd($popularNews,$popularNotices,$archives);
+
+        return view('cms.event.details', compact(['pageTitle','eventDetails','relatedEvents','popularNews','archives','popularNotices','eventType']));
+    }
+
+    public function cmsResources(){
+        $pageTitle = ' Events';
+        $getTopEvent = Event::getTopEvent();
+        $getAllEvent = Event::getAllEventExceptTop('');
+        //$getAllEvent = Event::getAllEventExceptTop($getTopEvent->id);
+        $bannerData = Banner::getPageWiseBannerInfo('event');
+//        dump($getAllEvent->toArray());
+        return view('cms.event.index', compact(['pageTitle','getTopEvent','getAllEvent','bannerData']));
+    }
+
+    public function cmsResourcesDetails($id){
+        $pageTitle = ' Events';
+        $eventDetails = Event::find($id);
+        if (isset($eventDetails->event_type_id)){
+            $eventType = EventType::find($eventDetails->event_type_id);
+        }
+        $relatedEvents = Event::getRelatedEventExceptTop($id);
+        $popularNews = NewsAndNotice::getPopularNews($id,'NEWS');
+        $popularNotices = NewsAndNotice::getPopularNews($id,'NOTICE');
+        $archives = Archive::getRamdomArchive();
+
+//        dd($popularNews,$popularNotices,$archives);
+
+        return view('cms.event.details', compact(['pageTitle','eventDetails','relatedEvents','popularNews','archives','popularNotices','eventType']));
+    }
+
 
 
     public function cmsNews(){

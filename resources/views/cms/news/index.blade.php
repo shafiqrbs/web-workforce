@@ -32,7 +32,6 @@
     <!-- news-section -->
     <section class="news-section blog-grid sec-pad-2">
         <div class="auto-container">
-            <h2 style="font-size: 15px;border-bottom: 1px solid;padding-bottom: 5px;font-weight: bold;">{{$news->total()}} Results & Records in News </h2>
             <div class="row clearfix">
                 @if($news)
                     @foreach($news as $notice)

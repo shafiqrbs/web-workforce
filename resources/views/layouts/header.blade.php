@@ -31,7 +31,7 @@
                             <a href="{{route('index')}}"><img src="{{ asset('assets/images/logo.svg') }}" alt="" /></a>
                         </div>
                         <div class="content-box">
-                            <h4>Book Now</h4>
+                            <h4>Connect Me!</h4>
                             <form action="{{route('index')}}" method="post" class="booking-form">
                                 <div class="form-group">
                                     <input type="text" name="name" placeholder="Name" required="">
@@ -50,9 +50,9 @@
                         <div class="contact-info">
                             <h4>Contact Info</h4>
                             <ul>
-                                <li>Chicago 12, Melborne City, USA</li>
-                                <li><a href="tel:+8801682648101">+88 01682648101</a></li>
-                                <li><a href="mailto:info@example.com">info@example.com</a></li>
+                                <li>Dhaka, Bangladesh Level 4, House no-20, Road no-99,Gulshan-2, Dhaka, Bangladesh</li>
+                                <li><a href="tel:+88 02222-280202">+88 02222-280202</a></li>
+                                <li><a href="mailto:info@workforcenutritionbd.org">info@workforcenutritionbd.org</a></li>
                             </ul>
                         </div>
                         <ul class="social-box">
@@ -86,17 +86,17 @@
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
-                                <li class="current"><a href="#home">Home</a></li>
-                                <li class="dropdown"><a href="#impact">Impact</a>
+                                <li class="current"><a href="{{route('index')}}">Home</a></li>
+                                <li class="dropdown"><a href="javascript:">Impact</a>
                                     <ul>
-                                        <li><a href="#achievement">Achievement</a></li>
-                                        <li><a href="#case-story">Case Story</a></li>
+                                        <li><a href="{{route('cms.achievement.list')}}">Achievement</a></li>
+                                        <li><a href="{{route('cms.case-story')}}">Case Story</a></li>
                                     </ul>
                                 </li>
                                 <li class=""><a href="{{route('cms.events')}}">Events</a></li>
-                                <li class=""><a href="#news">News & Blog</a></li>
-                                <li class=""><a href="#resource">Resources</a></li>
-                                <li><a href="#contact">Contact</a></li>
+                                <li class=""><a href="{{route('cms.news')}}">News & Notice</a></li>
+                                <li class=""><a href="{{route('cms.resources')}}">Resources</a></li>
+                                <li><a href="{{route('index')}}#contact">Contact</a></li>
                             </ul>
                         </div>
                     </nav>
