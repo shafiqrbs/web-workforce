@@ -17,7 +17,7 @@
                                 <div class="funfact-block-one">
                                     <div class="inner-box">
                                         <div class="count-outer count-box counted">
-                                            <span class="count-text" data-speed="1500" data-stop="30+">30+</span><span>k</span>
+                                            <span class="count-text" data-speed="1500" data-stop="33+">33</span>
                                         </div>
                                         <h6>RMG Factories have partnership with WFN</h6>
                                     </div>
@@ -27,9 +27,9 @@
                                 <div class="funfact-block-one">
                                     <div class="inner-box">
                                         <div class="count-outer count-box counted">
-                                            <span class="count-text" data-speed="1500" data-stop="200,000">200,000+</span>
+                                            <span class="count-text" data-speed="1500" data-stop="243">243</span>
                                         </div>
-                                        <h6>WFN reached more than 200,000+ workers</h6>
+                                        <h6>Workforce Nutrition Alliance Members</h6>
                                     </div>
                                 </div>
                             </div>
@@ -37,9 +37,9 @@
                                 <div class="funfact-block-one">
                                     <div class="inner-box">
                                         <div class="count-outer count-box counted">
-                                            <span class="count-text" data-speed="1500" data-stop="1.5">500+ </span>
+                                            <span class="count-text" data-speed="8" data-stop="1.5">8</span>
                                         </div>
-                                        <h6>Government officials received training</h6>
+                                        <h6>Fair Price Shops</h6>
                                     </div>
                                 </div>
                             </div>

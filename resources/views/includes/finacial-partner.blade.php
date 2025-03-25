@@ -2,8 +2,7 @@
 {{--    <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-10.png);"></div>--}}
     <div class="auto-container">
         <div class="sec-title centred">
-            <h6 style="color: #002856;"><i class="flaticon-star" ></i><span>BSSF PARTNER</span><i class="flaticon-star"></i></h6>
-            <h2>Financial Partners</h2>
+            <h2>Our partner and Stakeholder</h2>
             <div class="title-shape"></div>
         </div>
         <div class="four-item-carousel owl-carousel owl-theme owl-nav-none owl-dots-none">

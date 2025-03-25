@@ -23,7 +23,7 @@
         <!-- news-section end -->
 
         <!-- banner-section -->
-        @include('includes.page.members')
+      {{--  @include('includes.page.members')--}}
         <!-- banner-section end -->
         <!-- banner-section -->
         @include('includes.page.achivement')

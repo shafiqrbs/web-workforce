@@ -1,6 +1,4 @@
 <?php
-
-
 Route::get('cms/{slug}', 'CmsController@getPage')->name('cms');
 Route::get('about-us', 'CmsController@cmsAboiutUs')->name('cms.about.us');
 Route::get('achievement-list', 'CmsController@cmsAchievement')->name('cms.achievement.list');
