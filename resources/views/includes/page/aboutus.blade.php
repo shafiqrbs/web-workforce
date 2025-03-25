@@ -55,7 +55,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12 explore-block">
                 <div class="explore-block-one wow fadeInUp animated animated" data-wow-delay="300ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image-box"><img src="{{asset('assets/images/gain/images-mission.jpeg')}}" alt=""></figure>
+                        <figure class="image-box"><img src="{{asset('assets/images/gain/images-vision.jpeg')}}" alt=""></figure>
                         <div class="content-box">
                             <div class="text">
                                 <div class="icon-box"><i class="flaticon-goverment"></i></div>
@@ -72,7 +72,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12 explore-block">
                 <div class="explore-block-one wow fadeInUp animated animated" data-wow-delay="600ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image-box"><img src="{{asset('assets/images/gain/images-mission.jpeg')}}" alt=""></figure>
+                        <figure class="image-box"><img src="{{asset('assets/images/gain/images-values.jpeg')}}" alt=""></figure>
                         <div class="content-box">
                             <div class="text">
                                 <div class="icon-box"><i class="flaticon-budget"></i></div>
