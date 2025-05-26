@@ -81,9 +81,16 @@
                     d.type = $('input[name=type]').val();
                 }
             }, columns: [
-                {data: 'rownum', name: 'rownum',orderable: false},
+                {
+                    data: null,
+                    name: 'rownum',
+                    orderable: false,
+                    searchable: false,
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
                 {data: 'archive_name', name: 'archive_name',orderable: false},
-                // {data: 'sub_title', name: 'sub_title',orderable: false},
                 {data: 'type', name: 'type',orderable: false},
                 // {data: 'feature_image', name: 'feature_image',orderable: false},
                 {
@@ -132,13 +139,13 @@
     }
 
     function make_not_active(id) {
-        var isActiveColumn = $('#onclick_active_' + id).closest('tr').find('td:eq( 4 )');
+        var isActiveColumn = $('#onclick_active_' + id).closest('tr').find('td:eq( 5 )');
         $.post("{{ route('make.not.active.archive') }}", {id: id, _method: 'PUT', _token: '{{ csrf_token() }}'})
             .done(function (response) {
                 if (response.status == 'ok')
                 {
                     $('#onclick_active_' + id).attr("onclick", "make_active(" + id + ")");
-                    $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Active");
+                    $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Approved");
                     isActiveColumn.text(response.value);
                 } else
                 {
@@ -147,14 +154,14 @@
             });
     }
     function make_active(id) {
-        var isActiveColumn = $('#onclick_active_' + id).closest('tr').find('td:eq( 4 )');
+        var isActiveColumn = $('#onclick_active_' + id).closest('tr').find('td:eq( 5 )');
 
         $.post("{{ route('make.active.archive') }}", {id: id, _method: 'PUT', _token: '{{ csrf_token() }}'})
             .done(function (response) {
                 if (response.status == 'ok')
                 {
                     $('#onclick_active_' + id).attr("onclick", "make_not_active(" + id + ")");
-                    $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Inactive");
+                    $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Not Approved");
                     isActiveColumn.text(response.value);
                 } else
                 {

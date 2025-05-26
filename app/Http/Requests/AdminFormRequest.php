@@ -37,6 +37,7 @@ class AdminFormRequest extends Request
             'email' => 'required|unique:admins,email' . $id_str . '|email|max:100',
             'password' => $pass_required,
             'role_id' => 'required',
+            'is_approval_user' => 'nullable',
         ];
     }
 

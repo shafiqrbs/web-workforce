@@ -14,6 +14,7 @@ use File;
 use Modules\PhotoGallery\Entities\PhotoGalleryImage;
 use Yajra\DataTables\DataTables;
 use App\Helpers\ImageUploadingHelper;
+use Illuminate\Support\Facades\Auth;
 
 class PhotoGalleryController extends Controller
 {
@@ -28,75 +29,78 @@ class PhotoGalleryController extends Controller
 
     public function fetchGalleriesData(Request $request)
     {
-        $photoGalleries = PhotoGallery::select(
-            [
-                'photo_galleries.id',
-                'photo_galleries.name',
-                'photo_galleries.cover_image',
-                'photo_galleries.is_active',
-            ]
-        )->where('photo_galleries.name','!=',null);
-        return Datatables::of($photoGalleries)
-            ->filter(function ($query) use ($request) {
+        $photoGalleries = PhotoGallery::select([
+            'photo_galleries.id',
+            'photo_galleries.name',
+            'photo_galleries.cover_image',
+            'photo_galleries.is_active',
+        ])->whereNotNull('photo_galleries.name');
 
-            })
+        return Datatables::of($photoGalleries)
             ->addColumn('cover_image', function ($row) {
-                $cover_image='';
-                if($row->cover_image){
-                    $cover_image.='<img src="'.asset("photo_gallery/thumb/{$row->cover_image}").'" alt="" class="text-center">';
+                if ($row->cover_image) {
+                    return '<img src="' . asset("photo_gallery/thumb/{$row->cover_image}") . '" alt="" class="text-center">';
                 }
-                return $cover_image;
+                return '';
             })
             ->addColumn('no_of_image', function ($row) {
-                $cover_image='';
-                $photoGalleryImage = PhotoGalleryImage::where('photo_gallery_id','=',$row->id)->count();
-
-                return $photoGalleryImage;
+                return PhotoGalleryImage::where('photo_gallery_id', $row->id)->count();
             })
-            ->addColumn('status', function($row){
-                if ($row->is_active == 1){
-                    $status = 'Active';
-                }else{
-                    $status = 'Inactive';
-                }
-                return $status;
+            ->addColumn('status', function ($row) {
+                return $row->is_active == 1 ? __('messages.Approved') : __('messages.NotApproved');
             })
-            ->addColumn('action', function ($photoGalleries) {
+            ->addColumn('action', function ($row) {
                 $active_class = '';
-                if ((int)$photoGalleries->is_active == 1) {
-                    $active_txt = 'Inactive';
-                    $active_href = 'make_not_active(' . $photoGalleries->id . ');';
+                $action = __('messages.Actions');
+                $edit = __('messages.Edit');
+                $delete = __('messages.Delete');
+
+                if ((int)$row->is_active == 1) {
+                    $active_txt = __('messages.NotApproved');
+                    $active_href = 'make_not_active(' . $row->id . ');';
                     $active_icon = 'square-o';
                 } else {
-                    $active_txt = 'Active';
-                    $active_href = 'make_active(' . $photoGalleries->id . ');';
+                    $active_txt = __('messages.Approved');
+                    $active_href = 'make_active(' . $row->id . ');';
                     $active_icon = 'check-square';
                 }
-
+                // Build the approval button only if the user has permission
+                $approval_btn = '';
+//                if (auth()->user()->is_approval_user === 1) {
+                    $approval_btn = '
+                            <li>
+                                <a class="' . $active_class . '" href="javascript:void(0);" onClick="' . $active_href . '" id="onclick_active_' . $row->id . '">
+                                    <i class="fas fa-check-square"></i>' . $active_txt . '
+                                </a>
+                            </li>';
+//                }
                 return '
-				<div class="btn-group">
-					<button class="btn blue dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action
-						<i class="fa fa-angle-down"></i>
-					</button>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="' . route('edit.gallery', ['id' => $photoGalleries->id]) . '"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
-							</li>
-							<li>
-                        <a class="' . $active_class . '" href="javascript:void(0);" onClick="' . $active_href . '" id="onclick_active_' . $photoGalleries->id . '"><i class="fas fa-check-square"></i>' . $active_txt . '</a>
-                        </li>	
-							<li>
-							<a href="' . route('delete.gallery', ['id' => $photoGalleries->id]) . '"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
-						</li>						
-					</ul>
-				</div>';
+                <div class="btn-group">
+                    <button class="btn blue dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' . $action . '
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="' . route('edit.gallery', ['id' => $row->id]) . '">
+                                <i class="fa fa-pencil" aria-hidden="true"></i> ' . $edit . '
+                            </a>
+                        </li>
+                        ' . $approval_btn . '
+                        <li>
+                            <a href="' . route('delete.gallery', ['id' => $row->id]) . '">
+                                <i class="fa fa-trash" aria-hidden="true"></i> ' . $delete . '
+                            </a>
+                        </li>
+                    </ul>
+                </div>';
             })
-            ->rawColumns(['cover_image','no_of_image','action'])
-            ->setRowId(function($photoGalleries) {
-                return 'faq_dt_row_' . $photoGalleries->id;
+            ->rawColumns(['cover_image', 'no_of_image', 'action'])
+            ->setRowId(function ($row) {
+                return 'faq_dt_row_' . $row->id;
             })
             ->make(true);
     }
+
     /**
      * Show the form for creating a new resource.
      * @return Renderable
@@ -161,7 +165,7 @@ class PhotoGalleryController extends Controller
         $photoGallery->name=$name;
         $photoGallery->year=$year;
         $photoGallery->description=$description;
-        $photoGallery->is_active=1;
+//        $photoGallery->is_active=0;
 
         if ($request->hasFile('cover_image')) {
             File::delete(public_path().'/photo_gallery/'.$photoGallery->cover_image);
@@ -234,7 +238,7 @@ class PhotoGalleryController extends Controller
             $archive = PhotoGallery::findOrFail($id);
             $archive->is_active = 1;
             $archive->update();
-            return new JsonResponse(array('status'=>'ok','value'=>'Active'));
+            return new JsonResponse(array('status'=>'ok','value'=>'Approved'));
         } catch (ModelNotFoundException $e) {
             echo 'notok';
         }
@@ -247,7 +251,7 @@ class PhotoGalleryController extends Controller
             $archive = PhotoGallery::findOrFail($id);
             $archive->is_active = 0;
             $archive->update();
-            return new JsonResponse(array('status'=>'ok','value'=>'Inactive'));
+            return new JsonResponse(array('status'=>'ok','value'=>'Not Approved'));
         } catch (ModelNotFoundException $e) {
             echo 'notok';
         }

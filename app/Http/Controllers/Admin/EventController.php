@@ -48,12 +48,12 @@ class EventController extends Controller
      */
     public function indexEvents(Request $request)
     {
-        DB::statement(DB::raw('set @rownum=0'));
+        DB::statement(DB::raw('SET @rownum = 0'));
         if ($request->ajax()) {
             $data = Event::select([
-                DB::raw('@rownum  := @rownum  + 1 AS rownum'),
+                DB::raw('@rownum := @rownum + 1 AS rownum'),
                 'events.id','events.event_name','event_type.event_type','events.number_of_club','events.number_of_athlete','events.number_of_official','events.is_active','events.location','events.participant'
-            ])->leftjoin('event_type','event_type.id','=','events.event_type_id');
+            ])->leftjoin('event_type','event_type.id','=','events.event_type_id')->orderby('events.sort_order','desc');
             return Datatables::of($data)
                 ->filter(function ($query) use ($request) {
                     if ($request->has('name') && !empty($request->name)) {
@@ -67,22 +67,36 @@ class EventController extends Controller
                 })
                 ->addColumn('status', function($row){
                     if ($row->is_active == 1){
-                        $status = 'Active';
+                        $status = __('messages.Approved');
                     }else{
-                        $status = 'Inactive';
+                        $status = __('messages.NotApproved');
                     }
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
                     $active_class = '';
+                    $action = __('messages.Actions');
+                    $edit = __('messages.Edit');
+                    $delete = __('messages.Delete');
+
                     if ((int)$row->is_active == 1) {
-                        $active_txt = 'Inactive';
+                        $active_txt = __('messages.NotApproved');
                         $active_href = 'make_not_active(' . $row->id . ');';
                         $active_icon = 'square-o';
                     } else {
-                        $active_txt = 'Active';
+                        $active_txt = __('messages.Approved');
                         $active_href = 'make_active(' . $row->id . ');';
                         $active_icon = 'check-square';
+                    }
+                    // Build the approval button only if the user has permission
+                    $approval_btn = '';
+                    if (auth()->user()->is_approval_user === 1) {
+                        $approval_btn = '
+                            <li>
+                                <a class="' . $active_class . '" href="javascript:void(0);" onClick="' . $active_href . '" id="onclick_active_' . $row->id . '">
+                                    <i class="fas fa-check-square"></i>' . $active_txt . '
+                                </a>
+                            </li>';
                     }
                     return '
 				<div class="btn-group">
@@ -94,9 +108,7 @@ class EventController extends Controller
 							<a href="' . route('event.edit', ['id' => $row->id]) . '"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
 						</li>		
 						
-						<li>
-                        <a class="' . $active_class . '" href="javascript:void(0);" onClick="' . $active_href . '" id="onclick_active_' . $row->id . '"><i class="fas fa-check-square"></i>' . $active_txt . '</a>
-                        </li>					
+		                   '.$approval_btn.'					
 						
 						<li>
                             <a href="javascript:void(0);" onclick="delete_event(' . $row->id . ');" class=""><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
@@ -127,6 +139,8 @@ class EventController extends Controller
         if ($input['start_date']) {
             $input['month'] = date("F", strtotime($input['start_date']));
         }
+        $input['is_active'] = false;
+
 
         if ($request->hasFile('event_image')) {
             $image_name = $request->input('event_name');
@@ -244,7 +258,7 @@ class EventController extends Controller
             $event = Event::findOrFail($id);
             $event->is_active = 1;
             $event->update();
-            return new JsonResponse(array('status'=>'ok','value'=>'Active'));
+            return new JsonResponse(array('status'=>'ok','value'=>'Approved'));
         } catch (ModelNotFoundException $e) {
             echo 'notok';
         }
@@ -257,7 +271,7 @@ class EventController extends Controller
             $event = Event::findOrFail($id);
             $event->is_active = 0;
             $event->update();
-            return new JsonResponse(array('status'=>'ok','value'=>'Inactive'));
+            return new JsonResponse(array('status'=>'ok','value'=>'Not Approved'));
         } catch (ModelNotFoundException $e) {
             echo 'notok';
         }

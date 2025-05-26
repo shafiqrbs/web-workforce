@@ -52,7 +52,7 @@ class FinancalPartnerController extends Controller
                     'financial_partners.created_at',
                     'financial_partners.is_active',
                 ]
-            );
+            )->orderBy('financial_partners.sort_order','desc');
             return Datatables::of($financialPartners)
                 ->filter(function ($query) use ($request) {
                     if ($request->has('name') && !empty($request->name)) {
@@ -68,22 +68,36 @@ class FinancalPartnerController extends Controller
                 })
                 ->addColumn('status', function($row){
                     if ($row->is_active == 1){
-                        $status = 'Active';
+                        $status = __('messages.Approved');
                     }else{
-                        $status = 'Inactive';
+                        $status = __('messages.NotApproved');
                     }
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
                     $active_class = '';
+                    $action = __('messages.Actions');
+                    $edit = __('messages.Edit');
+                    $delete = __('messages.Delete');
+
                     if ((int)$row->is_active == 1) {
-                        $active_txt = 'Inactive';
+                        $active_txt = __('messages.NotApproved');
                         $active_href = 'make_not_active(' . $row->id . ');';
                         $active_icon = 'square-o';
                     } else {
-                        $active_txt = 'Active';
+                        $active_txt = __('messages.Approved');
                         $active_href = 'make_active(' . $row->id . ');';
                         $active_icon = 'check-square';
+                    }
+                    // Build the approval button only if the user has permission
+                    $approval_btn = '';
+                    if (auth()->user()->is_approval_user === 1) {
+                        $approval_btn = '
+                            <li>
+                                <a class="' . $active_class . '" href="javascript:void(0);" onClick="' . $active_href . '" id="onclick_active_' . $row->id . '">
+                                    <i class="fas fa-check-square"></i>' . $active_txt . '
+                                </a>
+                            </li>';
                     }
                     return '
 				<div class="btn-group">
@@ -94,9 +108,7 @@ class FinancalPartnerController extends Controller
 						<li>
 							<a href="' . route('financial_partner_edit', ['id' => $row->id]) . '"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
 						</li>		
-						<li>
-                        <a class="' . $active_class . '" href="javascript:void(0);" onClick="' . $active_href . '" id="onclick_active_' . $row->id . '"><i class="fas fa-check-square"></i>' . $active_txt . '</a>
-                        </li>					
+						' . $approval_btn . '				
 						<li>
 							<a href="javascript:void(0);" onclick="delete_financial_partner(' . $row->id . ');" class=""><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
 						</li>																																							
@@ -130,6 +142,7 @@ class FinancalPartnerController extends Controller
         }
         $financialMember = FinancialPartner::create($input);
         $financialMember['sort_order'] = $financialMember->id;
+        $financialMember['is_active'] = false;
         $financialMember->update();
         flash('Financial partner has been added!')->success();
         return \Redirect::route('financial_partner_edit', array($financialMember->id));
@@ -218,7 +231,7 @@ class FinancalPartnerController extends Controller
             $archive = FinancialPartner::findOrFail($id);
             $archive->is_active = 1;
             $archive->update();
-            return new JsonResponse(array('status'=>'ok','value'=>'Active'));
+            return new JsonResponse(array('status'=>'ok','value'=>'Approved'));
         } catch (ModelNotFoundException $e) {
             echo 'notok';
         }
@@ -231,7 +244,7 @@ class FinancalPartnerController extends Controller
             $archive = FinancialPartner::findOrFail($id);
             $archive->is_active = 0;
             $archive->update();
-            return new JsonResponse(array('status'=>'ok','value'=>'Inactive'));
+            return new JsonResponse(array('status'=>'ok','value'=>'Not Approved'));
         } catch (ModelNotFoundException $e) {
             echo 'notok';
         }

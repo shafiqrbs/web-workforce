@@ -90,9 +90,9 @@ class ArchiveController extends Controller
                 })
                 ->addColumn('status', function($row){
                     if ($row->is_active == 1){
-                        $status = __('messages.Active');
+                        $status = __('messages.Approved');
                     }else{
-                        $status = __('messages.Inactive');
+                        $status = __('messages.NotApproved');
                     }
                     return $status;
                 })
@@ -121,13 +121,23 @@ class ArchiveController extends Controller
                     $delete = __('messages.Delete');
 
                     if ((int)$row->is_active == 1) {
-                        $active_txt = __('messages.Inactive');
+                        $active_txt = __('messages.NotApproved');
                         $active_href = 'make_not_active(' . $row->id . ');';
                         $active_icon = 'square-o';
                     } else {
-                        $active_txt = __('messages.Active');
+                        $active_txt = __('messages.Approved');
                         $active_href = 'make_active(' . $row->id . ');';
                         $active_icon = 'check-square';
+                    }
+                    // Build the approval button only if the user has permission
+                    $approval_btn = '';
+                    if (auth()->user()->is_approval_user === 1) {
+                        $approval_btn = '
+                            <li>
+                                <a class="' . $active_class . '" href="javascript:void(0);" onClick="' . $active_href . '" id="onclick_active_' . $row->id . '">
+                                    <i class="fas fa-check-square"></i>' . $active_txt . '
+                                </a>
+                            </li>';
                     }
                     return '
 				<div class="btn-group">
@@ -137,12 +147,9 @@ class ArchiveController extends Controller
 					<ul class="dropdown-menu">
 						<li>
 							<a href="' . route('archive.edit', ['id' => $row->id]) . '"><i class="fa fa-pencil" aria-hidden="true"></i>'.$edit.'</a>
-						</li>						
-                        
-                        <li>
-                        <a class="' . $active_class . '" href="javascript:void(0);" onClick="' . $active_href . '" id="onclick_active_' . $row->id . '"><i class="fas fa-check-square"></i>' . $active_txt . '</a>
-                        </li>	
-                        <li>
+						</li>'
+						.$approval_btn.
+                        '<li>
                             <a href="javascript:void(0);" onclick="delete_archive(' . $row->id . ');" class=""><i class="fa fa-trash" aria-hidden="true"></i>'.$delete.'</a>
                         </li>																																					
 					</ul>
@@ -199,7 +206,7 @@ class ArchiveController extends Controller
             $input['sub_title_en'] = $input['sub_title'];
         }
         unset($input['archive_name'],$input['sub_title']);
-
+        $input['is_active'] = false;
 
         $archive = Archive::create($input);
         $updateArchive = Archive::getIdWiseData($archive->id);
@@ -355,7 +362,7 @@ class ArchiveController extends Controller
             $archive = Archive::findOrFail($id);
             $archive->is_active = 1;
             $archive->update();
-            return new JsonResponse(array('status'=>'ok','value'=>'Active'));
+            return new JsonResponse(array('status'=>'ok','value'=>'Approved'));
         } catch (ModelNotFoundException $e) {
             echo 'notok';
         }
@@ -368,7 +375,7 @@ class ArchiveController extends Controller
             $archive = Archive::findOrFail($id);
             $archive->is_active = 0;
             $archive->update();
-            return new JsonResponse(array('status'=>'ok','value'=>'Inactive'));
+            return new JsonResponse(array('status'=>'ok','value'=>'Not Approved'));
         } catch (ModelNotFoundException $e) {
             echo 'notok';
         }

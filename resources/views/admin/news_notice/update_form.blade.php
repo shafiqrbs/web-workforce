@@ -113,52 +113,38 @@
 
                                                         <div class="col-lg-9">
 
-
-                                                            <div class="form-group {{ $errors->has('title_update') ? 'has-error' : '' }}">
-
-                                                                <label class="control-label" for="title">Title</label>
-
-
-
-                                                                <input type="text" class="form-control" name="title_update" id="title_update" autofocus value="{{ $newsAndNotice->title?$newsAndNotice->title:'' }}" autocomplete="off">
-
-                                                                <span class="text-danger">{{ $errors->first('title_update') }}</span>
-                                                            </div>
-                                                            <div class="form-group {{ $errors->has('short_description') ? 'has-error' : '' }}">
-
-                                                                <label class="control-label"
-                                                                       for="content">Short Description</label>
-
-                                                                <textarea class="form-control" name="content"
-
-                                                                          id="short_description" cols="20" rows="5"
-
-                                                                          autofocus>{{ $newsAndNotice->short_description }}</textarea>
-
-                                                                <span class="text-danger">{{ $errors->first('short_description') }}</span>
-                                                            </div>
-                                                            <div class="form-group {{ $errors->has('content_update') ? 'has-error' : '' }}">
-
-                                                                <label class="control-label" for="content">Content</label>
-                                                                <textarea class="form-control" name="content_update" id="description" cols="40" rows="5" autofocus>{{ $newsAndNotice->content }}</textarea>
-
-                                                                <span class="text-danger">{{ $errors->first('content_update') }}</span>
-
+                                                            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'post_type') !!}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                {!! Form::label('Post Type', 'Post Type', ['class' => 'bold']) !!} <span class="red">*</span>
+                                                                {!! Form::select('post_type', ['' =>'Choose event type']+['NEWS'=>'News','NOTICE'=>'Notice','MESSAGE'=>'Message','OTHERS'=>'Others'],$newsAndNotice->post_type, array('class'=>'form-control post_type', 'id'=>'post_type','required'=>'required')) !!}
+                                                                {!! APFrmErrHelp::showErrors($errors, 'post_type') !!}
                                                             </div>
 
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="post_type">Post Type</label>
-                                                                <select class="form-control" name="post_type" id="post_type">
-                                                                    <option value="NEWS" {{ $newsAndNotice->post_type=='NEWS'?'selected="selected"':''}}>News</option>
-                                                                    <option value="NOTICE" {{ $newsAndNotice->post_type=='NOTICE'?'selected="selected"':''}}>Notice</option>
-                                                                    <option value="ABOUT" {{ $newsAndNotice->post_type=='ABOUT'?'selected="selected"':''}}>About</option>
-                                                                </select>
-
+                                                            <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                <div class="form-group {!! APFrmErrHelp::hasError($errors, 'title') !!}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                    {!! Form::label('title', 'Title', ['class' => 'bold']) !!}
+                                                                    {!! Form::text('title', $newsAndNotice->title, array('class'=>'form-control ', 'id'=>'', 'placeholder'=>'Title', 'autocomplete'=>'off','rows'=>1)) !!}
+                                                                    {!! APFrmErrHelp::showErrors($errors, 'title') !!}
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group {{ $errors->has('short_description') ? 'has-error' : '' }}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                <div class="form-group {!! APFrmErrHelp::hasError($errors, 'event_message') !!}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                    {!! Form::label('short_description', 'Short Description', ['class' => 'bold']) !!}
+                                                                    {!! Form::textarea('short_description', $newsAndNotice->short_description, array('class'=>'form-control ', 'id'=>'', 'placeholder'=>'Short Description', 'autocomplete'=>'off','rows'=>1)) !!}
+                                                                    {!! APFrmErrHelp::showErrors($errors, 'short_description') !!}
+                                                                </div>
                                                             </div>
 
-                                                            <div class="form-group">
+                                                            <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                <div class="form-group {!! APFrmErrHelp::hasError($errors, 'content') !!}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                    {!! Form::label('content', 'Content', ['class' => 'bold']) !!}
+                                                                    {!! Form::textarea('content', $newsAndNotice->content, array('class'=>'form-control ', 'id'=>'description', 'placeholder'=>'Short Description', 'autocomplete'=>'off','rows'=>1)) !!}
+                                                                    {!! APFrmErrHelp::showErrors($errors, 'content') !!}
+                                                                </div>
+                                                            </div>
+
+                                                            {{--<div class="form-group">
                                                                 <input type="checkbox" name="is_sticky" id="is_sticky" value="1" {{$newsAndNotice->is_sticky==1?'checked="checked"':''}}> Is Sticky News For Front Page
-                                                            </div>
+                                                            </div>--}}
 
                                                             <div class="clearfix"></div>
                                                         </div>
@@ -214,7 +200,7 @@
 
                                                             <div class="blogboxint">
                                                                 <div class="form-group">
-                                                                    <label class="control-label" for="Upload Image">Featured Image</label> <span style="font-size: 10px">( Greater than or equal to width 1920px & height 730px. )</span>
+                                                                    <label class="control-label" for="Upload Image">Featured Image</label> <span style="font-size: 10px">(Greater than or equal to width 1920px & height 730px.)</span>
                                                                     <input type="file" class="form-control" name="imageupdate" id="imageupdate" autofocus>
                                                                     <span class="text-danger">{{ $errors->first('imageupdate') }}</span>
 

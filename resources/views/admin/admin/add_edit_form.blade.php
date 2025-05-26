@@ -28,4 +28,9 @@
         {!! Form::select('role_id', ['' => 'Select a Role']+$roles, null, ['class' => 'form-control']) !!}
         {!! APFrmErrHelp::showErrors($errors, 'role_id') !!}
     </div>
+    <div class="form-group {!! APFrmErrHelp::hasError($errors, 'role_id') !!}">
+        {!! Form::label('is_approval_user', 'Approval User', ['class' => 'bold']) !!}
+        <input type="checkbox" name="is_approval_user" id="is_approval_user" {{isset($user) && $user->is_approval_user==1 ? 'checked':''}} >
+        {!! APFrmErrHelp::showErrors($errors, 'is_approval_user') !!}
+    </div>
 </div>

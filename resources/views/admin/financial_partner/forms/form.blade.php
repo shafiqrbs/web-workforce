@@ -1,3 +1,11 @@
+<?php
+$lang = config('default_lang');
+if (isset($faq))
+    $lang = $faq->lang;
+$lang = MiscHelper::getLang($lang);
+$direction = MiscHelper::getLangDirection($lang);
+$queryString = MiscHelper::getLangQueryStr();
+?>
 {!! APFrmErrHelp::showErrorsNotice($errors) !!}
 @include('flash::message')
 <div class="form-body">
@@ -38,6 +46,13 @@
     </div>
     <div class="row">
         <div class="col-md-6">
+            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'partner_group') !!}">
+                {!! Form::label('Partner Group','Partner Group', ['class' => 'bold']) !!} <span class="red">*</span>
+                {!! Form::select('partner_group', ['' =>'Choose group']+['rmg-factories'=>'RMG Factories','workforce-nutrition'=>'Workforce Nutrition','fair-price'=>'Fair Price'],null, array('class'=>'form-control event_type', 'id'=>'event_type','required'=>'required')) !!}
+                {!! APFrmErrHelp::showErrors($errors, 'partner_group') !!}
+            </div>
+        </div>
+        <div class="col-md-6">
             <div class="form-group {!! APFrmErrHelp::hasError($errors, 'mobile') !!}">
                 {!! Form::label('mobile', 'Mobile Number', ['class' => 'bold']) !!} <span class="red">*</span>
                 {!! Form::text('mobile', null, array('class'=>'form-control', 'id'=>'mobile', 'placeholder'=>'Mobile', 'autocomplete'=>'off','required'=>'required')) !!}
@@ -51,40 +66,34 @@
                 {!! APFrmErrHelp::showErrors($errors, 'email') !!}
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'facebook_link') !!}">
+                {!! Form::label('facebook_link', 'Web URL', ['class' => 'bold']) !!}
+                {!! Form::text('facebook_link', null, array('class'=>'form-control', 'id'=>'facebook_link', 'placeholder'=>'Web URL', 'autocomplete'=>'off')) !!}
+                {!! APFrmErrHelp::showErrors($errors, 'facebook_link') !!}
+            </div>
+        </div>
     </div>
 
     <div class="row">
         <div class="col-md-6">
             <div class="form-group {!! APFrmErrHelp::hasError($errors, 'address') !!}">
                 {!! Form::label('address', 'Address', ['class' => 'bold']) !!}
-                {!! Form::textarea('address', null, array('class'=>'form-control', 'id'=>'address', 'placeholder'=>'Address', 'autocomplete'=>'off', 'rows'=>3)) !!}
+                {!! Form::textarea('address', null, array('class'=>'form-control', 'id'=>'description', 'placeholder'=>'Address', 'autocomplete'=>'off', 'rows'=>3)) !!}
                 {!! APFrmErrHelp::showErrors($errors, 'address') !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group {!! APFrmErrHelp::hasError($errors, 'short_message') !!}">
                 {!! Form::label('short_message', 'Short Message', ['class' => 'bold']) !!}
-                {!! Form::textarea('short_message', null, array('class'=>'form-control', 'id'=>'short_message', 'placeholder'=>'Short Message', 'autocomplete'=>'off', 'rows'=>3)) !!}
+                {!! Form::textarea('short_message', null, array('class'=>'form-control', 'id'=>'description', 'placeholder'=>'Short Message', 'autocomplete'=>'off', 'rows'=>3)) !!}
                 {!! APFrmErrHelp::showErrors($errors, 'short_message') !!}
             </div>
         </div>
     </div>
 
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group {!! APFrmErrHelp::hasError($errors, 'facebook_link') !!}">
-                    {!! Form::label('facebook_link', 'Web URL', ['class' => 'bold']) !!}
-                    {!! Form::text('facebook_link', null, array('class'=>'form-control', 'id'=>'facebook_link', 'placeholder'=>'Web URL', 'autocomplete'=>'off')) !!}
-                    {!! APFrmErrHelp::showErrors($errors, 'facebook_link') !!}
-                </div>
-            </div>
-            {{--<div class="col-md-6">
-                <div class="form-group {!! APFrmErrHelp::hasError($errors, 'division_id') !!}">
-                    {!! Form::label('is_active', 'Status', ['class' => 'bold']) !!}
-                    {!! Form::select('is_active',$status,isset($financialPartner)?$financialPartner->is_active:0, array('class'=>'form-control', 'id'=>'is_active')) !!}
-                    {!! APFrmErrHelp::showErrors($errors, 'is_active') !!}
-                </div>
-            </div>--}}
+
         </div>
 
         <div class="form-actions">
@@ -98,5 +107,5 @@
 </div>
 @push('scripts')
 
-{{--@include('admin.shared.tinyMCE')--}}
+    @include('admin.shared.tinyMCE')
 @endpush

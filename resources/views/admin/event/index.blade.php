@@ -72,11 +72,6 @@
             stateSave: false,
             searching: false,
             pageLength: 25,
-
-            /*		"order": [[0, "desc"]],
-             paging: true,
-             info: true,
-             */
             ajax: {
                 url: '{!! route('list.events') !!}',
                 data: function (d) {
@@ -84,8 +79,15 @@
                     d.type = $('input[name=type]').val();
                 }
             }, columns: [
-                /*{data: 'id_checkbox', name: 'id_checkbox', orderable: false, searchable: false},*/
-                {data: 'rownum', name: 'rownum'},
+                {
+                    data: null,
+                    name: 'rownum',
+                    orderable: false,
+                    searchable: false,
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
                 {data: 'event_name', name: 'event_name'},
                 {data: 'event_type', name: 'event_type'},
                 {data: 'status', name: 'status'},
@@ -124,13 +126,13 @@
     }
 
     function make_not_active(id) {
-        var isActiveColumn = $('#onclick_active_' + id).closest('tr').find('td:eq( 6 )');
+        var isActiveColumn = $('#onclick_active_' + id).closest('tr').find('td:eq( 3 )');
         $.post("{{ route('make.not.active.event') }}", {id: id, _method: 'PUT', _token: '{{ csrf_token() }}'})
             .done(function (response) {
                 if (response.status == 'ok')
                 {
                     $('#onclick_active_' + id).attr("onclick", "make_active(" + id + ")");
-                    $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Active");
+                    $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Approved");
                     isActiveColumn.text(response.value);
                 } else
                 {
@@ -139,14 +141,14 @@
             });
     }
     function make_active(id) {
-        var isActiveColumn = $('#onclick_active_' + id).closest('tr').find('td:eq( 6 )');
+        var isActiveColumn = $('#onclick_active_' + id).closest('tr').find('td:eq( 3 )');
 
         $.post("{{ route('make.active.event') }}", {id: id, _method: 'PUT', _token: '{{ csrf_token() }}'})
             .done(function (response) {
                 if (response.status == 'ok')
                 {
                     $('#onclick_active_' + id).attr("onclick", "make_not_active(" + id + ")");
-                    $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Inactive");
+                    $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Not Approved");
                     isActiveColumn.text(response.value);
                 } else
                 {

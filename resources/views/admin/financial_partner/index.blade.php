@@ -84,7 +84,15 @@
                     d.email = $('input[name=email]').val();
                 }
             }, columns: [
-                {data: 'rownum', name: 'rownum',orderable: false},
+                {
+                    data: null,
+                    name: 'rownum',
+                    orderable: false,
+                    searchable: false,
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
                 {data: 'name', name: 'name',orderable: false},
                 {data: 'email', name: 'email',orderable: false},
                 {data: 'mobile', name: 'mobile',orderable: false},
@@ -135,7 +143,7 @@
                 if (response.status == 'ok')
                 {
                     $('#onclick_active_' + id).attr("onclick", "make_active(" + id + ")");
-                    $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Active");
+                    $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Approved");
                     isActiveColumn.text(response.value);
                 } else
                 {
@@ -151,7 +159,7 @@
                 if (response.status == 'ok')
                 {
                     $('#onclick_active_' + id).attr("onclick", "make_not_active(" + id + ")");
-                    $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Inactive");
+                    $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Not Approved");
                     isActiveColumn.text(response.value);
                 } else
                 {

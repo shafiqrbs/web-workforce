@@ -108,52 +108,36 @@
 
                                                             <div class="col-lg-9">
 
-                                                                <div class="form-group">
-                                                                    <label class="control-label" for="post_type">Post Type</label>
-                                                                    <select class="" name="post_type" id="post_type">
-                                                                        <option value="Achievement">Achievement</option>
-                                                                        <option value="Notice">Notice</option>
-                                                                        <option value="Resource">Resource</option>
-                                                                        <option value="Case-Study">Case Story</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
-
-                                                                    <label class="control-label" for="title">Title</label>
-                                                                    <input type="text" class="form-control" name="title" id="title" autofocus value="{{ old('title') }}">
-                                                                    <span class="text-danger">{{ $errors->first('title') }}</span>
-
-
-                                                                </div>
-                                                                <div class="form-group {{ $errors->has('short_description') ? 'has-error' : '' }}">
-
-                                                                    <label class="control-label"
-                                                                           for="content">Short Description</label>
-
-                                                                    <textarea class="form-control" name="content"
-
-                                                                              id="short_description" cols="20" rows="5"
-
-                                                                              autofocus>{{ old('short_description') }}</textarea>
-
-                                                                    <span class="text-danger">{{ $errors->first('short_description') }}</span>
-                                                                </div>
-                                                                <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
-
-                                                                    <label class="control-label"
-
-                                                                           for="content">Content</label>
-
-                                                                    <textarea class="form-control" name="content"
-
-                                                                              id="description" cols="40" rows="10"
-
-                                                                              autofocus>{{ old('content') }}</textarea>
-
-                                                                    <span class="text-danger">{{ $errors->first('content') }}</span>
+                                                                <div class="form-group {!! APFrmErrHelp::hasError($errors, 'post_type') !!}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                    {!! Form::label('Post Type', 'Post Type', ['class' => 'bold']) !!} <span class="red">*</span>
+                                                                    {!! Form::select('post_type', ['' =>'Choose type']+['NEWS'=>'News','NOTICE'=>'Notice','MESSAGE'=>'Message','OTHERS'=>'Others'],null, array('class'=>'form-control post_type', 'id'=>'post_type','required'=>'required')) !!}
+                                                                    {!! APFrmErrHelp::showErrors($errors, 'post_type') !!}
                                                                 </div>
 
-                                                                <div class="clearfix"></div>
+                                                                <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                    <div class="form-group {!! APFrmErrHelp::hasError($errors, 'title') !!}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                        {!! Form::label('title', 'Title', ['class' => 'bold']) !!}
+                                                                        {!! Form::text('title', null, array('class'=>'form-control ', 'id'=>'', 'placeholder'=>'Title', 'autocomplete'=>'off','rows'=>1)) !!}
+                                                                        {!! APFrmErrHelp::showErrors($errors, 'title') !!}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group {{ $errors->has('short_description') ? 'has-error' : '' }}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                    <div class="form-group {!! APFrmErrHelp::hasError($errors, 'event_message') !!}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                        {!! Form::label('short_description', 'Short Description', ['class' => 'bold']) !!}
+                                                                        {!! Form::textarea('short_description', null, array('class'=>'form-control ', 'id'=>'', 'placeholder'=>'Short Description', 'autocomplete'=>'off','rows'=>1)) !!}
+                                                                        {!! APFrmErrHelp::showErrors($errors, 'short_description') !!}
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                    <div class="form-group {!! APFrmErrHelp::hasError($errors, 'content') !!}" style="margin-bottom: 0px;padding-bottom: 12px;">
+                                                                        {!! Form::label('content', 'Content', ['class' => 'bold']) !!}
+                                                                        {!! Form::textarea('content', null, array('class'=>'form-control ', 'id'=>'description', 'placeholder'=>'Short Description', 'autocomplete'=>'off','rows'=>1)) !!}
+                                                                        {!! APFrmErrHelp::showErrors($errors, 'content') !!}
+                                                                    </div>
+                                                                </div>
+
+                                                                {{--<div class="clearfix"></div>
                                                                 <div class="blogboxint">
 
                                                                     <div class="form-group">
@@ -173,7 +157,7 @@
                                                                     </div>
 
                                                                 </div>
-                                                                <div class="clearfix"></div>
+                                                                <div class="clearfix"></div>--}}
 
 
                                                             </div>
@@ -236,7 +220,7 @@
 
                                                                         <label class="control-label"
 
-                                                                               for="Upload Image">Featured Image</label> <span style="font-size: 10px">( Greater than or equal to width 1920px & height 730px. )</span>
+                                                                               for="Upload Image">Featured Image</label> <span style="font-size: 10px">(Greater than or equal to width 1920px & height 730px)</span>
 
 
                                                                         <input type="file" class="form-control"

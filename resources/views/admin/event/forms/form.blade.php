@@ -89,7 +89,7 @@ $queryString = MiscHelper::getLangQueryStr();
         <div class="col-md-12">
             <div class="form-group {!! APFrmErrHelp::hasError($errors, 'event_message') !!}">
                 {!! Form::label('Event Message', __('messages.Event_Message'), ['class' => 'bold']) !!}
-                {!! Form::textarea('event_message', null, array('class'=>'form-control', 'id'=>'event_message', 'placeholder'=>__('messages.Event_Message'), 'autocomplete'=>'off','rows'=>3)) !!}
+                {!! Form::textarea('event_message', null, array('class'=>'form-control ', 'id'=>'description', 'placeholder'=>__('messages.Event_Message'), 'autocomplete'=>'off','rows'=>3)) !!}
                 {!! APFrmErrHelp::showErrors($errors, 'event_message') !!}
             </div>
         </div>
@@ -99,7 +99,7 @@ $queryString = MiscHelper::getLangQueryStr();
         <div class="col-md-12">
             <div class="form-group {!! APFrmErrHelp::hasError($errors, 'match_schedule_message') !!}">
                 {!! Form::label('Match Schedule Message', __('messages.Match_Schedule_Message'), ['class' => 'bold']) !!}
-                {!! Form::textarea('match_schedule_message', null, array('class'=>'form-control', 'id'=>'match_schedule_message', 'placeholder'=> __('messages.Match_Schedule_Message'), 'autocomplete'=>'off','rows'=>3)) !!}
+                {!! Form::textarea('match_schedule_message', null, array('class'=>'form-control', 'id'=>'description', 'placeholder'=> __('messages.Match_Schedule_Message'), 'autocomplete'=>'off','rows'=>3)) !!}
                 {!! APFrmErrHelp::showErrors($errors, 'match_schedule_message') !!}
             </div>
         </div>
@@ -134,3 +134,4 @@ $queryString = MiscHelper::getLangQueryStr();
 </script>
 @include('admin.shared.tinyMCE')
 @endpush
+

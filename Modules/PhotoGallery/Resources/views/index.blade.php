@@ -94,7 +94,7 @@
                     if (response.status == 'ok')
                     {
                         $('#onclick_active_' + id).attr("onclick", "make_active(" + id + ")");
-                        $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Active");
+                        $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Approved");
                         isActiveColumn.text(response.value);
                     } else
                     {
@@ -110,7 +110,7 @@
                     if (response.status == 'ok')
                     {
                         $('#onclick_active_' + id).attr("onclick", "make_not_active(" + id + ")");
-                        $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Inactive");
+                        $('#onclick_active_' + id).html("<i class=\"fas fa-check-square\"></i> Not Approved");
                         isActiveColumn.text(response.value);
                     } else
                     {

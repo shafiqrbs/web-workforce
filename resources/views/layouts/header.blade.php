@@ -96,6 +96,7 @@
                                 <li class=""><a href="{{route('cms.events')}}">Events</a></li>
                                 <li class=""><a href="{{route('cms.news')}}">News & Notice</a></li>
                                 <li class=""><a href="{{route('cms.resources')}}">Resources</a></li>
+                                <li class=""><a href="{{route('photo_gallery')}}">Gallery</a></li>
                                 <li><a href="{{route('index')}}#contact">Contact</a></li>
                             </ul>
                         </div>

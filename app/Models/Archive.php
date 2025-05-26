@@ -33,7 +33,7 @@ class Archive extends Model
                 ,'feature_image','type','short_description'
             ]);
         }
-        $data = $data->where('id',$id)->where('is_active',1)->where('deleted_at',null)->first();
+        $data = $data->where('id',$id)->where('deleted_at',null)->first();
         return $data;
     }
 

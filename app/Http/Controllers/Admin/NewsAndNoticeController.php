@@ -49,9 +49,9 @@ class NewsAndNoticeController extends Controller
                 })
                 ->addColumn('status', function($row){
                     if ($row->is_active == 1){
-                        $status = 'Active';
+                        $status = __('messages.Approved');
                     }else{
-                        $status = 'Inactive';
+                        $status = __('messages.NotApproved');
                     }
                     return $status;
                 })
@@ -79,14 +79,28 @@ class NewsAndNoticeController extends Controller
 
                 ->addColumn('action', function ($row) {
                     $active_class = '';
+                    $action = __('messages.Actions');
+                    $edit = __('messages.Edit');
+                    $delete = __('messages.Delete');
+
                     if ((int)$row->is_active == 1) {
-                        $active_txt = 'Inactive';
+                        $active_txt = __('messages.NotApproved');
                         $active_href = 'make_not_active(' . $row->id . ');';
                         $active_icon = 'square-o';
                     } else {
-                        $active_txt = 'Active';
+                        $active_txt = __('messages.Approved');
                         $active_href = 'make_active(' . $row->id . ');';
                         $active_icon = 'check-square';
+                    }
+                    // Build the approval button only if the user has permission
+                    $approval_btn = '';
+                    if (auth()->user()->is_approval_user === 1) {
+                        $approval_btn = '
+                            <li>
+                                <a class="' . $active_class . '" href="javascript:void(0);" onClick="' . $active_href . '" id="onclick_active_' . $row->id . '">
+                                    <i class="fas fa-check-square"></i>' . $active_txt . '
+                                </a>
+                            </li>';
                     }
                     return '
 				<div class="btn-group">
@@ -98,9 +112,7 @@ class NewsAndNoticeController extends Controller
 							<a href="' . route('edit.news.notice', ['id' => $row->id]) . '"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
 						</li>						
                         
-                        <li>
-                        <a class="' . $active_class . '" href="javascript:void(0);" onClick="' . $active_href . '" id="onclick_active_' . $row->id . '"><i class="fas fa-check-square"></i>' . $active_txt . '</a>
-                        </li>
+                        '.$approval_btn.'
                         
                         <li>
                             <a href="javascript:void(0);" onclick="delete_news_notice(' . $row->id . ');" class=""><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
@@ -130,7 +142,7 @@ class NewsAndNoticeController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'content' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image',
         ], [
             'title.required' => ' The title field is required.',
             'slug.required' => ' The slug field is required.',
@@ -159,7 +171,9 @@ class NewsAndNoticeController extends Controller
         $newsAndNotice->content = $request->input('content');
         $newsAndNotice->member_id = $request->input('member_id');
         $newsAndNotice->post_type = $request->input('post_type');
+        $newsAndNotice->short_description = $request->input('short_description');
         $newsAndNotice->is_sticky = $request->input('is_sticky')?$request->input('is_sticky'):0;
+        $newsAndNotice->is_active = false;
         $newsAndNotice->created_by= auth()->id();
         if ($image != '') {
             $newsAndNotice->image = $input['imagename'];
@@ -206,12 +220,12 @@ class NewsAndNoticeController extends Controller
     {
 
         $this->validate($request, [
-            'title_update' => 'required',
-            'content_update' => 'required',
-            'imageupdate' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'required',
+            'content' => 'required',
+//            'imageu' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], [
-            'title_update.required' => ' The title field is required.',
-            'content_update.required' => ' The content field is required.',
+            'title.required' => ' The title field is required.',
+            'content.required' => ' The content field is required.',
         ]);
 
         if ($request->cate_id_update != '') {
@@ -221,10 +235,11 @@ class NewsAndNoticeController extends Controller
         }
 
         $newsAndNotice = NewsAndNotice::findOrFail($request->id);
-        $newsAndNotice->title = $request->title_update;
-        $newsAndNotice->content = $request->content_update;
+        $newsAndNotice->title = $request->title;
+        $newsAndNotice->content = $request->content;
         $newsAndNotice->member_id = $request->member_id;
         $newsAndNotice->post_type = $request->post_type;
+        $newsAndNotice->short_description = $request->short_description;
         $newsAndNotice->is_sticky = $request->input('is_sticky')?$request->input('is_sticky'):0;
         $newsAndNotice->update();
         $this->validate($request, [
@@ -310,7 +325,7 @@ class NewsAndNoticeController extends Controller
             $archive = NewsAndNotice::findOrFail($id);
             $archive->is_active = 1;
             $archive->update();
-            return new JsonResponse(array('status'=>'ok','value'=>'Active'));
+            return new JsonResponse(array('status'=>'ok','value'=>'Approved'));
         } catch (ModelNotFoundException $e) {
             echo 'notok';
         }
@@ -323,7 +338,7 @@ class NewsAndNoticeController extends Controller
             $archive = NewsAndNotice::findOrFail($id);
             $archive->is_active = 0;
             $archive->update();
-            return new JsonResponse(array('status'=>'ok','value'=>'Inactive'));
+            return new JsonResponse(array('status'=>'ok','value'=>'Not Approved'));
         } catch (ModelNotFoundException $e) {
             echo 'notok';
         }

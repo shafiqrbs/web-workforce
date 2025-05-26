@@ -2,7 +2,7 @@
 <script src="{{ asset('admin_assets/global/plugins/tinymce/js/tinymce/tinymce.min.js') }}"></script>
 <script>
 tinymce.init({
-    selector: '#industry,#faq_question,#faq_answer,#slider_description,#sub_title,#about_club',
+    selector: '#industry,#faq_question,#faq_answer,#slider_description,#sub_title,#about_club,#description,#short_description',
     height: 150,
     forced_root_block: '',
     language: '{{ $lang }}',

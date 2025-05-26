@@ -35,6 +35,7 @@ class FinancialPartnerFormRequest extends Request
                 'email' => 'required|email|unique:financial_partners,email'.$id_str,
                 'mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8|max:12|unique:financial_partners,mobile'.$id_str,
                 'facebook_link' => 'nullable|url',
+                'partner_group' => 'required',
 
             ];
         } else {
@@ -44,6 +45,7 @@ class FinancialPartnerFormRequest extends Request
                 'mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8|max:12|unique:financial_partners,mobile'.$id_str,
                 'profile_image' => 'required',
                 'facebook_link' => 'nullable|url',
+                'partner_group' => 'required',
             ];
         }
     }

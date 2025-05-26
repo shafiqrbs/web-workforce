@@ -44,7 +44,7 @@ class AdminController extends Controller
 
     public function createAdminUser()
     {
-        $roles = Role::select('role_name', 'id')->orderBy('role_name')->pluck('role_name', 'id')->toArray();
+        $roles = Role::select('role_name', 'id')->where('role_abbreviation','SUP_ADM')->orderBy('role_name')->pluck('role_name', 'id')->toArray();
         /*
           print_r($roles);
           print_r(['0' => 'Select a Role']+$roles);exit;
@@ -59,12 +59,13 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->role_id = $request->role_id;
+        $user->is_approval_user = $request->is_approval_user==='on' ? 1 : 0;
         $user->save();
         /*         * ******************** */
-        Mail::send('admin.admin.emails.new_admin_user_created', ['user' => $user], function ($msg) use ($user) {
+        /*Mail::send('admin.admin.emails.new_admin_user_created', ['user' => $user], function ($msg) use ($user) {
             $msg->from(config('mail.recieve_to.address'), config('mail.recieve_to.name'));
             $msg->to($user->email, $user->name)->subject('Please set your password to ' . config('app.name') . ' admin panel.');
-        });
+        });*/
         /*         * ******************** */
         flash('New Admin User has been created!')->success();
         return \Redirect::route('edit.admin.user', array($user->id));
@@ -82,6 +83,7 @@ class AdminController extends Controller
         $user = Admin::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->is_approval_user = $request->is_approval_user==='on' ? 1 : 0;
         if (!empty($request->password)) {
             $user->password = Hash::make($request->password);
         }
