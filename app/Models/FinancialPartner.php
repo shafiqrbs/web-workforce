@@ -25,6 +25,20 @@ class FinancialPartner extends Model
         $financialPartner = FinancialPartner::where('is_active',1)->orderBy('sort_order')->get()->toArray();
         return $financialPartner;
     }
+
+    public static function getAchievement(){
+        $totals = FinancialPartner::where('is_active', 1)
+            ->selectRaw('SUM(male) as total_male, SUM(female) as total_female')
+            ->first();
+
+        $financialPartnerGroup = FinancialPartner::where('is_active', 1)
+            ->whereNotNull('partner_group')
+            ->select('partner_group', \DB::raw('COUNT(*) as total'))
+            ->groupBy('partner_group')
+            ->get()
+            ->toArray();
+        return ['totals'=>$totals,'financialPartnerGroup'=>$financialPartnerGroup];
+    }
     // TODO :: boot
     // boot() function used to insert logged user_id at 'created_by' & 'updated_by'
     public static function boot(){

@@ -6,6 +6,7 @@ use App;
 use App\Cms;
 use App\CmsContent;
 use App\Models\Event;
+use App\Models\FinancialPartner;
 use App\Models\NewsAndNotice;
 use App\Models\Athlete;
 use App\Models\AthleteCompetition;
@@ -75,6 +76,8 @@ class IndexController extends Controller
 //        dd($events);
         $aboutContent = CmsContent::where('page_id',14)->first();
 
+        $achievements = FinancialPartner::getAchievement();
+
         return view('welcome',[
             'sliders'=> $sliders,
             'aboutContent'=> $aboutContent,
@@ -83,6 +86,7 @@ class IndexController extends Controller
             'seo'=>$seo,
             'financialPartner'=>$financialPartner,
             'newsAndNotices'=>$newsAndNotices,
+            'achievements'=>$achievements,
             'events'=>$events
         ]);
     }

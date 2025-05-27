@@ -1,7 +1,7 @@
 {!! APFrmErrHelp::showErrorsNotice($errors) !!}
 @include('flash::message')
 <div class="form-body">
-    <h3>Drag and Drop to Sort the Financial Partner</h3>
+    <h3>Drag and Drop to Sort the Partner</h3>
     <div id="financial_partner_sort_data_div">
     </div>
 </div>
