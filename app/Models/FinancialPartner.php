@@ -18,7 +18,7 @@ class FinancialPartner extends Model
     protected $dates = ['created_at', 'updated_at','deleted_at'];
 
     protected $fillable = [
-        'name', 'mobile','male','female','latitude','longitude', 'email', 'address', 'short_message', 'facebook_link', 'profile_image','is_active','partner_group'
+        'name', 'mobile','male','female','latitude','longitude', 'email', 'address', 'short_message', 'facebook_link', 'profile_image','is_active','partner_group','male','female','latitude','longitude'
     ];
 
     public static function getFinancialPartner(){
