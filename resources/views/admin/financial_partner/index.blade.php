@@ -14,11 +14,7 @@
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li> <a href="{{ route('admin.home') }}">Home</a> <i class="fa fa-circle"></i> </li>
-<<<<<<< HEAD
                 <li> <span>Our Partner</span> </li>
-=======
-                <li> <span>Our Partners</span> </li>
->>>>>>> 7fce79b53e3ca10ff208b0a599bbf33dff19d77d
             </ul>
         </div>
         <!-- END PAGE BAR -->

@@ -18,13 +18,18 @@ class FinancialPartnerController extends Controller
         return view('financial-partner.index', compact(['pageTitle','partnerData','bannerData']));
     }
 
-    /*public function clubDetails($clubID){
-        $pageTitle = "Club Details";
-        if ($clubID){
-            $clubDetails = ShootingSportClub::find($clubID);
-            $division = DB::table('division')->find($clubDetails['division_id']);
+    public function details($slug){
+        $pageTitle = "Details";
+        $bannerData = Banner::getPageWiseBannerInfo('financial-partner');
+
+        if ($slug==='male' || $slug==='female') {
+            $partnerDetails = FinancialPartner::where('is_active',1)->whereNotNull($slug)->where($slug,'>',0)->orderBy('sort_order');
+        }else{
+            $partnerDetails = FinancialPartner::where('is_active',1)->where('partner_group',$slug)->orderBy('sort_order');
         }
-        return view('club.details',compact(['pageTitle','clubDetails','division']));
-    }*/
+        $partnerDetails = $partnerDetails->paginate(10);
+
+        return view('financial-partner.achievement',compact(['pageTitle','partnerDetails','bannerData']));
+    }
 
 }

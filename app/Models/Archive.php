@@ -90,6 +90,15 @@ class Archive extends Model
         return $data;
     }
 
+    public static function getLatestArchive($limit,$type){
+        $data = self::where('is_active',1)
+            ->where('type',$type)
+            ->orderby('sort_order','asc')
+            ->limit($limit)
+            ->get();
+        return $data;
+    }
+
 
     // TODO :: boot
     // boot() function used to insert logged user_id at 'created_by' & 'updated_by'

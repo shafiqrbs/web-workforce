@@ -26,6 +26,11 @@ class FinancialPartner extends Model
         return $financialPartner;
     }
 
+    public static function getFinancialPartnerByType($slug){
+        $factories = FinancialPartner::where('is_active',1)->where('partner_group',$slug)->orderBy('sort_order')->get()->toArray();
+        return $factories;
+    }
+
     public static function getAchievement(){
         $totals = FinancialPartner::where('is_active', 1)
             ->selectRaw('SUM(male) as total_male, SUM(female) as total_female')

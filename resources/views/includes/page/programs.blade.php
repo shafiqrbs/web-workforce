@@ -8,58 +8,33 @@
             <div class="title-shape"></div>
         </div>
         <div class="row clearfix">
-            <div class="col-lg-3 col-md-6 col-sm-12 feature-block">
+            @if(sizeof($programs)>0)
+                @foreach($programs as $program)
+                    <div class="col-lg-3 col-md-6 col-sm-12 feature-block">
                 <div class="feature-block-two wow fadeInUp animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image-box"><img src="assets/images/resource/feature-3.jpg" alt=""></figure>
+                        <figure class="image-box">
+                            @if($img = $program['feature_image'])
+                                {{ ImgUploader::print_image("archive/mid/$img") }}
+                            @else
+                                <img src="{{asset('assets/no-image.jpeg')}}" alt="">
+                            @endif
+                        </figure>
                         <div class="lower-content">
                             <div class="icon-box"><i class="flaticon-group"></i></div>
                             <div class="light-icon"><i class="flaticon-group"></i></div>
-                            <h4><a href="about.html">More About Our Councilors</a></h4>
-                            <div class="btn-box"><a href="about.html">Read More<i class="flaticon-right-arrow"></i></a></div>
+                            @php
+                                $maxLength = 20;
+                                $cropped = strlen($program->archive_name_en) > $maxLength ? substr($program->archive_name_en, 0, $maxLength) . '...' : $program->archive_name_en;
+                                    @endphp
+                            <h4><a href="">{{$cropped}}</a></h4>
+                            <div class="btn-box"><a href="">Read More<i class="flaticon-right-arrow"></i></a></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 feature-block">
-                <div class="feature-block-two wow fadeInUp animated animated" data-wow-delay="200ms" data-wow-duration="1500ms">
-                    <div class="inner-box">
-                        <figure class="image-box"><img src="assets/images/resource/feature-4.jpg" alt=""></figure>
-                        <div class="lower-content">
-                            <div class="icon-box"><i class="flaticon-award"></i></div>
-                            <div class="light-icon"><i class="flaticon-award"></i></div>
-                            <h4><a href="about.html">Apply for Whitehall Awards</a></h4>
-                            <div class="btn-box"><a href="about.html">Read More<i class="flaticon-right-arrow"></i></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 feature-block">
-                <div class="feature-block-two wow fadeInUp animated animated" data-wow-delay="400ms" data-wow-duration="1500ms">
-                    <div class="inner-box">
-                        <figure class="image-box"><img src="assets/images/resource/feature-5.jpg" alt=""></figure>
-                        <div class="lower-content">
-                            <div class="icon-box"><i class="flaticon-analytics"></i></div>
-                            <div class="light-icon"><i class="flaticon-analytics"></i></div>
-                            <h4><a href="about.html">Current Annual Report</a></h4>
-                            <div class="btn-box"><a href="about.html">Read More<i class="flaticon-right-arrow"></i></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 feature-block">
-                <div class="feature-block-two wow fadeInUp animated animated" data-wow-delay="600ms" data-wow-duration="1500ms">
-                    <div class="inner-box">
-                        <figure class="image-box"><img src="assets/images/resource/feature-6.jpg" alt=""></figure>
-                        <div class="lower-content">
-                            <div class="icon-box"><i class="flaticon-calendar-2"></i></div>
-                            <div class="light-icon"><i class="flaticon-calendar-2"></i></div>
-                            <h4><a href="about.html">Upcoming Council Meetings</a></h4>
-                            <div class="btn-box"><a href="about.html">Read More<i class="flaticon-right-arrow"></i></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @endif
         </div>
     </div>
 </section>

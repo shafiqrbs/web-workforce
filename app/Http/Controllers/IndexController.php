@@ -69,14 +69,16 @@ class IndexController extends Controller
         $seo = SEO::where('seo.page_title', 'like', 'front_index_page')->first();
         $financialPartner = App\Models\FinancialPartner::getFinancialPartner();
 
+        $factories = App\Models\FinancialPartner::getFinancialPartnerByType('factories');
+
         $newsAndNotices = NewsAndNotice::getLatestNews(3);
         $abouts = NewsAndNotice::getPostByType('NEWS',3);
         $events = Event::getLatestEvent(3);
 
-//        dd($events);
         $aboutContent = CmsContent::where('page_id',14)->first();
 
         $achievements = FinancialPartner::getAchievement();
+        $programs = App\Models\Archive::getLatestArchive(4,'programs');
 
         return view('welcome',[
             'sliders'=> $sliders,
@@ -87,7 +89,9 @@ class IndexController extends Controller
             'financialPartner'=>$financialPartner,
             'newsAndNotices'=>$newsAndNotices,
             'achievements'=>$achievements,
-            'events'=>$events
+            'events'=>$events,
+            'programs'=>$programs,
+            'factories' => $factories
         ]);
     }
 
