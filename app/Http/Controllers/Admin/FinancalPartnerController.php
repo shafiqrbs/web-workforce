@@ -140,6 +140,10 @@ class FinancalPartnerController extends Controller
             $fileName = ImgUploader::UploadImage('financial_partner', $request->file('profile_image'), $image_name, 200, 150);
             $input['profile_image'] = $fileName;
         }
+        // Ensure 'male' and 'female' are present and not null
+        $input['male'] = $request->input('male', 0);
+        $input['female'] = $request->input('female', 0);
+
         $financialMember = FinancialPartner::create($input);
         $financialMember['sort_order'] = $financialMember->id;
         $financialMember['is_active'] = false;
@@ -169,6 +173,10 @@ class FinancalPartnerController extends Controller
             $fileName = ImgUploader::UploadImage('financial_partner', $request->file('profile_image'), $image_name, 200, 150);
             $input['profile_image'] = $fileName;
         }
+
+        // Ensure 'male' and 'female' are present and not null
+        $input['male'] = $request->input('male', $financialPartner->male);
+        $input['female'] = $request->input('female', $financialPartner->female);
 
         $financialPartner->update($input);
         flash('Financial partner has been updated!')->success();

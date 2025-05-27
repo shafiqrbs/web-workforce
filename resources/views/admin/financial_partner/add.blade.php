@@ -8,11 +8,7 @@
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li> <a href="{{ route('admin.home') }}">Home</a> <i class="fa fa-circle"></i> </li>
-<<<<<<< HEAD
                 <li> <a href="{{ route('financial_partner_list') }}">Our Partner</a> <i class="fa fa-circle"></i> </li>
-=======
-                <li> <a href="{{ route('financial_partner_list') }}">Our Partners</a> <i class="fa fa-circle"></i> </li>
->>>>>>> 7fce79b53e3ca10ff208b0a599bbf33dff19d77d
                 <li> <span>Add Partner</span> </li>
             </ul>
         </div>
