@@ -50,6 +50,7 @@ class CmsContentController extends Controller
                 DB::raw('@rownum  := @rownum  + 1 AS rownum'),
                 'cms.page_slug',
                 'cms_content.page_title',
+                'cms_content.page_sub_title',
                 'cms.id',
                 'cms.show_in_top_menu',
                 'cms.show_in_footer_menu',

@@ -14,7 +14,7 @@ $queryString = MiscHelper::getLangQueryStr();
         <div class="col-md-12">
             <div class="form-group {!! APFrmErrHelp::hasError($errors, 'type') !!}">
                 {!! Form::label('Event Type', 'Choose Type', ['class' => 'bold']) !!} <span class="red">*</span>
-                {!! Form::select('type', ['' =>'Choose type']+['achievement'=>'Achievement','notice'=>'Notice','resource'=>'Resource','case-story'=>'Case Story'],null, array('class'=>'form-control type', 'id'=>'type','required'=>'required')) !!}
+                {!! Form::select('type', ['' =>'Choose type']+['achievement'=>'Achievement','notice'=>'Notice','resource'=>'Resource','case-story'=>'Case Story','programs'=>'Programs'],null, array('class'=>'form-control type', 'id'=>'type','required'=>'required')) !!}
                 {!! APFrmErrHelp::showErrors($errors, 'type') !!}
             </div>
         </div>

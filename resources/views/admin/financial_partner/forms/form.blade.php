@@ -73,6 +73,36 @@ $queryString = MiscHelper::getLangQueryStr();
                 {!! APFrmErrHelp::showErrors($errors, 'facebook_link') !!}
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'email') !!}">
+                {!! Form::label('male', 'Male', ['class' => 'bold']) !!}
+                {!! Form::text('male', null, array('class'=>'form-control', 'id'=>'male', 'placeholder'=>'Male', 'autocomplete'=>'off')) !!}
+                {!! APFrmErrHelp::showErrors($errors, 'male') !!}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'facebook_link') !!}">
+                {!! Form::label('female', 'Female', ['class' => 'bold']) !!}
+                {!! Form::text('female', null, array('class'=>'form-control', 'id'=>'female', 'placeholder'=>'Female', 'autocomplete'=>'off')) !!}
+                {!! APFrmErrHelp::showErrors($errors, 'female') !!}
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'facebook_link') !!}">
+                {!! Form::label('latitude', 'Latitude', ['class' => 'bold']) !!}
+                {!! Form::text('latitude', null, array('class'=>'form-control', 'id'=>'latitude', 'placeholder'=>'latitude', 'autocomplete'=>'off')) !!}
+                {!! APFrmErrHelp::showErrors($errors, 'latitude') !!}
+                <a href="https://www.gps-coordinates.net/" target="_blank">GPS Coordinates</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'longitude') !!}">
+                {!! Form::label('longitude', 'Longitude', ['class' => 'bold']) !!}
+                {!! Form::text('longitude', null, array('class'=>'form-control', 'id'=>'longitude', 'placeholder'=>'Longitude', 'autocomplete'=>'off')) !!}
+                {!! APFrmErrHelp::showErrors($errors, 'longitude') !!}
+            </div>
+        </div>
     </div>
 
     <div class="row">
@@ -92,9 +122,7 @@ $queryString = MiscHelper::getLangQueryStr();
         </div>
     </div>
 
-        <div class="row">
-
-        </div>
+        <div class="row"> </div>
 
         <div class="form-actions">
             {!! Form::button('Save <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>', array('class'=>'btn btn-large btn-primary', 'type'=>'submit')) !!}

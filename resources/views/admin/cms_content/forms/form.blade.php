@@ -14,6 +14,11 @@ $queryString = MiscHelper::getLangQueryStr();
         {!! Form::text('page_title', null, array('class'=>'form-control', 'id'=>'page_title', 'placeholder'=>'Page Title', 'dir'=>$direction)) !!}
         {!! APFrmErrHelp::showErrors($errors, 'page_title') !!}
     </div>
+    <div class="form-group {!! APFrmErrHelp::hasError($errors, 'page_sub_title') !!}">
+        {!! Form::label('page_sub_title', 'Page Sub Title', ['class' => 'bold']) !!}
+        {!! Form::text('page_title', null, array('class'=>'form-control', 'id'=>'page_sub_title', 'placeholder'=>'Page Sub Title', 'dir'=>$direction)) !!}
+        {!! APFrmErrHelp::showErrors($errors, 'page_sub_title') !!}
+    </div>
     <div class="form-group {!! APFrmErrHelp::hasError($errors, 'page_content') !!}">
         {!! Form::label('page_content', 'Page Content', ['class' => 'bold']) !!}
         {!! Form::textarea('page_content', null, array('class'=>'form-control', 'id'=>'page_content', 'placeholder'=>'Page Content')) !!}

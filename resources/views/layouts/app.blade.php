@@ -240,7 +240,7 @@ if (!isset($seo)) {
                             <div class="logo">
                                 <a href="{{ url('/') }}"><img src="{{asset('sitesetting_images/thumb/'.$siteSetting->site_logo)}}" alt="" /></a>
                             </div>
-                            <div class="content-box">
+                            {{--<div class="content-box">
                                 <h4>Book Now</h4>
                                 <form action="" method="post" class="booking-form">
                                     <div class="form-group">
@@ -256,7 +256,7 @@ if (!isset($seo)) {
                                         <button type="submit">Send Now</button>
                                     </div>
                                 </form>
-                            </div>
+                            </div>--}}
                             <div class="contact-info">
                                 <h4>Contact Info</h4>
                                 <ul>
