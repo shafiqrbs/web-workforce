@@ -26,9 +26,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
             <div class="row clearfix" style="padding-top: 15px;">
                 <div class="col-md-12 col-sm-12 footer-column">
                     <div class="footer-widget links-widget">
