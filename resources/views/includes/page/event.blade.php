@@ -9,7 +9,6 @@
             </div>
         </div>
 
-
         <section class="schedules-style-two ">
             <div class="layer-bg" style="background-color: #002856"></div>
             <div class="auto-container">

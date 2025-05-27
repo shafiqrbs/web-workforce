@@ -9,13 +9,20 @@
         <!-- banner-section -->
         @include('includes.page.aboutus')
         <!-- banner-section end -->
-
+        <!-- banner-section -->
+        @include('includes.page.achivement')
+        <!-- banner-section end -->
+        <!-- event-section -->
+        @include('includes.page.programs')
+        <!-- event-section end -->
         <!-- event-section -->
         @include('includes.page.event')
         <!-- event-section end -->
-
+        <!-- Financial Partner Section -->
+        @include('includes/factory-partner')
+        <!-- Financial Partner end -->
         <!-- banner-section -->
-        @include('includes.page.target')
+       {{-- @include('includes.page.target')--}}
         <!-- banner-section end -->
 
         <!-- news-section -->
@@ -25,10 +32,6 @@
         <!-- banner-section -->
       {{--  @include('includes.page.members')--}}
         <!-- banner-section end -->
-        <!-- banner-section -->
-        @include('includes.page.achivement')
-        <!-- banner-section end -->
-
 
         <!-- Financial Partner Section -->
         @include('includes/finacial-partner')

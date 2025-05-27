@@ -7,6 +7,7 @@
                         <div class="sec-title">
                             <h6><i class="flaticon-star"></i><span>Welcome to GAIN BANGLADESH</span></h6>
                             <h2>{{$aboutContent->page_title}}</h2>
+                            <h4>{{$aboutContent->page_sub_title}}</h4>
                             <div class="title-shape"></div>
                         </div>
                         <div class="text">  <?php echo $aboutContent->page_content ; ?>  </div>
@@ -24,9 +25,32 @@
         </div>
     </div>
 </section>
-
+<section class="solutions-section alternat-2" style="padding-top: 16px!important;">
+    <div class="auto-container">
+        <div class="inner-container mr-0">
+            <div class="lower-box clearfix">
+                <div class="bg-layer"></div>
+                <div class="text pull-left">
+                    <div class="icon-box"><i class="flaticon-idea"></i></div>
+                    <h3>Share Your Ideas to Help Our City’s Future.</h3>
+                    <p>We all have different interests, needs and hopes for our city future. What do you think?</p>
+                </div>
+                <div class="btn-box pull-right">
+                    <a href="index.html" class="theme-btn">Share your Say</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .solutions-section.alternat-2:before
+    {
+        height: 170px;
+    }
+</style>
+<br/>
 <!-- explore-section -->
-<section class="explore-section centred bg-color-2">
+{{--<section class="explore-section centred bg-color-2">
     <figure class="vector-image"><img src="{{asset('assets/images/icons/vector-1.png')}}" alt=""></figure>
     <div class="pattern-layer" style="background-image: url({{asset('assets/images/icons/vector-1.png')}});"></div>
     <div class="auto-container">
@@ -88,5 +112,5 @@
             </div>
         </div>
     </div>
-</section>
+</section>--}}
 <!-- explore-section end -->

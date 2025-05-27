@@ -14,7 +14,11 @@
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li> <a href="{{ route('admin.home') }}">Home</a> <i class="fa fa-circle"></i> </li>
+<<<<<<< HEAD
                 <li> <span>Our Partner</span> </li>
+=======
+                <li> <span>Our Partners</span> </li>
+>>>>>>> 7fce79b53e3ca10ff208b0a599bbf33dff19d77d
             </ul>
         </div>
         <!-- END PAGE BAR -->
@@ -28,6 +32,7 @@
                 <div class="portlet light portlet-fit portlet-datatable bordered">
                     <div class="portlet-title">
                         <div class="caption"> <i class="icon-settings font-dark"></i> <span class="caption-subject font-dark sbold uppercase">Manage Partner</span> </div>
+
                         <div class="actions">
                             <a href="{{ route('financial_partner_add') }}" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> Add New Partner</a>
                         </div>
