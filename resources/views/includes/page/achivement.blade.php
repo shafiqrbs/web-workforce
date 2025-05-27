@@ -1,13 +1,29 @@
 <section class="funfact-section" id="achievement">
-    <div class="pattern-layer" style="background-image: url('assets/images/shape/shape-7.png');"></div>
     <div class="auto-container">
         <div class="funfact-content">
             <div class="row clearfix">
-                <div class="col-lg-4 col-md-12 col-sm-12 title-column">
-                    <div class="sec-title">
-                        <h6><i class="flaticon-star"></i><span>Interesting Facts</span></h6>
-                        <h2>Achievements</h2>
-                        <div class="title-shape"></div>
+                <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+                    <div class="department-sidebar">
+                        <div class="sidebar-category">
+                            <div class="inner-box">
+                                <div class="widget-title">
+                                    <h3>Total Beneficiaries</h3>
+                                    <div class="title-shape"></div>
+                                </div>
+                                <div class="widget-content">
+                                    <ul class="category-list clearfix">
+                                        <li>
+                                            <div class="icon-box"><i class="flaticon-employee"></i></div>
+                                            <h5><a href="police-crime.html">Male -120</a></h5>
+                                        </li>
+                                        <li>
+                                            <div class="icon-box"><i class="flaticon-female"></i></div>
+                                            <h5><a href="trasport-traffic.html">Female -250</a></h5>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-12 col-sm-12 inner-column">
@@ -17,9 +33,9 @@
                                 <div class="funfact-block-one">
                                     <div class="inner-box">
                                         <div class="count-outer count-box counted">
-                                            <span class="count-text" data-speed="1500" data-stop="33+">33</span>
+                                            <span class="count-text" data-speed="1500" data-stop="243">243</span>
                                         </div>
-                                        <h6>RMG Factories have partnership with WFN</h6>
+                                        <h6>Workforce Nutrition Alliance Members Mens</h6>
                                     </div>
                                 </div>
                             </div>
@@ -27,9 +43,9 @@
                                 <div class="funfact-block-one">
                                     <div class="inner-box">
                                         <div class="count-outer count-box counted">
-                                            <span class="count-text" data-speed="1500" data-stop="243">243</span>
+                                            <span class="count-text" data-speed="1500" data-stop="33+">33</span>
                                         </div>
-                                        <h6>Workforce Nutrition Alliance Members</h6>
+                                        <h6>RMG Factories have partnership with WFN</h6>
                                     </div>
                                 </div>
                             </div>

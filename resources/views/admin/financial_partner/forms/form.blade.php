@@ -48,7 +48,7 @@ $queryString = MiscHelper::getLangQueryStr();
         <div class="col-md-6">
             <div class="form-group {!! APFrmErrHelp::hasError($errors, 'partner_group') !!}">
                 {!! Form::label('Partner Group','Partner Group', ['class' => 'bold']) !!} <span class="red">*</span>
-                {!! Form::select('partner_group', ['' =>'Choose group']+['rmg-factories'=>'RMG Factories','workforce-nutrition'=>'Workforce Nutrition','fair-price'=>'Fair Price'],null, array('class'=>'form-control event_type', 'id'=>'event_type','required'=>'required')) !!}
+                {!! Form::select('partner_group', ['' =>'Choose group']+['factories'=>'Factories','stakeholders'=>'Stakeholders','workforce-nutrition'=>'Workforce Nutrition','fair-price'=>'Fair Price'],null, array('class'=>'form-control event_type', 'id'=>'event_type','required'=>'required')) !!}
                 {!! APFrmErrHelp::showErrors($errors, 'partner_group') !!}
             </div>
         </div>
@@ -105,22 +105,22 @@ $queryString = MiscHelper::getLangQueryStr();
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'address') !!}">
-                {!! Form::label('address', 'Address', ['class' => 'bold']) !!}
-                {!! Form::textarea('address', null, array('class'=>'form-control', 'id'=>'description', 'placeholder'=>'Address', 'autocomplete'=>'off', 'rows'=>3)) !!}
-                {!! APFrmErrHelp::showErrors($errors, 'address') !!}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group {!! APFrmErrHelp::hasError($errors, 'address') !!}">
+                    {!! Form::label('address', 'Address', ['class' => 'bold']) !!}
+                    {!! Form::textarea('address', null, array('class'=>'form-control', 'id'=>'description', 'placeholder'=>'Address', 'autocomplete'=>'off', 'rows'=>3)) !!}
+                    {!! APFrmErrHelp::showErrors($errors, 'address') !!}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group {!! APFrmErrHelp::hasError($errors, 'short_message') !!}">
+                    {!! Form::label('short_message', 'Short Message', ['class' => 'bold']) !!}
+                    {!! Form::textarea('short_message', null, array('class'=>'form-control', 'id'=>'description', 'placeholder'=>'Short Message', 'autocomplete'=>'off', 'rows'=>3)) !!}
+                    {!! APFrmErrHelp::showErrors($errors, 'short_message') !!}
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="form-group {!! APFrmErrHelp::hasError($errors, 'short_message') !!}">
-                {!! Form::label('short_message', 'Short Message', ['class' => 'bold']) !!}
-                {!! Form::textarea('short_message', null, array('class'=>'form-control', 'id'=>'description', 'placeholder'=>'Short Message', 'autocomplete'=>'off', 'rows'=>3)) !!}
-                {!! APFrmErrHelp::showErrors($errors, 'short_message') !!}
-            </div>
-        </div>
-    </div>
 
         <div class="row"> </div>
 
@@ -134,6 +134,4 @@ $queryString = MiscHelper::getLangQueryStr();
         </style>
 </div>
 @push('scripts')
-
-    @include('admin.shared.tinyMCE')
 @endpush

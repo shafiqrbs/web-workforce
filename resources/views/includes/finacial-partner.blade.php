@@ -1,27 +1,75 @@
-<section class="team-section alternat-2 sec-pad pb-140 team-section-padding" style="margin-bottom: 50px">
-{{--    <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-10.png);"></div>--}}
+<section class="explore-style-two departments-page sec-pad centred">
     <div class="auto-container">
         <div class="sec-title centred">
-            <h2>Our partner and Stakeholder</h2>
+            <h2>Our Partner and Stakeholder</h2>
             <div class="title-shape"></div>
         </div>
-        <div class="four-item-carousel owl-carousel owl-theme owl-nav-none owl-dots-none">
-
+        <div class="row clearfix">
             @if($financialPartner)
                 @foreach($financialPartner as $partner)
-                    <div class="team-block-one">
-                        <div class="inner-box finalcial-partner-image">
-                            <a href="{{$partner['facebook_link']}}" >
-                                @if($img = $partner['profile_image'])
-{{--                                    <figure class="image-box">--}}
-                                        {{ ImgUploader::print_image("financial_partner/mid/$img") }}
-{{--                                    </figure>--}}
-                                @endif
-                            </a>
+                    @if($img = $partner['profile_image'])
+                    <div class="col-lg-3 col-md-6 col-sm-12 explore-block">
+                        <div class="explore-block-two">
+                            <div class="inner-box">
+                                <figure class="image-box"> {{ ImgUploader::print_image("financial_partner/mid/$img") }}</figure>
+                                <div class="content-box">
+                                    <h4>{{$partner['name']}}</h4>
+                                </div>
+                                <div class="overlay-content">
+                                    <p>{{$partner['address']}}</p>
+                                    <div class="text">
+                                        <h4>{{$partner['name']}}</h4>
+                                        <a target="_blank" href="{{$partner['facebook_link']}}" >Read More</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    @endif
                 @endforeach
             @endif
         </div>
     </div>
 </section>
+<section class="explore-style-two departments-page sec-pad centred">
+    <div class="auto-container">
+        <div class="sec-title centred">
+            <h2>Our Factory Partner</h2>
+            <div class="title-shape"></div>
+        </div>
+        <div class="row clearfix">
+            @if($financialPartner)
+                @foreach($financialPartner as $partner)
+                    @if($img = $partner['profile_image'])
+                    <div class="col-lg-3 col-md-6 col-sm-12 explore-block">
+                        <div class="explore-block-two">
+                            <div class="inner-box">
+                                <figure class="image-box">
+                                    {{ ImgUploader::print_image("financial_partner/mid/$img") }}</figure>
+                                <div class="content-box">
+                                    <h4>{{$partner['name']}}</h4>
+                                </div>
+                                <div class="overlay-content">
+                                    <p>{{$partner['address']}}</p>
+                                    <div class="text">
+                                        <h4>{{$partner['name']}}</h4>
+                                        <a target="_blank" href="{{$partner['facebook_link']}}" >Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                @endforeach
+            @endif
+        </div>
+    </div>
+</section>
+<style>
+    .image-box img{
+        max-height: 220px;
+    }
+    .explore-block-two .inner-box .content-box h4 {
+        font-size: 16px;
+    }
+</style>

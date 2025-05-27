@@ -144,7 +144,7 @@ class FinancalPartnerController extends Controller
         $financialMember['sort_order'] = $financialMember->id;
         $financialMember['is_active'] = false;
         $financialMember->update();
-        flash('Financial partner has been added!')->success();
+        flash('Partner has been added!')->success();
         return \Redirect::route('financial_partner_edit', array($financialMember->id));
     }
 

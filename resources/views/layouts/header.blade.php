@@ -30,7 +30,7 @@
                         <div class="logo">
                             <a href="{{route('index')}}"><img src="{{ asset('assets/images/logo.svg') }}" alt="" /></a>
                         </div>
-                        <div class="content-box">
+                        {{--<div class="content-box">
                             <h4>Connect Me!</h4>
                             <form action="{{route('index')}}" method="post" class="booking-form">
                                 <div class="form-group">
@@ -46,7 +46,7 @@
                                     <button type="submit">Send Now</button>
                                 </div>
                             </form>
-                        </div>
+                        </div>--}}
                         <div class="contact-info">
                             <h4>Contact Info</h4>
                             <ul>
@@ -103,9 +103,9 @@
                     </nav>
                     <div class="menu-right-content clearfix">
                         <ul class="other-option clearfix">
-                            <li class="search-btn">
+                           {{-- <li class="search-btn">
                                 <button type="button" class="search-toggler"><i class="far fa-search"></i></button>
-                            </li>
+                            </li>--}}
                             <li class="nav-box">
                                 <div class="nav-toggler navSidebar-button"><i class="fas fa-th-large"></i></div>
                             </li>
@@ -129,9 +129,9 @@
                     </nav>
                     <div class="menu-right-content clearfix">
                         <ul class="other-option clearfix">
-                            <li class="search-btn">
+                           {{-- <li class="search-btn">
                                 <button type="button" class="search-toggler"><i class="far fa-search"></i></button>
-                            </li>
+                            </li>--}}
                             <li class="nav-box">
                                 <div class="nav-toggler navSidebar-button"><i class="fas fa-th-large"></i></div>
                             </li>
