@@ -13,9 +13,14 @@
         @include('includes.page.achivement')
         <!-- banner-section end -->
         <!-- event-section -->
+        @include('includes.page.programs')
+        <!-- event-section end -->
+        <!-- event-section -->
         @include('includes.page.event')
         <!-- event-section end -->
-
+        <!-- Financial Partner Section -->
+        @include('includes/factory-partner')
+        <!-- Financial Partner end -->
         <!-- banner-section -->
        {{-- @include('includes.page.target')--}}
         <!-- banner-section end -->
