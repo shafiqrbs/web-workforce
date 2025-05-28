@@ -98,16 +98,9 @@ class Archive extends Model
             ->orderBy('sort_order', 'asc');
 
         if ($limit) {
-            $query->limit($limit);
+            $query= $query->limit($limit);
         }
         $data = $query->get();
-
-        $data1 = DB::table('archives')
-            ->where('is_active', 1)
-            ->where('type', $type)
-            ->orderBy('sort_order', 'asc')
-            ->limit($limit)
-            ->get();
 
         return $data;
 
