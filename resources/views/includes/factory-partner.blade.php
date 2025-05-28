@@ -1,6 +1,6 @@
 <section class="award-section bg-color-1">
-    <div class="auto-container">
-        <div class="sec-title">
+    <div class="auto-container ">
+        <div class="sec-title centred">
             <h2>Our Factory Partners</h2>
             <div class="title-shape"></div>
         </div>

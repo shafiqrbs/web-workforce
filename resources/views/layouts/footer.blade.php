@@ -2,21 +2,26 @@
     <div class="footer-top-two footer-custom-padding">
         <div class="auto-container">
             <div class="row footer-custom-border" >
-                <div class=" col-md-6 footer-column" style="text-align: center">
+                <div class=" col-md-4 footer-column" style="text-align: center">
                     <div class="footer-widget logo-widget">
                         <figure class="footer-logo"><a href="{{url('/')}}"><img class="footer-logo-image" src="{{ asset('assets/images/logo.svg') }}" alt=""></a></figure>
+                    </div>
+                </div>
+                <div class=" col-md-4 footer-column" style="text-align: center">
+                    <div class="footer-widget logo-widget">
+                        <div class="widget-title">
+                            <h4>{{$siteSetting->site_name}}</h4>
+                        </div>
                         <div class="text">
-                            <p class="footer-site-name">{{$siteSetting->site_name}}</p>
-                            <p>{{$siteSetting->site_street_address}}</p>
+                            <p>{!! $siteSetting->site_street_address !!}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 footer-column">
+                <div class="col-md-4 footer-column">
                     <div class="footer-widget links-widget">
                         <div class="widget-title">
                             <h4>Useful links</h4>
                         </div>
-
                         <div class="widget-content">
                             <ul class="links-list clearfix" style="border-bottom: 0px">
                                 <li><a href="https://www.gainhealth.org/" target="_blank">Global Alliance for Improved Nutrition</a></li>
@@ -32,7 +37,7 @@
                     <div class="footer-widget links-widget">
                         <div class="widget-content">
                             <ul class="social-box clearfix">
-                                <div class="row mb-5">
+                                <div class="row mb1">
                                     @if($siteSetting->facebook_address)
                                         <div class="col-md-3 mb-2">
                                             <li>
@@ -89,6 +94,10 @@
     </div>
 </footer>
 <style>
+    .footer-top-two{
+        position: relative;
+        padding: 40px 0px 39px 0px;
+    }
     .logo a img {
         display: inline-block;
         max-width: 100%;

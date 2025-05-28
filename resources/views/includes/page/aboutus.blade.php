@@ -32,11 +32,12 @@
                 <div class="bg-layer"></div>
                 <div class="text pull-left">
                     <div class="icon-box"><i class="flaticon-idea"></i></div>
-                    <h3>Share Your Ideas to Help Our City’s Future.</h3>
-                    <p>We all have different interests, needs and hopes for our city future. What do you think?</p>
+                    <h3>Strengthening Workers’ Access to Pertinent Nutrition<br/> Opportunities</h3>
+                    <p>SWAPNO is a pioneering effort under the Workforce Nutrition Programme,<br/> focused
+                        on improving nutrition outcomes for garment workers in Bangladesh.</p>
                 </div>
                 <div class="btn-box pull-right">
-                    <a href="index.html" class="theme-btn">Share your Say</a>
+                    <a href="#" class="theme-btn">The SWAPNO Project</a>
                 </div>
             </div>
         </div>

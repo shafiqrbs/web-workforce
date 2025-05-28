@@ -2,8 +2,7 @@
     {{--    <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-12.png);"></div>--}}
     <div class="auto-container">
         <div class="sec-title centred">
-            <h6><i class="flaticon-star"></i><span>News & Notices</span><i class="flaticon-star"></i></h6>
-            <h2>Latest From Our Newsroom</h2>
+            <h2>Latest News</h2>
             <div class="title-shape"></div>
         </div>
         <div class="row clearfix">
@@ -23,8 +22,7 @@
                                     <div class="text">
                                         <div class="post-date" style="position: fixed;
     top: 0px;">
-                                            <h3>
-                                                {{$newsnotice->created_at->format('d')}}
+                                            <h3>{{$newsnotice->created_at->format('d')}}
                                                 <span>{{$newsnotice->created_at->format("M'Y")}}</span>
                                             </h3>
                                         </div>

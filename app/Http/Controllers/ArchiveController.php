@@ -20,6 +20,16 @@ class ArchiveController extends Controller
         return view('archive.index', compact(['pageTitle','archives','keyword','pathPageTitle','bannerData']));
     }
 
+
+    public function ProgramsIndex(){
+        $pageTitle = __('messages.Archives');
+        $archives = Archive::getLatestArchive('programs');
+        $keyword = '';
+        $pathPageTitle = '';
+        $bannerData = Banner::getPageWiseBannerInfo('archive');
+        return view('archive.index', compact(['pageTitle','archives','keyword','pathPageTitle','bannerData']));
+    }
+
     public function ArchiveSearch(Request $request){
         $keyword = $request->query('keyword');
         $date = $request->query('date');

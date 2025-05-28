@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\Self_;
 
 class Archive extends Model
@@ -90,13 +91,26 @@ class Archive extends Model
         return $data;
     }
 
-    public static function getLatestArchive($limit,$type){
-        $data = self::where('is_active',1)
-            ->where('type',$type)
-            ->orderby('sort_order','asc')
+    public static function getLatestArchive($type,$limit = 0){
+
+        $query = Archive::where('is_active', 1)
+            ->where('type',"{$type}")
+            ->orderBy('sort_order', 'asc');
+
+        if ($limit) {
+            $query->limit($limit);
+        }
+        $data = $query->get();
+
+        $data1 = DB::table('archives')
+            ->where('is_active', 1)
+            ->where('type', $type)
+            ->orderBy('sort_order', 'asc')
             ->limit($limit)
             ->get();
+
         return $data;
+
     }
 
 

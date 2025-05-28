@@ -3,8 +3,7 @@
 <section class="feature-section sec-pad" style="background-image: url(assets/images/background/feature-bg.jpg);">
     <div class="auto-container">
         <div class="sec-title centred">
-            <h6><i class="flaticon-star"></i><span>Council Information</span><i class="flaticon-star"></i></h6>
-            <h2>More About Our Government</h2>
+            <h2>Our Programs</h2>
             <div class="title-shape"></div>
         </div>
         <div class="row clearfix">

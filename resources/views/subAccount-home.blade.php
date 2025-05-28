@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('content') 
-<!-- Header start --> 
-@include('includes.header') 
+@section('content')
+<!-- Header start -->
+@include('includes.header')
 <!-- Header end -->
 
 @include('includes.employer_tab')

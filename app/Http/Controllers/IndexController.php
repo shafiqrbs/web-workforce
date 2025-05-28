@@ -78,7 +78,9 @@ class IndexController extends Controller
         $aboutContent = CmsContent::where('page_id',14)->first();
 
         $achievements = FinancialPartner::getAchievement();
-        $programs = App\Models\Archive::getLatestArchive(4,'programs');
+
+        $programs = App\Models\Archive::getLatestArchive('programs',4);
+
 
         return view('welcome',[
             'sliders'=> $sliders,

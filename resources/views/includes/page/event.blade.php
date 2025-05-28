@@ -3,7 +3,6 @@
     <section class="team-section alternat-2 sec-pad pb-140 team-section-padding" id="event">
         <div class="auto-container">
             <div class="sec-title centred">
-                <h6><i class="flaticon-star"></i><span>Events</span><i class="flaticon-star"></i></h6>
                 <h2>Running & Upcoming Events</h2>
                 <div class="title-shape"></div>
             </div>
