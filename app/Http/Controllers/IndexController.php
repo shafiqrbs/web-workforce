@@ -58,7 +58,7 @@ class IndexController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function index()
     {
@@ -96,6 +96,12 @@ class IndexController extends Controller
             'factories' => $factories
         ]);
     }
+
+    public function indexNewRaju()
+    {
+        return view('welcome_new_raju');
+    }
+
 
     public function newIndex()
     {

@@ -40,6 +40,7 @@ Route::get('/digital-clock', function () {
     return date('h:i:s A');
 })->name('digital_clock');
 Route::get('/', 'IndexController@index')->name('index');
+Route::get('/new', 'IndexController@indexNewRaju')->name('index.new');
 Route::get('/construction/mode', 'IndexController@constructionMode')->name('construction_mode');
 
 Route::get('new-index', 'IndexController@newIndex')->name('newindex');
