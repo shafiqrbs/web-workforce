@@ -50,7 +50,7 @@ class CmsContentController extends Controller
                 DB::raw('@rownum  := @rownum  + 1 AS rownum'),
                 'cms.page_slug',
                 'cms_content.page_title',
-                'cms_content.page_sub_title',
+                'cms_content.sub_title',
                 'cms.id',
                 'cms.show_in_top_menu',
                 'cms.show_in_footer_menu',
@@ -150,7 +150,7 @@ class CmsContentController extends Controller
             }
             $cmsContent->page_id = $cms->id;
             $cmsContent->page_title = $request->input('page_title');
-            $cmsContent->page_sub_title = $request->input('page_sub_title');
+            $cmsContent->sub_title = $request->input('page_sub_title');
             $cmsContent->page_content = $request->input('page_content');
 //            $cmsContent->lang = $request->input('lang');
             $cmsContent->save();
@@ -194,7 +194,7 @@ class CmsContentController extends Controller
             $cmsContent->image = $fileName;
         }
         $cmsContent->page_title = $request->input('page_title');
-        $cmsContent->page_sub_title = $request->input('page_sub_title');
+        $cmsContent->sub_title = $request->input('page_sub_title');
         $cmsContent->page_content = $request->input('page_content');
         $cmsContent->update();
         flash('Page has been updated')->success();

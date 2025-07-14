@@ -31,7 +31,8 @@ class EventFormRequest extends Request
 //                'number_of_club' => 'required|integer',
 //                'number_of_athlete' => 'required|integer',
 //                'number_of_official' => 'required|integer',
-                'event_image' => 'image|dimensions:min_width=900,min_height=500',
+//                'event_image' => 'image|dimensions:min_width=900,min_height=500',
+                'event_image' => 'image',
             ];
         } else {
             return [

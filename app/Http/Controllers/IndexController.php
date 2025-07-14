@@ -73,7 +73,7 @@ class IndexController extends Controller
 
         $newsAndNotices = NewsAndNotice::getLatestNews(3);
         $abouts = NewsAndNotice::getPostByType('NEWS',3);
-        $events = Event::getLatestEvent(3);
+        $events = Event::getLatestEvent(2);
 
         $aboutContent = CmsContent::where('page_id',14)->first();
 
@@ -82,7 +82,22 @@ class IndexController extends Controller
         $programs = App\Models\Archive::getLatestArchive('programs',4);
 
 
-        return view('welcome',[
+        /*return view('welcome',[
+            'sliders'=> $sliders,
+            'aboutContent'=> $aboutContent,
+            'abouts'=> $abouts,
+            'stickyNewsAndNotice'=> $stickyNewsAndNotice,
+            'seo'=>$seo,
+            'financialPartner'=>$financialPartner,
+            'newsAndNotices'=>$newsAndNotices,
+            'achievements'=>$achievements,
+            'events'=>$events,
+            'programs'=>$programs,
+            'factories' => $factories
+        ]);*/
+
+//        return view('welcome',[
+        return view('gain.layout.welcome',[
             'sliders'=> $sliders,
             'aboutContent'=> $aboutContent,
             'abouts'=> $abouts,
