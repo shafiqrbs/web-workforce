@@ -2,7 +2,7 @@
     <div class="container">
         <h2 class="section-title">Our Partners and Stakeholders</h2>
         <div class="partners-grid">
-            @foreach($factories as $partner)
+            @foreach($financialPartner as $partner)
                 <div class="partner-logo">
                     @if($img = $partner['profile_image'])
                         {{ ImgUploader::print_image("financial_partner/mid/$img") }}
