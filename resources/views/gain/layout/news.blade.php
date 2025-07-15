@@ -1,6 +1,6 @@
 <section class="news-section">
     <div class="container">
-        <h2 class="section-title">Latest From Our Newsroom</h2>
+        <h2 class="section-title"> News & blogs</h2>
         <div class="row g-4">
 
             @foreach($newsAndNotices as $newsnotice)

@@ -83,7 +83,6 @@
     <style>
         /* Achievement Section */
         .achievement-section {
-            background: var(--light-pink);
             padding: 100px 0;
             position: relative;
             overflow: hidden;

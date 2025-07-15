@@ -69,10 +69,11 @@
             background-color: #c31947;
             border: none;
             padding: 12px 24px;
-            font-size: 1rem;
+            font-size: 1.2rem;
             border-radius: 8px;
-            font-weight: 500;
             transition: background-color 0.3s;
+            color: #ffffff;
+            font-weight: bolder;
         }
 
         .btn-swapno:hover {

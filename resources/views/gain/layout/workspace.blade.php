@@ -19,7 +19,7 @@
     <style>
         /* Workspace Section */
         .workspace-section {
-            background: white;
+            background: var(--light-pink);
             padding: 100px 0;
         }
 

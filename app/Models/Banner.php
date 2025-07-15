@@ -31,27 +31,13 @@ class Banner extends Model
             ->pluck('cms_content.page_title','cms.page_slug')
             ->all();
         $slug['gallery'] = 'Gallery';
-        $slug['Member-details'] = 'Member Details';
         $slug['event'] = 'Event';
-        $slug['pistol-athlete'] = 'Pistol Athlete';
-        $slug['rifle-athlete'] = 'Rifle Athlete';
-        $slug['short-athlete'] = 'Short Gun Athlete';
-        $slug['handicapped-athlete'] = 'Handicapped Athlete';
         $slug['archive'] = 'Archive';
         $slug['financial-partner'] = 'Financial Partner';
-        $slug['club'] = 'Club';
-        $slug['registration'] = 'Registration';
-        $slug['login'] = 'Login';
         $slug['faq'] = 'FAQ';
-        $slug['executive-committee'] = 'Executive Committee';
-        $slug['sub-committee'] = 'Sub Committee';
-        $slug['camp-commandant-coach'] = 'Camp Commandant Coach';
-        $slug['office-administration'] = 'Office Administration';
         $slug['news'] = 'News';
         $slug['notices'] = 'Notices';
-        $slug['judges-jury'] = __('messages.Judges_Jury');
-        $slug['judges-jury-details'] = __('messages.Judges_Jury_details');
-        $slug['arms'] = __('messages.Arms');
+        $slug['swapno'] = 'swapno';
         ksort($slug);
         return $slug;
     }
