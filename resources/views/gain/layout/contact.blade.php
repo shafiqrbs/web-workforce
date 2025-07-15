@@ -1,3 +1,4 @@
+{{--
 <section id="contact" class="contact-section">
     <div class="container">
         <h2 class="section-title">We're Here to Help You</h2>
@@ -48,6 +49,55 @@
                             <span>123 Business St, City, State 12345</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+--}}
+
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-4">We're Here to Help You</h2>
+        <div class="row g-5">
+            <div class="col-lg-12">
+                <div class="contact-form p-4 border rounded shadow-sm bg-light">
+                    <h4 class="mb-3">Get in touch</h4>
+                    <p>We'd love to hear from you. Drop us a line if you have any questions!</p>
+                    <form>
+                        <!-- First Row: Name, Email, Phone -->
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Your Phone">
+                            </div>
+                        </div>
+
+                        <!-- Second Row: Message -->
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Your Message"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="row">
+                            <div class="col-3 col-md-offset-9">
+                                <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

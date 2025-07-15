@@ -31,8 +31,10 @@
 
         {{--work force e post hisabe use hosse--}}
         @include('admin/shared/side_bars/archive')
-        @include('admin/shared/side_bars/event')
-        @include('admin/shared/side_bars/financial_partner')
+        @if(auth()->user()->role_id != 3)
+            @include('admin/shared/side_bars/event')
+            @include('admin/shared/side_bars/financial_partner')
+        @endif
         @include('admin/shared/side_bars/news_and_notice')
         @if(Module::has('PhotoGallery'))
         @include('photogallery::layouts.nav')

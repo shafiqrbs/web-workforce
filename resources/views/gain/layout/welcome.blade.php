@@ -3,6 +3,7 @@
 
     @include('gain.layout.hero')
     @include('gain.layout.workspace')
+    @include('gain.layout.swapno')
     @include('gain.layout.about')
 {{--    @include('gain.layout.program')--}}
     @include('gain.layout.event')

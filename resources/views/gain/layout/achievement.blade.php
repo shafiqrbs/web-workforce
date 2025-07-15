@@ -3,7 +3,7 @@
     <div class="container">
         <h2 class="section-title fade-in-up">Achievement</h2>
         <div class="row g-4">
-            @if(sizeof($achievements['financialPartnerGroup'])>0)
+            {{--@if(sizeof($achievements['financialPartnerGroup'])>0)
                 @foreach($achievements['financialPartnerGroup'] as $group)
                     <div class="col-lg-4">
                         <div class="achievement-item fade-in-up">
@@ -12,7 +12,69 @@
                         </div>
                     </div>
                 @endforeach()
-            @endif
+            @endif--}}
+
+            <div class="col-lg-4">
+                <div class="achievement-item achievement-item-background fade-in-up">
+                    <span class="achievement-number counter-animation" data-target="5">5</span>
+                    <div class="achievement-text">On Boarded Factories</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="achievement-item achievement-item-background fade-in-up">
+                    <span class="achievement-number counter-animation" data-target="3"3></span>
+                    <div class="achievement-text">Fair Price Shop</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="achievement-item achievement-item-background fade-in-up">
+                    <span class="achievement-number counter-animation" data-target="9">9</span>
+                    <div class="achievement-text">Factories</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="achievement-item achievement-item-background fade-in-up">
+                    <span class="achievement-number counter-animation" data-target="0">0</span>
+                    <div class="achievement-text">Baseline Survey</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="achievement-item achievement-item-background fade-in-up">
+                    <span class="achievement-number counter-animation" data-target="0">0</span>
+                    <div class="achievement-text">Champaign</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="achievement-item achievement-item-background fade-in-up">
+                    <span class="achievement-number counter-animation" data-target="0">0</span>
+                    <div class="achievement-text">Community Nutrition Center</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="achievement-item achievement-item-background fade-in-up">
+                    <span class="achievement-number counter-animation" data-target="5">5</span>
+                    <div class="achievement-text">Community Nutrition Center</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="achievement-item achievement-item-background fade-in-up">
+                    <span class="achievement-number counter-animation" data-target="10">10</span>
+                    <div class="achievement-text">NIC Nutrition Improve Center</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="achievement-item achievement-item-background fade-in-up">
+                    <span class="achievement-number counter-animation" data-target="400">400</span>
+                    <div class="achievement-text">TEER Educators</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="achievement-item achievement-item-background fade-in-up">
+                    <span class="achievement-number counter-animation" data-target="2">2</span>
+                    <div class="achievement-text">School</div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -25,6 +87,10 @@
             padding: 100px 0;
             position: relative;
             overflow: hidden;
+        }
+
+        .achievement-item-background{
+            background: #dbcfcf0d !important;
         }
 
         .achievement-section::before {

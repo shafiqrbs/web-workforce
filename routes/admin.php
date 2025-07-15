@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Session;
 
 
-    $all_users = ['allowed_roles' => ['SUP_ADM', 'SUB_ADM']];
+    $all_users = ['allowed_roles' => ['SUP_ADM', 'SUB_ADM','SWAPNO_ADMIN']];
     $sup_only = ['allowed_roles' => 'SUP_ADM'];
     Route::get('home', array_merge(['uses' => 'Admin\HomeController@index'], $all_users))->name('admin.home');
     Route::post('tinymce-image_upload', array_merge(['uses' => 'Admin\TinyMceController@uploadImage'], $all_users))->name('tinymce.image_upload');

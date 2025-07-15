@@ -44,12 +44,17 @@ class AdminController extends Controller
 
     public function createAdminUser()
     {
-        $roles = Role::select('role_name', 'id')->where('role_abbreviation','SUP_ADM')->orderBy('role_name')->pluck('role_name', 'id')->toArray();
+        $roles = Role::select('role_name', 'id')
+            ->whereIn('role_abbreviation',['SUP_ADM','SWAPNO_ADMIN'])
+            ->orderBy('role_name')
+            ->pluck('role_name', 'id')
+            ->toArray();
+//        dump($roles);
         /*
           print_r($roles);
           print_r(['0' => 'Select a Role']+$roles);exit;
          */
-        return view('admin.admin.create')->with('roles', $roles);
+//        return view('admin.admin.create')->with('roles', $roles);
     }
 
     public function storeAdminUser(AdminFormRequest $request)
