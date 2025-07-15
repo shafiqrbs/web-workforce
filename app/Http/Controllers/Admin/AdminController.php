@@ -54,7 +54,7 @@ class AdminController extends Controller
           print_r($roles);
           print_r(['0' => 'Select a Role']+$roles);exit;
          */
-//        return view('admin.admin.create')->with('roles', $roles);
+        return view('admin.admin.create')->with('roles', $roles);
     }
 
     public function storeAdminUser(AdminFormRequest $request)
