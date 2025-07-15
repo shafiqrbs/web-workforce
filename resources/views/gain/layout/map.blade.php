@@ -16,22 +16,24 @@
         </div>
 
         <div class="content">
-            <div class="intro-text">
+            {{--<div class="intro-text">
                 WAVE Foundation has been implementing its projects and programs in 34 Districts & 5 Divisions.
             </div>
 
             <div class="districts-grid">
-                <div class="district-card">Khulna</div>
-                <div class="district-card">Barishal</div>
-                <div class="district-card">Chuadanga</div>
-                <div class="district-card">Jessore</div>
-                <div class="district-card">Laxmipur</div>
                 <div class="district-card">Dhaka</div>
-                <div class="district-card">Barguna</div>
+                <div class="district-card">Narayanganj</div>
+                <div class="district-card">Gazipur</div>
+                <div class="district-card">Jamalpur</div>
+                <div class="district-card">Chittagong</div>
+                <div class="district-card">Khulna</div>
+                <div class="district-card">Bogra</div>
+                <div class="district-card">Satkhira</div>
+                <div class="district-card">Moulvibazar</div>
             </div>
 
 
-            <button class="view-more-btn">View More</button>
+            <button class="view-more-btn">View More</button>--}}
 
             <div class="map-container" id="chartdiv"></div>
         </div>
@@ -328,16 +330,17 @@
 
             // District data
             const districtData = [
-                { title: "Khulna", latitude: 22.8456, longitude: 89.5403 },
-                { title: "Barishal", latitude: 22.7010, longitude: 90.3535 },
-                { title: "Chuadanga", latitude: 23.6401, longitude: 88.8410 },
-                { title: "Jashore", latitude: 23.1667, longitude: 89.2167 },
-                { title: "Laxmipur", latitude: 22.9447, longitude: 90.8282 },
                 { title: "Dhaka", latitude: 23.8103, longitude: 90.4125 },
-                { title: "Barguna", latitude: 22.1596, longitude: 90.1251 },
-                { title: "Pirojpur", latitude: 22.5791, longitude: 89.9759 },
-                { title: "Sandwip", latitude: 22.5083, longitude: 91.4500 }
+                { title: "Narayanganj", latitude: 23.6238, longitude: 90.5000 },
+                { title: "Gazipur", latitude: 23.9999, longitude: 90.4203 },
+                { title: "Jamalpur", latitude: 24.9375, longitude: 89.9370 },
+                { title: "Chittagong", latitude: 22.3569, longitude: 91.7832 }, // Also written Chattogram
+                { title: "Khulna", latitude: 22.8456, longitude: 89.5403 },
+                { title: "Bogra", latitude: 24.8512, longitude: 89.3697 },
+                { title: "Satkhira", latitude: 22.7085, longitude: 89.0715 },
+                { title: "Moulvibazar", latitude: 24.4829, longitude: 91.7779 }
             ];
+
 
             // Marker series
             var imageSeries = chart.series.push(new am4maps.MapImageSeries());
