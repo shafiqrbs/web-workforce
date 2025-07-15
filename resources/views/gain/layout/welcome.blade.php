@@ -1,6 +1,5 @@
 @extends('gain.layout.app')
 @section('content1')
-    @include('gain.layout.header')
 
     @include('gain.layout.hero')
     @include('gain.layout.workspace')

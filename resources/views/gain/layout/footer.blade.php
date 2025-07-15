@@ -6,7 +6,6 @@
                 <a class="navbar-brand d-flex align-items-center mb-3" href="#">
                     <img class="footer-logo-image" src="{{ asset('assets/images/logo.svg') }}" alt="">
                 </a>
-{{--                <h4>{{$siteSetting->site_name}}</h4>--}}
                 <p class="mb-4"><p>{!! $siteSetting->site_street_address !!}</p>
                 <div class="social-links">
                     <a href="{{$siteSetting->facebook_address}}" target="_blank"><i class="fab fa-facebook-f"></i></a>

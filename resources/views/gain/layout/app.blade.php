@@ -378,6 +378,8 @@ if (!isset($seo)) {
 <body>
 
 <div class="boxed_wrapper">
+    @include('gain.layout.header')
+
     @yield('content1')
     @include('gain.layout.footer')
 
