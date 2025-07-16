@@ -32,7 +32,7 @@
                     <a class="nav-link" href="{{route('photo_gallery')}}">Gallery</a>
                 </li>
             </ul>
-            <button class="btn btn-primary ms-3">Get Started</button>
+            <button class="btn btn-primary ms-3">Get in touch</button>
         </div>
     </div>
 </nav>
